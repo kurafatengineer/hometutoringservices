@@ -1,0 +1,2496 @@
+
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.hidden {
+  display: none !important;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.container {
+  width: min(900px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 42px 0 80px;
+}
+
+
+/* Global header is provided by css/header.css and injected by js/header.js. */
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+  padding: 70px 0 42px;
+}
+
+.intro h1 {
+  margin: 0;
+
+  font-size: clamp(54px, 8vw, 92px);
+  line-height: 0.94;
+
+  font-weight: 850;
+  letter-spacing: -5px;
+
+  color: #f5f5f5;
+}
+
+.intro h1 span {
+  color: var(--lime);
+}
+
+.intro p {
+  max-width: 650px;
+
+  margin: 28px 0 0;
+
+  color: var(--muted);
+
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.form-card {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 24px;
+
+  padding: 38px;
+}
+
+.email-card {
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section {
+  padding: 0 0 42px;
+  margin-bottom: 42px;
+
+  border-bottom: 1px solid #242424;
+}
+
+.section:last-child {
+  border-bottom: 0;
+}
+
+.last-section {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.section-title h2 {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: 800;
+
+  letter-spacing: -0.8px;
+}
+
+.section-title p {
+  margin: 5px 0 0;
+
+  color: var(--muted);
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   FIELDS
+========================================================= */
+
+.vertical-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.field {
+  width: 100%;
+}
+
+.field label:not(.selection-option):not(.time-option):not(.same-phone):not(.terms):not(.upload-button):not(.float-field):not(.pill-check) {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #c4c4c4;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TEXT INPUTS
+========================================================= */
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="tel"],
+.field textarea {
+  display: block;
+
+  width: 100%;
+
+  padding: 17px 18px;
+
+  color: #ffffff;
+  background: #050505;
+
+  border: 2px solid var(--border);
+  border-radius: 17px;
+
+  outline: none;
+
+  font-size: 16px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+   SINGLE BORDER ONLY
+========================================================= */
+
+.field input[type="text"]:focus,
+.field input[type="email"]:focus,
+.field input[type="tel"]:focus,
+.field textarea:focus {
+  border-color: var(--lime);
+
+  outline: none;
+
+  box-shadow: none;
+}
+
+.field input[type="text"]:focus-visible,
+.field input[type="email"]:focus-visible,
+.field input[type="tel"]:focus-visible,
+.field textarea:focus-visible {
+  outline: none;
+}
+
+
+/* =========================================================
+   PHONE INPUT
+========================================================= */
+
+.phone-input {
+  display: flex;
+  align-items: stretch;
+
+  width: 100%;
+
+  background: #050505;
+
+  border: 2px solid var(--border);
+  border-radius: 17px;
+
+  overflow: hidden;
+
+  transition: border-color 0.2s ease;
+}
+
+.phone-input:focus-within {
+  border-color: var(--lime);
+}
+
+.phone-input input {
+  flex: 1;
+
+  min-width: 0;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  outline: none !important;
+  box-shadow: none !important;
+
+  background: transparent !important;
+}
+
+.country-code {
+  display: flex;
+  align-items: center;
+
+  padding: 0 16px;
+
+  color: #777777;
+
+  font-size: 16px;
+
+  border-right: 1px solid #282828;
+}
+
+
+/* =========================================================
+   SAME AS PHONE
+   CIRCULAR CHECKBOX
+========================================================= */
+
+.same-phone {
+  display: flex !important;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 11px;
+
+  color: #8e8e8e !important;
+
+  font-size: 13px !important;
+  font-weight: 500 !important;
+
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+
+  cursor: pointer;
+}
+
+.same-phone input {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 19px;
+  height: 19px;
+
+  margin: 0;
+
+  flex: 0 0 19px;
+
+  border: 2px solid #414141;
+  border-radius: 50%;
+
+  background: #050505;
+
+  position: relative;
+
+  cursor: pointer;
+}
+
+.same-phone input:checked {
+  border-color: var(--lime);
+  background: var(--lime);
+}
+
+.same-phone input:checked::after {
+  content: "";
+
+  position: absolute;
+
+  width: 5px;
+  height: 9px;
+
+  left: 5px;
+  top: 2px;
+
+  border-right: 2px solid #050505;
+  border-bottom: 2px solid #050505;
+
+  transform: rotate(45deg);
+}
+
+
+/* =========================================================
+   GENDER / PREFERRED TUTOR
+   BUTTON STYLE
+========================================================= */
+
+.selection-box {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+
+  width: 100%;
+}
+
+
+/* Preferred Tutor = 3 columns */
+
+.field:has(
+  input[name="preferredTutor"]
+) .selection-box {
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+}
+
+
+/* Hide actual radio */
+
+.selection-option input {
+  position: absolute;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/*
+   BUTTON HEIGHT IS NOW BASED ON:
+   TEXT + PADDING
+
+   No large min-height.
+*/
+
+.selection-option {
+  min-height: 0;
+
+  display: flex !important;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 18px 12px;
+
+  color: #d0d0d0;
+
+  background: #050505;
+
+  border: 2px solid var(--border);
+  border-radius: 20px;
+
+  font-size: 18px !important;
+  font-weight: 750 !important;
+
+  line-height: 1.2;
+
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.selection-option:hover {
+  border-color: #444444;
+}
+
+
+/* Selected */
+
+.selection-option:has(input:checked) {
+  color: #050505;
+
+  background: var(--lime);
+
+  border-color: var(--lime);
+}
+
+
+/* =========================================================
+   STUDENT PREFERRED TIMING
+   3 COLUMNS
+========================================================= */
+
+.timing-options {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+  width: 100%;
+}
+
+
+/*
+   Timing buttons
+
+   Height = text + padding.
+*/
+
+.time-option {
+  position: relative;
+
+  min-height: 0;
+
+  display: flex !important;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 16px 10px;
+
+  color: #d0d0d0;
+
+  background: #050505;
+
+  border: 2px solid var(--border);
+  border-radius: 18px;
+
+  font-size: 17px !important;
+  font-weight: 750 !important;
+
+  line-height: 1.2;
+
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.time-option:hover {
+  border-color: #444444;
+}
+
+
+/* Hide checkbox */
+
+.time-option input {
+  position: absolute;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* Selected timing */
+
+.time-option:has(input:checked) {
+  color: #050505;
+
+  background: var(--lime);
+
+  border-color: var(--lime);
+}
+
+
+/* =========================================================
+   OTHER TIMING
+========================================================= */
+
+.other-time {
+  margin-top: 13px;
+}
+
+.other-time input {
+  width: 100%;
+
+  padding: 16px 18px;
+
+  color: #ffffff;
+  background: #050505;
+
+  border: 2px solid var(--border);
+  border-radius: 16px;
+
+  outline: none;
+}
+
+.other-time input:focus {
+  border-color: var(--lime);
+
+  outline: none;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   TERMS
+   CIRCULAR CHECKBOX
+========================================================= */
+
+.terms {
+  display: flex !important;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  cursor: pointer;
+
+  color: #9a9a9a;
+
+  font-size: 14px !important;
+  line-height: 1.6;
+
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.terms input {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 21px;
+  height: 21px;
+
+  flex: 0 0 21px;
+
+  margin: 2px 0 0;
+
+  background: #050505;
+
+  border: 2px solid #444444;
+
+  border-radius: 50%;
+
+  position: relative;
+
+  cursor: pointer;
+}
+
+.terms input:checked {
+  background: var(--lime);
+
+  border-color: var(--lime);
+}
+
+.terms input:checked::after {
+  content: "";
+
+  position: absolute;
+
+  width: 6px;
+  height: 10px;
+
+  left: 5px;
+  top: 2px;
+
+  border-right: 2px solid #050505;
+  border-bottom: 2px solid #050505;
+
+  transform: rotate(45deg);
+}
+
+button.submit,
+a.submit {
+  width: 100%;
+
+  min-height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 15px 22px;
+
+  border: 0;
+  border-radius: 16px;
+
+  color: #050505;
+
+  background: var(--lime);
+
+  font-size: 16px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease,
+    opacity 0.18s ease;
+}
+
+button.submit:hover,
+a.submit:hover {
+  background: var(--lime-hover);
+}
+
+button.submit:active,
+a.submit:active {
+  transform: translateY(1px);
+}
+
+button.submit:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.55;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader {
+  width: 19px;
+  height: 19px;
+
+  border: 2px solid rgba(0, 0, 0, 0.25);
+
+  border-top-color: #050505;
+
+  border-radius: 50%;
+
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   FIELD ERRORS
+========================================================= */
+
+.field-error {
+  display: block;
+
+  min-height: 18px;
+
+  margin-top: 7px;
+
+  color: var(--danger);
+
+  font-size: 12px;
+
+  line-height: 1.4;
+}
+
+.field-error.center {
+  text-align: center;
+}
+
+
+/* =========================================================
+   OTP PAGE
+========================================================= */
+
+.otp-card {
+  max-width: 650px;
+
+  margin: 0 auto;
+}
+
+.otp-input {
+  text-align: center;
+
+  font-size: 28px !important;
+  font-weight: 800;
+
+  letter-spacing: 8px;
+}
+
+
+/* =========================================================
+   RESEND
+========================================================= */
+
+.resend-area {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-top: 24px;
+
+  color: #777777;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.success-card {
+  max-width: 650px;
+
+  margin: 90px auto 0;
+
+  text-align: center;
+}
+
+.success-card h1 {
+  margin: 0;
+
+  font-size: 48px;
+  line-height: 1;
+
+  letter-spacing: -2px;
+}
+
+.registered-email {
+  margin: 28px 0;
+
+  padding: 16px 20px;
+
+  background: #080808;
+
+  border: 1px solid var(--border);
+
+  border-radius: 15px;
+}
+
+.registered-email span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #666666;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+.registered-email strong {
+  color: #ffffff;
+
+  word-break: break-word;
+}
+
+.login-button {
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   TERMS MODAL
+========================================================= */
+
+.modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+.modal-box {
+  position: relative;
+
+  z-index: 1;
+
+  width: min(600px, 100%);
+  max-height: 85vh;
+
+  overflow-y: auto;
+
+  padding: 35px;
+
+  background: #101010;
+
+  border: 1px solid #303030;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================================
+   EMAIL PAGE
+========================================================= */
+
+.email-page .form-card {
+  margin-top: 10px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .container {
+    width: min(100% - 28px, 900px);
+
+    padding-top: 25px;
+    padding-bottom: 55px;
+  }
+
+
+  /* HEADER */
+
+  .site-header {
+    padding-bottom: 28px;
+  }
+
+
+  /* INTRO */
+
+  .intro {
+    padding: 48px 0 30px;
+  }
+
+  .intro h1 {
+    font-size: clamp(48px, 14vw, 72px);
+
+    letter-spacing: -3.5px;
+  }
+
+  .intro p {
+    font-size: 15px;
+  }
+
+
+  /* CARD */
+
+  .form-card {
+    padding: 25px 20px;
+
+    border-radius: 20px;
+  }
+
+
+  /* SECTIONS */
+
+  .section {
+    padding-bottom: 32px;
+
+    margin-bottom: 32px;
+  }
+
+  .section-title {
+    margin-bottom: 24px;
+  }
+
+  .section-title h2 {
+    font-size: 22px;
+  }
+
+  .vertical-fields {
+    gap: 24px;
+  }
+
+
+  /* =======================================================
+     GENDER
+     50 / 50
+  ======================================================= */
+
+  .selection-box {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+
+  /* =======================================================
+     PREFERRED TUTOR
+     3 IN ONE LINE
+  ======================================================= */
+
+  .field:has(
+    input[name="preferredTutor"]
+  ) .selection-box {
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+
+  .selection-option {
+    min-height: 0;
+
+    padding: 14px 8px;
+
+    border-radius: 17px;
+
+    font-size: 16px !important;
+
+    line-height: 1.2;
+  }
+
+
+  /* =======================================================
+     TIMING
+     3 COLUMNS
+  ======================================================= */
+
+  .timing-options {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+  .time-option {
+    min-height: 0;
+
+    padding: 13px 6px;
+
+    border-radius: 16px;
+
+    font-size: 15px !important;
+
+    line-height: 1.2;
+  }
+
+
+  /* OTP */
+
+  .otp-input {
+    font-size: 25px !important;
+
+    letter-spacing: 6px;
+  }
+
+
+  /* SUCCESS */
+
+  .success-card {
+    margin-top: 40px;
+  }
+
+  .success-card h1 {
+    font-size: 40px;
+  }
+
+
+  /* MODAL */
+
+  .modal-box {
+    padding: 28px 22px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .container {
+    width: calc(100% - 22px);
+  }
+
+  .form-card {
+    padding: 22px 16px;
+  }
+
+
+  /*
+     No fixed heights.
+     Height comes from text + padding.
+  */
+
+  .selection-option {
+    min-height: 0;
+
+    padding: 13px 6px;
+
+    font-size: 15px !important;
+  }
+
+  .time-option {
+    min-height: 0;
+
+    padding: 12px 5px;
+
+    font-size: 14px !important;
+  }
+}
+
+/* =========================================================
+   GLOBAL HEADER / FOOTER INTEGRATION
+   Uses the same header and footer design as index.html.
+========================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: block;
+  margin: 0;
+  padding: 0;
+  background: rgba(5, 5, 5, 0.88);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+}
+
+.header-inner {
+  width: min(1120px, calc(100% - 40px));
+  min-height: 78px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header .logo {
+  display: inline-block;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.site-header .logo span,
+.footer .logo span {
+  color: var(--lime);
+}
+
+.footer-container {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-brand .logo {
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.footer-brand p {
+  margin-top: 7px;
+  color: #777;
+  font-size: 12px;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+/* Student profile modal */
+.profile-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.student-profile-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.student-profile-item.full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 700px) {
+  .header-inner {
+    width: calc(100% - 28px);
+    min-height: 68px;
+  }
+
+  .site-header .logo {
+    font-size: 20px;
+  }
+
+  .footer-container {
+    width: calc(100% - 28px);
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .social-links {
+    gap: 16px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .student-profile-content {
+    grid-template-columns: 1fr;
+  }
+
+  .student-profile-item.full {
+    grid-column: auto;
+  }
+}
+
+
+/* Shared header/footer responsive sizing */
+@media (max-width: 699px) {
+  .header-inner,
+  .footer-container {
+    width: calc(100% - 28px);
+  }
+
+  .header-inner {
+    min-height: 68px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .social-links {
+    gap: 16px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+
+/* =========================================================
+   FORM REDESIGN OVERRIDES
+   ---------------------------------------------------------
+   These rules implement the simplified registration form:
+   - Login / email area centered
+   - Contact Information heading centered
+   - Email field has no visible label
+   - Change email button centered
+   - Input fields work with placeholders instead of labels
+========================================================= */
+
+.email-section-title,
+.centered-section-title {
+  justify-content: center;
+  text-align: center;
+}
+
+.email-page .field {
+  text-align: center;
+}
+
+.email-page .field input[type="email"] {
+  text-align: center;
+}
+
+.email-registration-field input {
+  text-align: center;
+}
+
+.registrationPage .back-link,
+#registrationPage .back-link {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/*
+ * Field labels have been removed from the main text fields.
+ * Their purpose is now served by clear placeholders and
+ * aria-label attributes in the HTML.
+ *
+ * Interactive labels such as radio buttons, checkboxes,
+ * gender, tutor preference and timing options are intentionally
+ * NOT removed because they are part of the controls themselves.
+ */
+
+
+/* =========================================================
+   USER REQUESTED FORM ALIGNMENT / LABEL CLEANUP
+   ========================================================= */
+
+#otpPage .back-link {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#otpPage .otp-header {
+  text-align: center;
+}
+
+#otpPage .otp-header h2,
+#otpPage .otp-header p {
+  text-align: center;
+}
+
+#otpPage .otp-header strong {
+  display: inline-block;
+  text-align: center;
+  word-break: break-word;
+}
+
+.medium-options {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+#registrationPage .centered-section-title {
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .medium-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+
+
+/* =========================================================
+   TUTOR REGISTRATION ADDITIONS
+   (built on the student design system above)
+========================================================= */
+
+/* Grid children may shrink: prevents wide controls (e.g. date) overflowing */
+.field {
+  min-width: 0;
+}
+
+/* Group labels (centered, same style as "Student Preferred Timing") */
+.field-label {
+  display: block;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.helper-text.center {
+  text-align: center;
+}
+
+/* "12th" ordinal - keep the "th" as a proper small superscript
+   instead of sitting full-size on the baseline. */
+sup {
+  font-size: 0.65em;
+  line-height: 0;
+  vertical-align: super;
+}
+
+/* ---------------------------------------------------------
+   Option buttons: checkbox + radio groups reuse .selection-option
+--------------------------------------------------------- */
+
+.selection-option {
+  position: relative;
+}
+
+.selection-box.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.selection-box.cols-3,
+.selection-box.cols-3m2 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.selection-box.small .selection-option {
+  padding: 15px 10px;
+  border-radius: 18px;
+  font-size: 16px !important;
+}
+
+/* ---------------------------------------------------------
+   Two-column rows
+--------------------------------------------------------- */
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 27px 16px;
+  align-items: start;
+}
+
+/* ---------------------------------------------------------
+   Number + select share the text input look
+--------------------------------------------------------- */
+
+.field input[type="number"],
+.field select {
+  display: block;
+  width: 100%;
+  padding: 17px 18px;
+  color: #ffffff;
+  background: #050505;
+  border: 2px solid var(--border);
+  border-radius: 17px;
+  outline: none;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.field input[type="number"]:focus,
+.field select:focus {
+  border-color: var(--lime);
+  outline: none;
+  box-shadow: none;
+}
+
+.field select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 48px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none' stroke='%2316a34a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  cursor: pointer;
+}
+
+.field select option {
+  background: #101010;
+  color: #ffffff;
+}
+
+/* ---------------------------------------------------------
+   DATE OF BIRTH
+   A native date input (best picker on every device) with a
+   custom "Choose Date of Birth" placeholder drawn on top.
+   The box is width-locked so it can never overflow on mobile.
+--------------------------------------------------------- */
+
+.date-field {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 17px;
+}
+
+.date-field input[type="date"] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: 62px;
+  margin: 0;
+  padding: 0 18px;
+  color: #ffffff;
+  color-scheme: dark;
+  background: #050505;
+  border: 2px solid var(--border);
+  border-radius: 17px;
+  outline: none;
+  font-size: 16px;
+  line-height: 58px;
+  text-align: left;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.2s ease;
+}
+
+.date-field input[type="date"]:focus {
+  border-color: var(--lime);
+  box-shadow: none;
+}
+
+/* iOS Safari renders the value in an inner element */
+.date-field input[type="date"]::-webkit-date-and-time-value {
+  min-height: 1.2em;
+  margin: 0;
+  text-align: left;
+}
+
+.date-field input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+/* Placeholder text (same colour as the other placeholders) */
+.date-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  color: #454545;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+/* Empty + not focused: hide "dd/mm/yyyy" and show the placeholder */
+.date-field:not(.has-value):not(:focus-within) input[type="date"] {
+  color: transparent;
+}
+
+/* Value chosen or field focused: hide the placeholder */
+.date-field.has-value .date-placeholder,
+.date-field:focus-within .date-placeholder {
+  display: none;
+}
+
+/* ---------------------------------------------------------
+   Disabled inputs (12th Percentage <-> CGPA)
+--------------------------------------------------------- */
+
+.field input:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: #090909;
+}
+
+/* ---------------------------------------------------------
+   UPLOAD CARDS
+--------------------------------------------------------- */
+
+.upload-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  background: #050505;
+  border: 2px dashed #3a3a3a;
+  border-radius: 18px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.upload-card:hover {
+  border-color: #4d4d4d;
+}
+
+.upload-card + .field-error {
+  margin-bottom: 14px;
+}
+
+.upload-icon {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: rgba(22, 163, 74, 0.07);
+  border: 1px solid rgba(22, 163, 74, 0.28);
+  border-radius: 15px;
+}
+
+.upload-icon svg {
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: var(--lime);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.upload-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.upload-info strong {
+  display: block;
+  color: #f5f5f5;
+  font-size: 16px;
+  letter-spacing: -0.2px;
+}
+
+.upload-hint {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* File name + size, visible only after a file is chosen */
+.upload-file {
+  display: none;
+  margin-top: 8px;
+  color: var(--lime);
+  font-size: 13px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.upload-card.has-file {
+  background: #0a0d05;
+  border-style: solid;
+  border-color: rgba(22, 163, 74, 0.55);
+}
+
+.upload-card.has-file .upload-file {
+  display: block;
+}
+
+.upload-card.has-file .upload-icon {
+  background: rgba(22, 163, 74, 0.14);
+}
+
+.upload-button {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  padding: 12px 22px;
+  color: #050505;
+  background: var(--lime);
+  border-radius: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.upload-button:hover {
+  background: var(--lime-hover);
+}
+
+.upload-button input {
+  display: none;
+}
+
+/* After a file is chosen the button becomes a quiet "Change" */
+.upload-card.has-file .upload-button {
+  color: var(--lime);
+  background: transparent;
+  border: 1px solid rgba(22, 163, 74, 0.5);
+}
+
+.upload-card.has-file .upload-button:hover {
+  background: rgba(22, 163, 74, 0.08);
+}
+
+/* ---------------------------------------------------------
+   Verification note
+--------------------------------------------------------- */
+
+.verification-note {
+  margin-bottom: 24px;
+  padding: 16px 18px;
+  color: var(--muted);
+  background: #080808;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------
+   Mobile
+--------------------------------------------------------- */
+
+@media (max-width: 700px) {
+
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Percentage + CGPA stay side by side (short values) */
+  .field > .two-col {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .selection-box.small .selection-option {
+    padding: 13px 8px;
+    border-radius: 16px;
+    font-size: 14px !important;
+  }
+
+  .selection-box.cols-3m2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .upload-card {
+    flex-wrap: wrap;
+    padding: 16px;
+  }
+
+  .upload-button {
+    flex: 1 0 100%;
+  }
+}
+
+
+
+/* #########################################################
+   SAME LOOK AS studentregistration.html
+   (copied from studentregistration.css so both pages match exactly)
+######################################################### */
+
+/* =========================================================
+   REGISTRATION FORM - NEW LOOK
+   (same text boxes as "Add a Student" on the Student Profile)
+========================================================= */
+
+/* "Tell us about yourself." on one line, centred */
+.registration-intro {
+  text-align: center;
+}
+
+.intro h1.one-line-title {
+  white-space: nowrap;
+  font-size: clamp(26px, 7.2vw, 80px);
+  letter-spacing: -0.04em;
+}
+
+@media (max-width: 760px) {
+  .intro h1.one-line-title {
+    font-size: clamp(24px, 8.4vw, 56px);
+    letter-spacing: -0.035em;
+  }
+}
+
+
+/* ---------- floating-label text boxes ----------
+   The label sits inside the box. When the box is tapped or has
+   text, it moves up onto the top border, left-aligned. */
+
+.float-field {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.field .float-field input[type="text"],
+.field .float-field input[type="email"],
+.field .float-field input[type="tel"],
+.field .float-field textarea {
+  border-radius: 999px;
+  padding: 18px 22px 16px;
+}
+
+.field .float-field.is-area textarea {
+  border-radius: 24px;
+  padding-top: 20px;
+}
+
+.float-field > span {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  max-width: calc(100% - 36px);
+  padding: 0 5px;
+  transform: translateY(-50%);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #5c5c5c;
+  pointer-events: none;
+  border-radius: 4px;
+  /* upper half = card colour, lower half = box colour, so the
+     label cleanly covers the border line */
+  background: linear-gradient(to bottom, var(--surface) 50%, #050505 50%);
+  transition: top 0.15s ease, font-size 0.15s ease, color 0.15s ease;
+}
+
+.float-field.is-area > span {
+  top: 28px;
+}
+
+.float-field input:focus + span,
+.float-field input:not(:placeholder-shown) + span,
+.float-field textarea:focus + span,
+.float-field textarea:not(:placeholder-shown) + span {
+  top: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.float-field input:focus + span,
+.float-field textarea:focus + span {
+  color: var(--lime);
+}
+
+/* read-only email box keeps its darker look */
+.float-field input[readonly] + span {
+  background: linear-gradient(to bottom, var(--surface) 50%, #090909 50%);
+}
+
+
+/* ---------- mobile / WhatsApp: flag + floating label ---------- */
+
+.phone-input {
+  position: relative;
+  border-radius: 999px;
+  overflow: visible;
+}
+
+.phone-input .flag-code {
+  padding: 0 14px 0 20px;
+  border-right: 1px solid #282828;
+}
+
+.float-field.in-phone {
+  flex: 1;
+  min-width: 0;
+}
+
+.field .float-field.in-phone input[type="tel"] {
+  padding: 18px 20px 16px 14px;
+  border-radius: 0 999px 999px 0 !important;
+}
+
+.float-field.in-phone > span {
+  left: 10px;
+}
+
+/* inside the phone box the border belongs to the outer box,
+   2px above the input */
+.float-field.in-phone input:focus + span,
+.float-field.in-phone input:not(:placeholder-shown) + span {
+  top: -2px;
+}
+
+
+/* ---------- "Same as Phone Number" - full-width pill ---------- */
+
+.pill-check {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 12px 12px 12px 22px;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  background: #050505;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.pill-check input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pill-check-icon {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-light);
+  display: grid;
+  place-items: center;
+  color: #050505;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.pill-check-icon svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.pill-check:hover {
+  border-color: var(--border-light);
+}
+
+.pill-check:has(input:checked) {
+  border-color: rgba(22, 163, 74, 0.45);
+  background: rgba(22, 163, 74, 0.1);
+}
+
+.pill-check input:checked ~ .pill-check-icon {
+  background: var(--lime);
+  border-color: var(--lime);
+}
+
+.pill-check input:checked ~ .pill-check-icon svg {
+  opacity: 1;
+}
+
+.pill-check input:focus-visible ~ .pill-check-icon {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   MATCH "ADD A STUDENT" (Student Profile) - boxes, buttons
+========================================================= */
+
+/* ---------- text boxes: same size, border and colour ---------- */
+
+.field .float-field input[type="text"],
+.field .float-field input[type="email"],
+.field .float-field input[type="tel"],
+.field .float-field textarea {
+  padding: 15px 20px 13px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  font-size: 15px;
+}
+
+.field .float-field input[type="text"]:focus,
+.field .float-field input[type="email"]:focus,
+.field .float-field input[type="tel"]:focus,
+.field .float-field textarea:focus {
+  border-color: rgba(22, 163, 74, 0.35);
+}
+
+.float-field > span {
+  left: 16px;
+  font-size: 14.5px;
+  color: #6f6f6f;
+  background: linear-gradient(to bottom, var(--surface) 50%, var(--surface-2) 50%);
+}
+
+.float-field input:focus + span,
+.float-field input:not(:placeholder-shown) + span,
+.float-field textarea:focus + span,
+.float-field textarea:not(:placeholder-shown) + span {
+  font-size: 11.5px;
+}
+
+.float-field input[readonly] + span {
+  background: linear-gradient(to bottom, var(--surface) 50%, #090909 50%);
+}
+
+/* mobile / WhatsApp box (flag + number) */
+.phone-input {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.phone-input:focus-within {
+  border-color: rgba(22, 163, 74, 0.35);
+}
+
+.phone-input .flag-code {
+  padding: 0 12px 0 18px;
+}
+
+.field .float-field.in-phone input[type="tel"] {
+  padding: 15px 20px 13px 12px;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.float-field.in-phone input:focus + span,
+.float-field.in-phone input:not(:placeholder-shown) + span {
+  top: -1px;
+}
+
+.whatsapp-box {
+  margin-top: 12px;
+}
+
+/* "Other" board name box - gap so it doesn't sit flush against the
+   board buttons above it. */
+.board-other-field {
+  margin-top: 12px;
+}
+
+
+/* ---------- "WhatsApp same as mobile number" ---------- */
+
+.pill-check {
+  margin-top: 12px;
+  padding: 11px 12px 11px 20px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+
+/* ---------- choice buttons (gender, tutor, medium, timing) ----------
+   Same pill shape as the text boxes, same size and font. */
+
+.selection-box,
+.timing-options {
+  gap: 8px;
+}
+
+.selection-option,
+.time-option {
+  padding: 13px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+.selection-option:hover,
+.time-option:hover {
+  border-color: var(--border-light);
+}
+
+.selection-option:has(input:checked),
+.time-option:has(input:checked) {
+  color: #050505;
+  background: var(--lime);
+  border-color: var(--lime);
+}
+
+.other-time input {
+  padding: 15px 20px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 15px;
+}
+
+
+/* ---------- main buttons (Continue, Register, Verify ...) ---------- */
+
+button.submit,
+a.submit {
+  min-height: 0;
+  padding: 14px 20px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+/* ---------- Terms: justified text + verified-style tick ---------- */
+
+.terms {
+  align-items: center !important;
+  gap: 14px;
+}
+
+/* the real checkbox stays for the form, but is invisible */
+.terms input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  flex: 0 0 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.terms-badge .seal {
+  fill: transparent;
+  stroke: #4a4a4a;
+  stroke-width: 1.4;
+  transition: fill 0.2s ease, stroke 0.2s ease, transform 0.2s ease;
+  transform-origin: 12px 12px;
+}
+
+.terms-badge .tick {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 14;
+  stroke-dashoffset: 14;
+  transition: stroke-dashoffset 0.25s ease 0.08s;
+}
+
+.terms:hover .terms-badge .seal {
+  stroke: #6a6a6a;
+}
+
+.terms input:checked + .terms-badge .seal {
+  fill: #1d9bf0;
+  stroke: #1d9bf0;
+  transform: scale(1.06);
+}
+
+.terms input:checked + .terms-badge .tick {
+  stroke-dashoffset: 0;
+}
+
+.terms input:focus-visible + .terms-badge {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+.terms { position: relative; }
+
+
+/* =========================================================
+   SPACING, ERRORS, TIME PICKER, TERMS TICK
+========================================================= */
+
+/* ---------- same gap between every box ----------
+   The gap between "Email Address" and "Enter Your Mobile Number"
+   (27px) is used everywhere; empty error lines no longer add
+   extra space. */
+
+#registrationPage .field-error {
+  display: none !important;
+}
+
+#registrationPage .pill-check,
+#registrationPage .whatsapp-box,
+#registrationPage .other-time {
+  margin-top: 27px;
+}
+
+
+/* ---------- errors: light red border instead of text ---------- */
+
+#registrationPage .field.has-error .float-field input,
+#registrationPage .field.has-error .float-field textarea,
+#registrationPage .field.has-error .phone-input,
+#registrationPage .field.has-error .selection-option,
+#registrationPage .field.has-error .time-option,
+#registrationPage .field.has-error .other-time .float-field input {
+  border-color: rgba(255, 104, 104, 0.65) !important;
+}
+
+#registrationPage .field.has-error .phone-input .float-field input {
+  border: 0 !important;
+}
+
+#registrationPage .field.has-error .float-field > span {
+  color: #ff9b9b;
+}
+
+#registrationPage .terms.has-error .terms-badge .seal {
+  stroke: rgba(255, 104, 104, 0.75);
+}
+
+.terms input:checked + .terms-badge .seal {
+  fill: var(--lime);
+  stroke: var(--lime);
+}
+
+.terms-badge .tick {
+  stroke: #050505;
+}
+
+
+
+/* #########################################################
+   TUTOR PAGE ONLY
+######################################################### */
+
+/* number box (Experience) - same as the other boxes */
+.field .float-field input[type="number"] {
+  display: block;
+  width: 100%;
+  padding: 15px 20px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.field .float-field input[type="number"]::-webkit-outer-spin-button,
+.field .float-field input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.field .float-field input[type="number"]:focus {
+  border-color: rgba(22, 163, 74, 0.35);
+}
+
+/* disabled 12th Percentage / CGPA keeps the pill shape */
+.field .float-field input:disabled {
+  opacity: 0.35;
+  background: #0c0c0c;
+}
+
+.field .float-field input:disabled + span {
+  background: linear-gradient(to bottom, var(--surface) 50%, #0c0c0c 50%);
+}
+
+/* location drop-down */
+.field select {
+  padding: 15px 48px 13px 20px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background-color: var(--surface-2);
+  font-size: 15px;
+}
+
+.field select:focus {
+  border-color: rgba(22, 163, 74, 0.35);
+}
+
+/* date of birth */
+.date-field {
+  border-radius: 999px;
+}
+
+.date-field input[type="date"] {
+  height: 50px;
+  line-height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 15px;
+}
+
+.date-field input[type="date"]:focus {
+  border-color: rgba(22, 163, 74, 0.35);
+}
+
+.date-placeholder {
+  left: 21px;
+  font-size: 14.5px;
+  color: #6f6f6f;
+}
+
+/* labels above choice groups ("Class 12th - Stream" ...) */
+.field-label {
+  text-align: center;
+}
+
+/* two boxes side by side: same 27px gap as everywhere */
+.two-col {
+  gap: 27px 12px;
+}
+
+/* choice buttons: the "small" groups use the same pill too */
+.selection-box.small .selection-option {
+  padding: 13px 8px;
+  border-radius: 999px;
+  font-size: 14px !important;
+}
+
+/* upload cards + Upload button */
+.upload-card {
+  border-radius: 24px;
+  border-width: 1px;
+  background: var(--surface-2);
+}
+
+.upload-button {
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+#registrationPage .upload-card + .field-error {
+  display: none !important;
+}
+
+#registrationPage .upload-card.has-error {
+  border-color: rgba(255, 104, 104, 0.65) !important;
+}
+
+/* upload cards get the same gap as the boxes */
+#registrationPage .upload-card + .field-error + .upload-card,
+#registrationPage .upload-card + .upload-card {
+  margin-top: 27px;
+}
+
+/* errors on the tutor-only boxes */
+#registrationPage .field.has-error select,
+#registrationPage .field.has-error .date-field input[type="date"],
+#registrationPage .field.has-error .float-field input[type="number"] {
+  border-color: rgba(255, 104, 104, 0.65) !important;
+}
+
+@media (max-width: 700px) {
+  .two-col { gap: 27px; }
+  .field > .two-col { gap: 12px; }
+  .selection-box.small .selection-option { border-radius: 999px; }
+  .upload-button { border-radius: 999px; }
+}
+
+
+/* =========================================================
+   EMAIL PAGE + OTP PAGE - CLEAN LOOK
+   (no card, same boxes and buttons as the registration form)
+========================================================= */
+
+/* one-line, centred headings ("Find your perfect tutor." /
+   "Join as a tutor.") */
+#emailPage .intro {
+  text-align: center;
+}
+
+/* the card blends into the page: no border, no colour */
+#emailPage .email-card,
+#otpPage .otp-card {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+#emailPage .email-card .section {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+/* labels on the page background */
+#emailPage .float-field > span {
+  background: linear-gradient(to bottom, var(--bg) 50%, var(--surface-2) 50%);
+}
+
+#emailPage .field .float-field input[type="email"] {
+  padding: 15px 20px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 15px;
+}
+
+#emailPage .field .float-field input[type="email"]:focus {
+  border-color: rgba(22, 163, 74, 0.35);
+}
+
+/* errors: light red border, no text (email + OTP pages) */
+#emailPage .field-error,
+#otpPage .field-error {
+  display: none !important;
+}
+
+#emailPage .field.has-error .float-field input,
+#otpPage .field.has-error .otp-input {
+  border-color: rgba(255, 104, 104, 0.65) !important;
+}
+
+#emailPage .field.has-error .float-field > span {
+  color: #ff9b9b;
+}
+
+
+/* ---------- OTP page: six centred lines ---------- */
+
+#otpPage .container {
+  text-align: center;
+}
+
+#otpPage .otp-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding-top: 40px;
+}
+
+/* 1. Change Email */
+#otpPage .back-link {
+  margin: 0 0 6px;
+}
+
+/* 4. OTP box (same pill as the other boxes) */
+#otpPage form {
+  width: 100%;
+}
+
+#otpPage .field {
+  position: relative;
+}
+
+#otpPage .otp-input {
+  display: block;
+  width: 100%;
+  padding: 15px 20px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.45em;
+  text-align: center;
+  outline: none;
+}
+
+#otpPage .otp-input::placeholder {
+  letter-spacing: 0.02em;
+  font-size: 15px;
+  font-weight: 500;
+  color: #6f6f6f;
+}
+
+#otpPage .otp-input:focus {
+  border-color: rgba(22, 163, 74, 0.35);
+}
+
+/* spinner inside the OTP box while checking / saving */
+#otpPage .field.is-busy::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  margin-top: -9px;
+  border-radius: 50%;
+  border: 2px solid rgba(22, 163, 74, 0.25);
+  border-top-color: var(--lime);
+  animation: spin 0.7s linear infinite;
+}
+
+#otpPage .field.is-busy .otp-input {
+  opacity: 0.6;
+}
+
+/* 5. Resend OTP  6. Didn't receive the code? */
+#otpPage .resend-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 0;
+  text-align: center;
+}
+
+#otpPage .resend-area span {
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+
+/* ---------- registration: no double gap under the mobile box ---------- */
+
+#registrationPage .field > .pill-check:first-child {
+  margin-top: 0;
+}
+
+
+/* Email box: "Enter Your Email" centred inside the box and centred
+   on the top edge once it moves up; the typed email is centred too. */
+#emailPage .float-field > span {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#emailPage .field .float-field input[type="email"] {
+  text-align: center;
+}
+
+.page {
+  min-height: 0;
+  flex: 0 0 auto;
+}
+
+#emailPage:not(.hidden):not([hidden]),
+#otpPage:not(.hidden):not([hidden]) {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#emailPage .container,
+#otpPage .container {
+  padding: 32px 0 48px;
+}
+
+#emailPage .intro {
+  padding: 28px 0 30px;
+}
+
+#otpPage .otp-card {
+  padding-top: 0;
+}
+
+
+/* =========================================================
+   OPTIONAL COLLAPSIBLE SECTIONS
+   (Post Graduation, Special Courses, Special Child Disability -
+   see "OPTIONAL COLLAPSIBLE SECTIONS" in the JS)
+========================================================= */
+
+#tutorForm .step-hidden {
+  display: none !important;
+}
+
+/* land a little below the top edge when a section expands */
+#tutorForm .section,
+#tutorForm .step-toggle {
+  scroll-margin-top: 24px;
+}
+
+/* a tick that opens a part: same pill as "WhatsApp same as mobile" */
+#registrationPage .field.step-toggle > .pill-check {
+  margin-top: 0;
+}
+
+
+/* Pills open their fields right below them - keep a gap so the pill
+   never sits flush against the first field. */
+.section > .step-toggle + div:not(.hidden) {
+  margin-top: 18px;
+}

@@ -1,0 +1,3246 @@
+/* =========================================================
+   URBANTUTORSITE - ADMIN PANEL
+   Same dark brand system as the profile pages.
+========================================================= */
+
+:root {
+  --bg: #050505;
+  --surface: #101010;
+  --surface-2: #151515;
+  --surface-3: #1a1a1a;
+  --border: #292929;
+  --border-light: #353535;
+  --text: #f5f5f5;
+  --muted: #9a9a9a;
+  --muted-2: #6f6f6f;
+  --lime: #16a34a;
+  --lime-hover: #22c55e;
+  --lime-dim: rgba(22, 163, 74, 0.12);
+  --lime-line: rgba(22, 163, 74, 0.3);
+  --blue: #2563eb;
+  --blue-hover: #3b82f6;
+  --blue-dim: rgba(37, 99, 235, 0.12);
+  --blue-line: rgba(37, 99, 235, 0.3);
+  --danger: #ff6868;
+  --danger-dim: rgba(255, 104, 104, 0.14);
+  --success: #72e39a;
+  --success-dim: rgba(114, 227, 154, 0.14);
+  --warn: #ffd166;
+  --warn-dim: rgba(255, 209, 102, 0.14);
+  --orange: #ff8c1a;
+  --violet: #b490ff;
+  --violet-dim: rgba(180, 144, 255, 0.14);
+  --radius: 20px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+.hidden { display: none !important; }
+.muted { color: var(--muted); }
+.warn { color: var(--warn); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.admin-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 18px 80px;
+}
+
+.admin-center {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.admin-spinner {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  border-top-color: var(--lime);
+  animation: admin-spin 0.9s linear infinite;
+}
+
+@keyframes admin-spin { to { transform: rotate(360deg); } }
+
+
+/* ---------------- login ---------------- */
+
+.admin-login-wrap {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-login {
+  width: min(400px, 100%);
+  padding: 32px 24px 26px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-align: center;
+}
+
+.admin-login-badge {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--lime);
+  background: var(--lime-dim);
+  border: 1px solid var(--lime-line);
+}
+
+.admin-login-badge svg { width: 24px; height: 24px; }
+
+.admin-login h1 { margin: 0; font-size: 24px; font-weight: 800; }
+.admin-login > p { margin: 4px 0 22px; font-size: 14px; }
+
+.admin-float {
+  position: relative;
+  display: block;
+  text-align: left;
+}
+
+.admin-float input {
+  width: 100%;
+  padding: 15px 20px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 15px;
+}
+
+.admin-float input:focus { outline: none; border-color: var(--lime-line); }
+
+.admin-float > span {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  padding: 0 4px;
+  transform: translateY(-50%);
+  font-size: 14.5px;
+  color: var(--muted-2);
+  pointer-events: none;
+  background: linear-gradient(to bottom, var(--surface) 50%, var(--surface-2) 50%);
+  border-radius: 4px;
+  transition: top 0.15s ease, font-size 0.15s ease, color 0.15s ease;
+}
+
+.admin-float input:focus + span,
+.admin-float input:not(:placeholder-shown) + span {
+  top: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--lime);
+}
+
+.admin-message {
+  min-height: 1.3em;
+  margin: 12px 0 6px;
+  font-size: 13.5px;
+  color: var(--danger);
+}
+
+
+/* ---------------- buttons ---------------- */
+
+.admin-primary {
+  width: 100%;
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--lime);
+  color: #050505;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.admin-primary:hover { background: var(--lime-hover); }
+
+.admin-primary:disabled,
+.admin-ghost:disabled { opacity: 0.55; cursor: default; }
+
+.admin-ghost {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border-light);
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 13.5px;
+}
+
+.admin-ghost:hover { border-color: var(--blue-line); color: var(--blue); }
+
+/* "Edit Details" - light green. "Cancel" - light blue. Always on,
+   not just on hover, so they read as distinct actions at a glance. */
+.admin-ghost[data-action="edit"] {
+  border-color: var(--lime-line);
+  background: var(--lime-dim);
+  color: var(--lime);
+}
+
+.admin-ghost[data-action="edit"]:hover {
+  border-color: var(--lime);
+  background: rgba(22, 163, 74, 0.2);
+  color: var(--lime);
+}
+
+.admin-ghost[data-action="cancel"] {
+  border-color: var(--blue-line);
+  background: var(--blue-dim);
+  color: var(--blue);
+}
+
+.admin-ghost[data-action="cancel"]:hover {
+  border-color: var(--blue);
+  background: rgba(37, 99, 235, 0.2);
+  color: var(--blue);
+}
+
+.admin-danger:hover { border-color: var(--danger); color: var(--danger); background: var(--danger-dim); }
+
+.admin-primary.small,
+.admin-ghost.small {
+  width: auto;
+  padding: 9px 14px;
+  font-size: 13px;
+}
+
+
+/* ---------------- top bar + stats ---------------- */
+
+.admin-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.admin-kicker {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+
+.admin-top h1 { margin: 2px 0 0; font-size: clamp(24px, 5vw, 32px); font-weight: 800; }
+
+.admin-top-actions { display: flex; gap: 8px; }
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.admin-stat {
+  padding: 16px 14px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.admin-stat-value { font-size: 26px; font-weight: 800; }
+.admin-stat-label { margin-top: 2px; font-size: 12.5px; color: var(--muted); }
+
+.admin-stat[data-tone="amber"] .admin-stat-value { color: var(--warn); }
+.admin-stat[data-tone="violet"] .admin-stat-value { color: var(--violet); }
+.admin-stat[data-tone="green"] .admin-stat-value { color: var(--lime); }
+.admin-stat[data-tone="lime"] .admin-stat-value { color: var(--lime); }
+
+
+/* ---------------- tabs, tools, chips ---------------- */
+
+.admin-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 5px;
+  margin-bottom: 16px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.admin-tab {
+  padding: 11px 6px;
+  border: 0;
+  border-radius: 13px;
+  background: none;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.admin-tab.active {
+  color: var(--lime);
+  background: var(--lime-dim);
+}
+
+.admin-tools {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.admin-search {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 14.5px;
+}
+
+.admin-search:focus { outline: none; border-color: var(--lime-line); }
+
+.admin-chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.admin-chips::-webkit-scrollbar { display: none; }
+
+.admin-chip {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.admin-chip.active {
+  color: var(--lime);
+  background: var(--lime-dim);
+  border-color: transparent;
+}
+
+
+/* ---------------- cards ---------------- */
+
+.admin-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: 12px;
+}
+
+.admin-card {
+  min-width: 0;
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.admin-card[data-tone="pending"] { border-color: var(--blue-line); }
+/* Tutors: the card border never carries the verification colour - only the profile circle does */
+#tutorList .admin-card[data-tone="pending"],
+#tutorList .admin-card[data-tone="verified"],
+#tutorList .admin-card[data-tone="rejected"] { border-color: var(--border); }
+.admin-card[data-tone="verified"] { border-color: var(--lime-line); }
+.admin-card[data-tone="rejected"] { border-color: rgba(255, 104, 104, 0.3); }
+
+/* the name-letter avatar also follows the tutor's status */
+.admin-card[data-tone="pending"] .admin-avatar {
+  color: var(--blue); background: var(--blue-dim); border-color: var(--blue-line);
+}
+.admin-card[data-tone="verified"] .admin-avatar {
+  color: var(--lime); background: var(--lime-dim); border-color: var(--lime-line);
+}
+.admin-card[data-tone="rejected"] .admin-avatar {
+  color: var(--danger); background: var(--danger-dim); border-color: rgba(255, 104, 104, 0.3);
+}
+
+.admin-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.admin-avatar {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--lime);
+  background: var(--lime-dim);
+  border: 1px solid var(--lime-line);
+}
+
+.admin-card-title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.admin-card-title strong {
+  display: block;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-card-title small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.admin-pill {
+  flex: 0 0 auto;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.admin-pill[data-tone="verified"],
+.admin-pill[data-tone="running"] { color: var(--lime); background: var(--lime-dim); border-color: var(--lime-line); }
+.admin-pill[data-tone="pending"] { color: var(--blue); background: var(--blue-dim); border-color: var(--blue-line); }
+.admin-pill[data-tone="schedule"] { color: var(--warn); background: var(--warn-dim); border-color: rgba(255, 209, 102, 0.3); }
+.admin-pill[data-tone="rejected"],
+.admin-pill[data-tone="declined"] { color: var(--danger); background: var(--danger-dim); border-color: rgba(255, 104, 104, 0.3); }
+.admin-pill[data-tone="scheduled"] { color: var(--violet); background: var(--violet-dim); border-color: rgba(180, 144, 255, 0.3); }
+.admin-pill[data-tone="completed"] { color: var(--muted); background: var(--surface-2); border-color: var(--border-light); }
+
+.admin-facts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.admin-facts div { min-width: 0; }
+
+.admin-facts dt {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.admin-facts dd {
+  margin: 2px 0 0;
+  font-size: 13.5px;
+  overflow-wrap: anywhere;
+}
+
+.admin-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.admin-links { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.admin-links a {
+  color: var(--lime);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.admin-select select {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--lime-line);
+  background: var(--lime-dim);
+  color: var(--lime);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.admin-select select option { color: #050505; }
+
+
+/* ---------------- tuition rows ---------------- */
+
+.admin-rows {
+  display: grid;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 2px dashed var(--border-light);
+}
+
+.admin-row {
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  display: grid;
+  gap: 10px;
+}
+
+.admin-row-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.admin-flags {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.admin-schedule {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.admin-schedule input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-3);
+  color: var(--text);
+  color-scheme: dark;
+  font-size: 13.5px;
+}
+
+.admin-schedule input:focus { outline: none; border-color: var(--lime-line); }
+
+.admin-row-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.admin-empty {
+  grid-column: 1 / -1;
+  padding: 34px 20px;
+  border-radius: 16px;
+  border: 1px dashed var(--border-light);
+  text-align: center;
+  color: var(--muted);
+}
+
+
+/* ---------------- toast ---------------- */
+
+.admin-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 1100;
+  max-width: min(440px, calc(100vw - 32px));
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--lime-line);
+  background: var(--surface-3);
+  color: var(--text);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.admin-toast.show { opacity: 1; transform: translate(-50%, 0); }
+.admin-toast.error { border-color: var(--danger); color: var(--danger); }
+
+
+/* ---------------- small screens ---------------- */
+
+@media (max-width: 640px) {
+
+  .admin-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .admin-container { padding: 22px 14px 70px; }
+
+}
+
+@media (max-width: 380px) {
+
+  .admin-facts,
+  .admin-schedule { grid-template-columns: 1fr; }
+
+}
+
+
+/* =========================================================
+   V2 - COLLAPSIBLE CARDS, FULL DETAILS, EDIT FORMS, STACKS
+========================================================= */
+
+.admin-stack-list {
+  display: grid;
+  gap: 14px;
+}
+
+.admin-card-head {
+  cursor: pointer;
+  user-select: none;
+}
+
+.admin-caret {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  margin: 0 4px 4px 2px;
+  transition: transform 0.15s ease;
+}
+
+.admin-card.is-open > .admin-card-head .admin-caret {
+  transform: rotate(-135deg);
+  margin-bottom: -4px;
+}
+
+.admin-card:not(.is-open) > .admin-card-body {
+  display: none;
+}
+
+.admin-card-body {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-section-title {
+  margin: 6px 0 0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+
+.admin-facts dd a {
+  color: var(--lime);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.admin-note {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--warn);
+}
+
+
+/* ---------- edit forms ---------- */
+
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 12px;
+}
+
+/* A group of fields that must sit on their own line, at its own
+   column count, inside the otherwise-2-column .admin-form grid. */
+.admin-form-row {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 10px 12px;
+}
+
+.admin-form-row-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* A row whose fields are all hidden takes no space. */
+.admin-form-row:not(:has(> :not(.hidden))) { display: none; }
+
+/* Agency Charge form's last row: Notes | Remaining | Next Payment Date,
+   Notes kept to the same single-line pill as the other two. */
+.admin-form-row-notes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.admin-form-row-notes > .admin-float.wide { grid-column: auto; }
+#agencySlotNotes input,
+#slotSubDates input { height: 52px; }
+#agencySlotNotes textarea,
+#slotSubNotes textarea,
+#subscriptionForm #subscriptionNotes {
+  height: 52px;
+  min-height: 52px;
+  padding: 15px 20px 13px;
+  border-radius: 999px;
+  resize: none;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+/* The Student's own Mobile/Name sit beside Demo ID on this row. */
+#agencySlotDemo .admin-id-detail,
+#slotTutor .admin-id-detail { display: none; }
+.admin-form-row-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.admin-field.wide {
+  grid-column: 1 / -1;
+}
+
+.admin-field > span {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+.admin-field input,
+.admin-field select,
+.admin-field textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  color-scheme: dark;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.admin-field input:focus,
+.admin-field select:focus,
+.admin-field textarea:focus {
+  outline: none;
+  border-color: var(--lime-line);
+}
+
+.admin-field input:disabled,
+.admin-field select:disabled {
+  opacity: 0.5;
+}
+
+.admin-field.is-readonly p {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+
+/* ---------- tuition + tutor stack ---------- */
+
+.admin-stack {
+  display: grid;
+  gap: 0;
+}
+
+.admin-stack.has-tutors > .admin-card {
+  border-radius: 0;
+}
+
+.admin-stack.has-tutors > .admin-card:first-child {
+  border-radius: 18px 18px 0 0;
+}
+
+.admin-stack.has-tutors > .admin-card:last-child {
+  border-radius: 0 0 18px 18px;
+}
+
+.admin-stack > .tutor-row-card {
+  border-top: 2px dashed var(--border-light);
+  background: var(--surface-2);
+  margin-left: 14px;
+}
+
+.admin-stack > .tutor-row-card:last-child {
+  border-radius: 0 0 18px 18px;
+}
+
+.admin-stack > .tuition-card {
+  border-color: var(--border-light);
+}
+
+/* Trim the collapsed Tuition/Tutor Applied card height - tighter card
+   padding and less breathing room inside the two-layer name block,
+   scoped to this stack only so other cards keep their own sizing. */
+.admin-card.tuition-card,
+.admin-card.tutor-row-card {
+  padding: 12px;
+}
+
+.tuition-card .admin-card-head .admin-status-rail,
+.tutor-row-card .admin-card-head .admin-status-rail {
+  margin: -12px -12px -12px 4px;
+}
+
+.tuition-card .admin-hl-top,
+.tuition-card .admin-hl-small,
+.tutor-row-card .admin-hl-top,
+.tutor-row-card .admin-hl-small {
+  padding: 5px 10px;
+}
+
+.tuition-card .admin-card-head,
+.tutor-row-card .admin-card-head {
+  gap: 10px;
+}
+
+.tutor-row-card[data-tone="running"] { box-shadow: inset 3px 0 0 var(--lime); }
+.tutor-row-card[data-tone="scheduled"],
+.tutor-row-card[data-tone="processing"] { box-shadow: inset 3px 0 0 var(--violet); }
+.tutor-row-card[data-tone="schedule"] { box-shadow: inset 3px 0 0 var(--orange); }
+.tutor-row-card[data-tone="declined"],
+.tutor-row-card[data-tone="terminated"] { box-shadow: inset 3px 0 0 var(--danger); }
+.tutor-row-card[data-tone="completed"] { box-shadow: inset 3px 0 0 var(--muted-2); }
+
+.admin-pill[data-tone="new"],
+.admin-pill[data-tone="open"] { color: var(--lime); background: var(--lime-dim); border-color: var(--lime-line); }
+.admin-pill[data-tone="processing"] { color: var(--violet); background: var(--violet-dim); border-color: rgba(180, 144, 255, 0.3); }
+.admin-pill[data-tone="terminated"] { color: var(--danger); background: var(--danger-dim); border-color: rgba(255, 104, 104, 0.3); }
+
+.admin-assign {
+  display: flex;
+  gap: 8px;
+}
+
+.admin-assign input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.admin-assign input:focus {
+  outline: none;
+  border-color: var(--lime-line);
+}
+
+
+/* ---------- Pending / Accepted / Rejected ---------- */
+
+.admin-seg {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-3);
+}
+
+.admin-seg label {
+  position: relative;
+  cursor: pointer;
+}
+
+.admin-seg input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.admin-seg span {
+  display: block;
+  padding: 9px 4px;
+  border-radius: 999px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.admin-seg input:checked + span[data-v="pending"] { background: var(--surface-2); color: var(--text); box-shadow: inset 0 0 0 1px var(--border-light); }
+.admin-seg input:checked + span[data-v="accepted"] { background: var(--lime); color: #050505; }
+.admin-seg input:checked + span[data-v="rejected"] { background: var(--danger-dim); color: var(--danger); box-shadow: inset 0 0 0 1px rgba(255, 104, 104, 0.4); }
+.admin-seg input:disabled + span { opacity: 0.5; cursor: default; }
+.admin-seg input:focus-visible + span { outline: 2px solid var(--lime); outline-offset: 2px; }
+
+.admin-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-check input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--lime);
+}
+
+.admin-mini-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.admin-mini-title {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  margin-right: 4px;
+}
+
+/* A student's "Tuitions" pill is a real button - jumps straight to
+   that tuition's own card, coloured the same as its status rail. */
+.admin-pill-link {
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.admin-pill-link:hover {
+  filter: brightness(1.15);
+}
+
+/* Exact same colours as .admin-status-rail's 4 tones, so a tuition's
+   pill here always matches its own card's status strip - "new" is
+   blue on the rail (not the lime .admin-pill normally uses). */
+.admin-pill-link[data-tone="new"] { color: var(--blue); background: var(--blue-dim); border-color: var(--blue-line); }
+.admin-pill-link[data-tone="completed"] { color: var(--muted); background: var(--surface-3); border-color: var(--border-light); }
+
+@media (max-width: 520px) {
+
+  .admin-form { grid-template-columns: 1fr; }
+  .admin-form-row-3, .admin-form-row-4, .admin-form-row-notes { grid-template-columns: 1fr; }
+
+  .admin-stack > .tutor-row-card { margin-left: 8px; }
+
+  .admin-tabs .admin-tab { font-size: 13px; }
+
+}
+
+
+/* =========================================================
+   V3 - STATS, SEARCH, FILTERS, DATA BOXES, BUTTON PAIRS
+========================================================= */
+
+/* ---------- stats: 8 tiles, content centred ---------- */
+
+.admin-stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.admin-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 96px;
+}
+
+.admin-stat-label {
+  line-height: 1.25;
+}
+
+.admin-stat[data-tone="grey"] .admin-stat-value { color: var(--muted); }
+.admin-stat[data-tone="red"] .admin-stat-value { color: var(--danger); }
+
+
+/* ---------- search: "Search" moves onto the top border ---------- */
+
+.admin-search-wrap > span {
+  background: linear-gradient(to bottom, var(--bg) 50%, var(--surface-2) 50%);
+}
+
+.admin-search-wrap input::-webkit-search-cancel-button {
+  filter: invert(1) opacity(0.5);
+}
+
+/* Chips sit INSIDE the search box itself, before the typed text - the
+   label becomes the pill-shaped box (chips + input as a single flex
+   row); the input loses its own border/background so both blend into
+   one shared box. */
+.admin-search-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.admin-search-wrap:focus-within {
+  border-color: var(--lime-line);
+}
+
+.admin-search-wrap input {
+  flex: 1 1 100px;
+  align-self: center;
+  min-width: 80px;
+  width: auto;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.admin-search-wrap input:focus { border-color: transparent; }
+
+/* the floating "Search" label also moves up once a chip exists, even
+   if the box is empty of typed text right now */
+.admin-search-wrap.has-chips > span {
+  top: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--lime);
+}
+
+/* Space commits the typed word as a removable chip; every chip plus
+   whatever's still being typed is the live filter.
+   display:contents (not flex) makes this wrapper invisible to layout,
+   so each .admin-search-chip becomes a direct flex item of
+   .admin-search-wrap alongside the input itself - they all wrap
+   together as one row set. A nested flex-wrap container here would
+   wrap internally as a single oversized flex item, its second line
+   spilling outside the search box's own border/background instead of
+   growing it. */
+.admin-search-chips {
+  display: contents;
+}
+
+/* flat tag chip - light background, no border */
+.admin-search-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 5px 4px 10px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--lime-dim);
+  color: var(--lime);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-search-chip button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(22, 163, 74, 0.22);
+  color: var(--lime);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+/* An SVG X centers exactly regardless of font metrics - the old
+   "&times;" text glyph sat visibly high inside the circle. */
+.admin-search-chip button svg {
+  width: 9px;
+  height: 9px;
+}
+
+.admin-search-chip button:hover {
+  background: var(--lime-line);
+  transform: scale(1.08);
+}
+
+
+/* ---------- filters: equal widths, one line ---------- */
+
+.admin-chips.admin-chips-4,
+.admin-chips.admin-chips-7 {
+  display: grid;
+  gap: 6px;
+  overflow: visible;
+}
+
+.admin-chips-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.admin-chips-7 { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+
+.admin-chips-4 .admin-chip,
+.admin-chips-7 .admin-chip {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 6px;
+  border-radius: 14px;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.15;
+  font-size: clamp(10.5px, 2.6vw, 13px);
+}
+
+
+/* ---------- data boxes (name on the top border) ---------- */
+
+.admin-card { --card-bg: var(--surface); }
+.admin-stack > .tutor-row-card { --card-bg: var(--surface-2); }
+
+.admin-boxes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 12px;
+  padding-top: 8px;
+}
+
+/* Agency Charge payment card: same rows of 3 as its entry form. */
+.admin-boxes.admin-boxes-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.admin-boxes-3 .admin-box textarea {
+  height: 46px;
+  min-height: 46px;
+  resize: none;
+  font-family: inherit;
+  scrollbar-width: none;
+}
+
+.admin-box {
+  position: relative;
+  display: block;
+  min-width: 0;
+}
+
+.admin-box.wide {
+  grid-column: 1 / -1;
+}
+
+.admin-box input,
+.admin-box select,
+.admin-box textarea,
+.admin-box .admin-box-link {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 14px 14px 11px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  color-scheme: dark;
+  font-size: 14px;
+  line-height: 1.35;
+  resize: vertical;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.admin-box textarea {
+  min-height: 48px;
+}
+
+/* Same fix as .admin-float input[type="date"] below: a date input's
+   own UA stylesheet gives it a min-width wide enough to show its
+   segments unbroken, which width:100%/min-width:0 above doesn't
+   reset by itself - and its internal segments need their own reset
+   too, or they push past the box and overlap the next field. */
+.admin-box input[type="date"] {
+  min-width: 0;
+  max-width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.admin-box input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+  margin: 0;
+}
+
+.admin-box input[type="date"]::-webkit-datetime-edit {
+  padding: 0;
+}
+
+.admin-box input[readonly],
+.admin-box textarea[readonly] {
+  cursor: default;
+}
+
+.admin-box input[readonly]:focus,
+.admin-box textarea[readonly]:focus {
+  outline: none;
+}
+
+.admin-box .admin-box-link {
+  color: var(--lime);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.admin-box > span {
+  position: absolute;
+  left: 12px;
+  top: 0;
+  max-width: calc(100% - 24px);
+  padding: 0 5px;
+  transform: translateY(-50%);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  background: linear-gradient(to bottom, var(--card-bg) 50%, transparent 50%);
+  pointer-events: none;
+}
+
+/* edit mode: editable boxes turn lime */
+.admin-box.is-edit input,
+.admin-box.is-edit select,
+.admin-box.is-edit textarea {
+  border-color: var(--lime-line);
+  background: rgba(22, 163, 74, 0.05);
+}
+
+.admin-box.is-edit > span {
+  color: var(--lime);
+}
+
+.admin-box.is-edit input:focus,
+.admin-box.is-edit select:focus,
+.admin-box.is-edit textarea:focus {
+  outline: none;
+  border-color: var(--lime);
+  background: rgba(22, 163, 74, 0.09);
+}
+
+.admin-box.is-edit input:disabled {
+  opacity: 0.5;
+}
+
+.admin-box select option {
+  color: #050505;
+}
+
+/* a card in edit mode gets a lime outline */
+.admin-card.is-editing {
+  border-color: var(--lime-line);
+  box-shadow: 0 0 0 1px var(--lime-line);
+}
+
+
+/* ---------- buttons ---------- */
+
+.admin-wide {
+  width: 100%;
+  padding: 13px 18px;
+  font-size: 14px;
+}
+
+/* Save changes | Cancel - joined in the middle, rounded outside */
+.admin-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.admin-pair > button {
+  width: 100%;
+  padding: 13px 10px;
+  font-size: 14px;
+}
+
+.admin-pair > button:first-child {
+  border-radius: 999px 0 0 999px;
+}
+
+.admin-pair > button:last-child {
+  border-radius: 0 999px 999px 0;
+  border-left: 0;
+}
+
+/* Edit Tuition | Terminate Tuition - equal halves */
+.admin-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.admin-split > button {
+  width: 100%;
+  padding: 12px 8px;
+  font-size: 13.5px;
+}
+
+/* notes: text centred, highlight across the full width -
+   light orange, no border, square corners */
+.admin-note {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 0;
+  border: 0;
+  background: rgba(255, 140, 26, 0.16);
+  color: var(--orange);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-align: center;
+}
+
+
+/* ---------- assign a tutor ---------- */
+
+.admin-assign {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.admin-assign .admin-float > span {
+  background: linear-gradient(to bottom, var(--card-bg) 50%, var(--surface-2) 50%);
+}
+
+.admin-suggest {
+  display: grid;
+  gap: 4px;
+  padding: 6px;
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  background: var(--surface-3);
+}
+
+.admin-suggest-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 10px;
+  align-items: center;
+  width: 100%;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: none;
+  color: var(--text);
+  text-align: left;
+}
+
+.admin-suggest-item:hover:not(:disabled) {
+  background: var(--lime-dim);
+}
+
+.admin-suggest-item strong {
+  color: var(--lime);
+  font-size: 13px;
+}
+
+.admin-suggest-item span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.admin-suggest-item em {
+  grid-column: 1 / -1;
+  font-style: normal;
+  font-size: 11.5px;
+  color: var(--warn);
+}
+
+.admin-suggest-item:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.admin-suggest-empty {
+  margin: 0;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+
+/* ---------- demo: date + time 50 / 50 ---------- */
+
+.admin-demo .is-picker input {
+  min-height: 46px;
+}
+
+.admin-demo .is-picker input::-webkit-calendar-picker-indicator {
+  filter: invert(1) opacity(0.6);
+  cursor: pointer;
+}
+
+
+/* ---------- "Classes Completed" - same pill as "Same address" ---------- */
+
+.pill-check {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 12px 11px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-3);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.pill-check input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pill-check-text {
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pill-check-icon {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-light);
+  display: grid;
+  place-items: center;
+  color: #050505;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.pill-check-icon svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.pill-check:hover {
+  border-color: var(--border-light);
+}
+
+.pill-check:has(input:checked) {
+  border-color: rgba(22, 163, 74, 0.45);
+  background: var(--lime-dim);
+}
+
+.pill-check input:checked ~ .pill-check-icon {
+  background: var(--lime);
+  border-color: var(--lime);
+}
+
+.pill-check input:checked ~ .pill-check-icon svg {
+  opacity: 1;
+}
+
+.pill-check input:disabled ~ * {
+  opacity: 0.5;
+}
+
+.pill-check input:focus-visible ~ .pill-check-icon {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+
+/* ---------- Payment Mode: one pill-shaped box, Online/Offline as a
+   two-way segmented toggle inside it - same field height/label as
+   every other box in the row so it sits in line with Payment Date. */
+
+.admin-mode-field {
+  width: 100%;
+  height: 52px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.admin-mode-seg {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  width: 100%;
+}
+
+.admin-mode-seg label {
+  position: relative;
+  cursor: pointer;
+}
+
+.admin-mode-seg input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.admin-mode-seg .admin-mode-opt {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 11px 7px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.admin-mode-dot {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-light);
+  display: grid;
+  place-items: center;
+  color: #050505;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.admin-mode-dot svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0;
+}
+
+.admin-mode-seg input:checked + .admin-mode-opt {
+  background: var(--lime-dim);
+  border-color: rgba(22, 163, 74, 0.45);
+  color: var(--text);
+}
+
+.admin-mode-seg input:checked + .admin-mode-opt .admin-mode-dot {
+  background: var(--lime);
+  border-color: var(--lime);
+}
+
+.admin-mode-seg input:checked + .admin-mode-opt .admin-mode-dot svg {
+  opacity: 1;
+}
+
+.admin-mode-seg input:focus-visible + .admin-mode-opt {
+  outline: 2px solid var(--lime);
+  outline-offset: 2px;
+}
+
+
+/* ---------- Next Due Date reminder hint (dues remain, so the system
+   can't auto-set it - the admin should pick a follow-up date) ---------- */
+
+#paymentSubNextDueField.needs-reminder input,
+#paymentNextDateField.needs-reminder input,
+.admin-box:has(input[data-reminder]) input {
+  border-color: var(--orange);
+  background: var(--warn-dim);
+  color: var(--text);
+}
+
+#paymentSubNextDueField.needs-reminder > span,
+#paymentNextDateField.needs-reminder > span,
+.admin-box:has(input[data-reminder]) > span {
+  color: var(--orange);
+}
+
+.admin-float input[type="date"] {
+  height: 52px;
+}
+
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 640px) {
+
+  .admin-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+}
+
+@media (max-width: 520px) {
+
+  .admin-boxes { grid-template-columns: 1fr; }
+
+  /* demo date + time stay side by side (50 / 50) */
+  .admin-boxes.admin-demo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .admin-boxes.admin-demo > .admin-box:nth-child(n + 3) { grid-column: 1 / -1; }
+
+  .admin-chips-7 .admin-chip { padding: 7px 2px; border-radius: 10px; }
+
+}
+
+
+/* =========================================================
+   V4 - FIXES
+========================================================= */
+
+/* ---------- label on the border: fully hides the line ----------
+   The border runs through the label's middle, so the part of the
+   label that covers it must be solid (it used to be half
+   transparent, which let the line show through). */
+
+.admin-box > span {
+  background: var(--card-bg);
+  line-height: 1.2;
+}
+
+/* editable / edit-mode boxes: solid box background behind the
+   lower half of the label */
+.admin-box.is-edit > span,
+.admin-box.admin-box-input > span {
+  background: linear-gradient(to bottom, var(--card-bg) 55%, var(--box-bg) 55%);
+}
+
+
+/* ---------- edit mode: dim, not lime ---------- */
+
+.admin-card,
+.admin-stack > .tutor-row-card {
+  --box-bg: var(--surface-3);
+}
+
+.admin-box.is-edit input,
+.admin-box.is-edit select,
+.admin-box.is-edit textarea {
+  border-color: var(--border-light);
+  background: var(--box-bg);
+}
+
+.admin-box.is-edit > span {
+  color: var(--text);
+}
+
+.admin-box.is-edit input:focus,
+.admin-box.is-edit select:focus,
+.admin-box.is-edit textarea:focus {
+  border-color: var(--muted-2);
+  background: var(--box-bg);
+}
+
+.admin-card.is-editing {
+  border-color: var(--border-light);
+  box-shadow: none;
+}
+
+
+/* ---------- demo date / time / price / duration / % ----------
+   Normal look (not highlighted), editable. Date + time 50 / 50,
+   the other three in equal thirds. Fixed height so the iPhone
+   date / time pickers line up with the text boxes. */
+
+.admin-demo-grid {
+  display: grid;
+  gap: 16px 10px;
+  padding-top: 8px;
+}
+
+.admin-demo-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.admin-demo-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.admin-box.admin-box-input input {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 48px;
+  min-height: 48px;
+  padding: 12px 12px 10px;
+  border-color: var(--border);
+  background: var(--box-bg);
+  text-align: left;
+}
+
+.admin-box.admin-box-input input:focus {
+  outline: none;
+  border-color: var(--muted-2);
+}
+
+.admin-box.admin-box-input input::-webkit-date-and-time-value {
+  text-align: left;
+  margin: 0;
+}
+
+.admin-box.admin-box-input input::-webkit-datetime-edit {
+  padding: 0;
+}
+
+
+/* ---------- bold info lines (cards' collapsed view) ---------- */
+
+.admin-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 8px;
+  min-width: 0;
+  font-size: 13.5px;
+  line-height: 1.35;
+}
+
+.admin-info b {
+  font-weight: 800;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.admin-info i {
+  font-style: normal;
+  color: var(--muted-2);
+}
+
+.admin-card-title .admin-info {
+  margin-top: 3px;
+}
+
+.admin-card-title > .admin-info:first-child {
+  margin-top: 0;
+  font-size: 14.5px;
+}
+
+.admin-address {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.admin-address span {
+  color: var(--lime);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* tuition card head: avatar + name/gender row, then info + address */
+.admin-card-head.admin-card-head-tall {
+  display: grid;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.admin-head-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+@media (max-width: 520px) {
+
+  .admin-demo-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  .admin-box.admin-box-input input { font-size: 13px; padding: 12px 10px 10px; }
+
+}
+
+
+/* =========================================================
+   V5 - HIGHLIGHTS, TILE SHORTCUTS, REFRESH, TOP BAR
+========================================================= */
+
+/* ---------- collapsed-card summary: light band, no border, square ---------- */
+
+.admin-hl {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 0;
+  background: rgba(22, 163, 74, 0.07);
+}
+
+.admin-hl .admin-info {
+  margin: 0;
+  font-size: 14px;
+}
+
+.admin-hl-small {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.admin-hl-count {
+  color: var(--lime);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.admin-card-head {
+  align-items: center;
+}
+
+.admin-card-title {
+  display: grid;
+  gap: 4px;
+}
+
+
+/* ---------- the 8 tiles are buttons ---------- */
+
+button.admin-stat {
+  width: 100%;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+button.admin-stat:hover {
+  border-color: var(--border-light);
+  background: var(--surface-2);
+  transform: translateY(-1px);
+}
+
+button.admin-stat:active {
+  transform: translateY(0);
+}
+
+button.admin-stat:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 2px;
+}
+
+
+/* ---------- top bar: title + buttons centred ---------- */
+
+.admin-top {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.admin-top-actions {
+  justify-content: center;
+}
+
+
+/* ---------- Refresh: spinner while loading ---------- */
+
+#refreshButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#refreshButton.is-loading {
+  color: var(--lime);
+  border-color: var(--lime-line);
+  opacity: 1;
+  cursor: progress;
+}
+
+#refreshButton.is-loading::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--lime-line);
+  border-top-color: var(--lime);
+  animation: admin-spin 0.8s linear infinite;
+}
+
+
+
+/* =========================================================
+   V6 - TWO-LAYER SUMMARIES, STATUS COLOURS, DESKTOP MODE
+========================================================= */
+
+/* the admin page is always laid out as a desktop page */
+body[data-page="admin"] {
+  min-width: 1200px;
+}
+
+.admin-hl {
+  display: grid;
+  gap: 2px;              /* the thin gap between the two layers */
+  padding: 0;
+  background: none;
+}
+
+.admin-hl-top,
+.admin-hl-small {
+  border: 0;
+  border-radius: 0;
+  padding: 7px 10px;
+}
+
+.admin-hl-top {
+  background: rgba(22, 163, 74, 0.08);
+  min-width: 0;
+}
+
+.admin-hl-top .admin-info {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Tutor's Name/WhatsApp/Mobile/ID/Subject line: now several fields,
+   so it stays on one line and truncates with an ellipsis instead of
+   wrapping or pushing the card wider. */
+#tutorList .admin-hl-top .admin-info,
+#studentList .admin-hl-top .admin-info {
+  display: block;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.admin-hl-small {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.06);   /* light grey */
+  color: var(--muted);
+}
+
+/* top layer colour = status */
+.admin-hl-top[data-tone="blue"]       { background: rgba(110, 170, 255, 0.14); }
+/* "verified" (a tutor) matches the Accept button's exact green;
+   "running" (a tuition) keeps the separate success-mint green. */
+.admin-hl-top[data-tone="verified"]   { background: rgba(22, 163, 74, 0.18); }
+.admin-hl-top[data-tone="running"]    { background: rgba(22, 163, 74, 0.13); }
+.admin-hl-top[data-tone="pending"]    { background: var(--blue-dim); }
+.admin-hl-top[data-tone="schedule"]   { background: rgba(255, 140, 26, 0.13); }
+/* "rejected" (a tutor) matches the Reject/Suspend button's exact red. */
+.admin-hl-top[data-tone="rejected"]   { background: rgba(255, 104, 104, 0.18); }
+.admin-hl-top[data-tone="declined"],
+.admin-hl-top[data-tone="terminated"] { background: rgba(255, 104, 104, 0.13); }
+.admin-hl-top[data-tone="scheduled"],
+.admin-hl-top[data-tone="processing"] { background: rgba(180, 144, 255, 0.14); }
+.admin-hl-top[data-tone="completed"]  { background: rgba(255, 255, 255, 0.08); }
+.admin-hl-top[data-tone="new"],
+.admin-hl-top[data-tone="open"]       { background: var(--blue-dim); }
+/* "green" (a student) - same green as Accept/Verified. */
+.admin-hl-top[data-tone="green"]      { background: rgba(22, 163, 74, 0.18); }
+
+/* Name/Mobile/ID text itself - not just the background - matches the
+   Accept (green) / Reject-Suspend (red) button colour. */
+.admin-hl-top[data-tone="verified"] .admin-info b,
+.admin-hl-top[data-tone="green"] .admin-info b    { color: var(--lime); }
+.admin-hl-top[data-tone="rejected"] .admin-info b { color: var(--danger); }
+.admin-hl-top[data-tone="pending"] .admin-info b  { color: var(--blue); }
+.admin-hl-top[data-tone="new"] .admin-info b,
+.admin-hl-top[data-tone="open"] .admin-info b     { color: var(--blue); }
+.admin-hl-top[data-tone="running"] .admin-info b  { color: var(--lime); }
+.admin-hl-top[data-tone="completed"] .admin-info b { color: var(--muted); }
+.admin-hl-top[data-tone="terminated"] .admin-info b,
+.admin-hl-top[data-tone="declined"] .admin-info b { color: var(--danger); }
+.admin-hl-top[data-tone="schedule"] .admin-info b { color: var(--orange); }
+.admin-hl-top[data-tone="scheduled"] .admin-info b,
+.admin-hl-top[data-tone="processing"] .admin-info b { color: var(--violet); }
+
+
+/* ---------- top bar: Refresh | Admin Panel | Log out ---------- */
+
+.admin-top.admin-top-3 {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.admin-top-mid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.admin-top-mid .admin-me {
+  margin-bottom: 0;
+  font-size: clamp(20px, 4.4vw, 28px);
+  font-weight: 800;
+  color: var(--text);
+}
+
+.admin-top-3 #refreshButton {
+  justify-self: start;
+}
+
+.admin-top-3 #logoutButton {
+  justify-self: end;
+}
+
+
+/* =========================================================
+   LOGIN PAGE - no card, centred password, show / hide
+========================================================= */
+
+.admin-login {
+  background: transparent;
+  border: 0;
+  padding: 10px 0;
+}
+
+.admin-login .admin-float > span {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to bottom, var(--bg) 50%, var(--surface-2) 50%);
+}
+
+.admin-pass {
+  position: relative;
+}
+
+.admin-pass .admin-float input {
+  padding-left: 54px;
+  padding-right: 54px;
+  text-align: center;
+}
+
+.admin-eye {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted-2);
+  cursor: pointer;
+}
+
+.admin-eye:hover,
+.admin-eye.is-on {
+  color: var(--lime);
+}
+
+.admin-eye svg {
+  width: 20px;
+  height: 20px;
+}
+
+.admin-eye .eye-shut,
+.admin-eye.is-on .eye-open {
+  display: none;
+}
+
+.admin-eye.is-on .eye-shut {
+  display: block;
+}
+
+
+/* =========================================================
+   PENDING TUTOR: Reject | Approve on the right of the tab
+   Reject (red) has rounded left corners; Approve (green)
+   sits on the card's edge with the card's own corners.
+   Text runs vertically. Both disappear once the status is
+   changed (the card is then no longer "pending").
+========================================================= */
+
+.admin-card:has(.admin-vbtns) {
+  overflow: hidden;
+}
+
+.admin-card-head .admin-vbtns {
+  align-self: stretch;
+  display: flex;
+  margin: -16px -16px -16px 4px;
+  flex: 0 0 auto;
+}
+
+.admin-vbtn {
+  width: 44px;
+  padding: 10px 0;
+  border: 0;
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+/* rotated 180deg: "right" corners below appear on the left -
+   light tinted colour while live, plain grey once disabled (already
+   accepted / already rejected-or-suspended) */
+.admin-vbtn.v-reject {
+  background: rgba(255, 104, 104, 0.18);
+  color: var(--danger);
+  border-radius: 0 16px 16px 0;
+}
+
+.admin-vbtn.v-approve {
+  background: rgba(22, 163, 74, 0.18);
+  color: var(--lime);
+  border-radius: 18px 0 0 18px;
+}
+
+.admin-card.is-open .admin-vbtn.v-approve {
+  border-radius: 0 0 0 18px;   /* = top-right corner after the rotation */
+}
+
+.admin-vbtn:hover:not(:disabled) {
+  filter: brightness(1.15);
+}
+
+.admin-vbtn:disabled {
+  opacity: 1;
+  cursor: default;
+  background: var(--surface-3);
+  color: var(--muted-2);
+}
+
+/* the status pill is already said by the buttons */
+.admin-card:has(.admin-vbtns) .admin-card-head > .admin-pill {
+  display: none;
+}
+
+
+/* =========================================================
+   V7 - RBAC + PAYMENTS + EMPLOYEES
+========================================================= */
+
+/* tabs now scale with however many are visible for this role */
+.admin-tabs {
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+}
+
+.admin-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.admin-role-pill {
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--lime-line);
+  background: var(--lime-dim);
+  color: var(--lime);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.admin-role-pill[data-role="accounts_finance"] { border-color: rgba(180,144,255,0.3); background: var(--violet-dim); color: var(--violet); }
+.admin-role-pill[data-role="verification_staff"] { border-color: rgba(255,209,102,0.3); background: var(--warn-dim); color: var(--warn); }
+.admin-role-pill[data-role="tutor_relations"] { border-color: rgba(110,170,255,0.3); background: rgba(110,170,255,0.14); color: #6eaaff; }
+.admin-role-pill[data-role="tuition_coordinator"] { border-color: var(--border-light); background: var(--surface-2); color: var(--text); }
+
+.admin-money {
+  font-weight: 800;
+  color: var(--lime);
+}
+
+.admin-money.is-cut { color: var(--violet); }
+
+@media (max-width: 640px) {
+
+  .admin-tabs { grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+}
+
+
+/* =========================================================
+   V8 - PAYMENT FORM: FLOATING LABELS FOR SELECT/TEXTAREA,
+   DEMO ID / TUTOR ID SEARCH, CONTAINMENT FIXES
+========================================================= */
+
+/* Everything that can sit inside .admin-form must never be wider
+   than its grid track - this is what was letting long content push
+   the New Payment card past the edge of its container. */
+.admin-form,
+.admin-form * {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.admin-float.wide {
+  grid-column: 1 / -1;
+}
+
+/* A date input's own UA stylesheet gives it "min-width: min-content"
+   (the width needed to show its date-picker segments unbroken),
+   which an ancestor's min-width:0 does not reset - it has to be set
+   on the input itself or Safari/Chrome let it push past width:100%. */
+.admin-float input[type="date"] {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.admin-float input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+  margin: 0;
+}
+
+.admin-float input[type="date"]::-webkit-datetime-edit {
+  padding: 0;
+}
+
+/* a date input always shows a value (never an empty placeholder state),
+   so :placeholder-shown never fires and the label would otherwise sit
+   frozen mid-height, overlapping the date digits - float it permanently
+   like a <select>'s label instead. */
+.admin-float input[type="date"] + span {
+  top: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted-2);
+}
+
+.admin-float input[type="date"]:focus + span {
+  color: var(--lime);
+}
+
+/* computed/read-only preview fields (e.g. a subscription payment's
+   Dues, Remaining, Start/Next Due Date) - same pill, just dimmed and
+   non-interactive so they read as informational, not editable */
+.admin-float input[readonly] {
+  cursor: default;
+  color: var(--muted);
+  background: var(--surface-2);
+}
+
+.admin-float input[readonly]:focus {
+  outline: none;
+}
+
+/* select and textarea inside a floating-label box, matching the
+   existing pill-shaped .admin-float input look */
+.admin-float select {
+  width: 100%;
+  min-width: 0;
+  padding: 15px 20px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  color-scheme: dark;
+  font-size: 15px;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.admin-float select:focus { outline: none; border-color: var(--lime-line); }
+.admin-float select option { color: #050505; }
+
+.admin-float textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 20px 20px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  color-scheme: dark;
+  font-size: 15px;
+  resize: vertical;
+  min-height: 58px;
+  overflow-wrap: anywhere;
+}
+
+.admin-float textarea:focus { outline: none; border-color: var(--lime-line); }
+
+/* a <select> always has a value, so its label stays floated at the
+   top border rather than toggling on input like a text field does */
+.admin-float.is-select > span {
+  top: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted-2);
+}
+
+.admin-float.is-select select:focus + span { color: var(--lime); }
+
+.admin-float textarea:focus + span,
+.admin-float textarea:not(:placeholder-shown) + span {
+  top: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--lime);
+}
+
+/* long label text (e.g. "Payment Mode (Cash / UPI / ...)") must wrap
+   or shrink instead of forcing the box wider than its column */
+.admin-float > span {
+  max-width: calc(100% - 32px);
+  overflow-wrap: anywhere;
+  white-space: normal;
+  line-height: 1.25;
+}
+
+/* Demo ID / Tutor ID: input + its own search suggestions + the
+   resolved name/mobile line, all contained in one relatively
+   positioned block so the dropdown never escapes the card */
+.admin-id-row {
+  position: relative;
+  min-width: 0;
+}
+
+.admin-id-row.wide {
+  grid-column: 1 / -1;
+}
+
+.admin-id-row .admin-suggest {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.admin-id-detail {
+  margin: 6px 0 0;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: var(--lime-dim);
+  border: 1px solid var(--lime-line);
+  color: var(--text);
+  font-size: 12.5px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.admin-id-detail strong { color: var(--lime); }
+
+
+/* =========================================================
+   TUITIONS - vertical status rail on the RIGHT of the card,
+   "Tutor Applied" right-aligned on the address line, and the
+   nested Student toggle
+========================================================= */
+
+/* Colour-coded vertical status strip on the right edge of the
+   Tuition card and each Tutor Applied card, mirroring the
+   Accept/Reject vertical buttons on a tutor's own card. */
+.admin-card:has(.admin-status-rail) { overflow: hidden; }
+
+.admin-card-head .admin-status-rail {
+  align-self: stretch;
+  flex: 0 0 auto;
+  width: 34px;
+  margin: -16px -16px -16px 4px;
+  padding: 6px 0;
+  border: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font: inherit;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  cursor: default;
+  background: var(--surface-3);
+  color: var(--muted-2);
+}
+
+/* Every radius below is written for the rail as it's drawn after its
+   own rotate(180deg), which swaps corners: the element's bottom-left is
+   the visual top-right, its top-left the visual bottom-right. */
+/* The rail sits flush against the card's own right edge (the negative
+   margin above pulls it there), so its outer corners must round the
+   same amount as that edge of the card itself, or a square notch shows
+   against the card's rounded corner. A tuition with no tutors applied
+   yet is a standalone card, rounded on both right corners; once tutor
+   rows are added it moves to the top of the stack and only its
+   top-right corner stays rounded, the bottom-right squares off against
+   the tutor row below. Tutor Applied sits below it - the opposite:
+   square top-right, and only the last row's bottom-right rounds off
+   with the bottom of the stack. */
+.tuition-card .admin-status-rail    { border-radius: 0 0 0 18px; }
+.admin-stack:not(.has-tutors) .tuition-card .admin-status-rail { border-radius: 18px 0 0 18px; }
+.tutor-row-card .admin-status-rail  { border-radius: 0; }
+.admin-stack > .tutor-row-card:last-child .admin-status-rail { border-radius: 18px 0 0 0; }
+
+/* A payment card carries two black rails side by side: what the
+   payment was for, then Student/Tutor on the outer edge, split by a
+   thin line. Payment cards are always standalone, so only the outer
+   rail rounds, on both right corners. */
+.admin-card-head .admin-rail-purpose { margin-right: 0; }
+.admin-card-head .admin-rail-party {
+  margin-left: -12px;
+  border-radius: 18px 0 0 18px;
+  border-right: 1px solid var(--border);
+}
+.admin-status-rail[data-tone="black"] { background: #000; color: var(--text); }
+
+.admin-avatar-link {
+  padding: 0;
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+.admin-avatar-link:hover { filter: brightness(1.3); }
+
+/* While a payment is being recorded, the payments list below is hidden. */
+#paymentForm:not(.hidden) ~ #paymentHeader,
+#paymentForm:not(.hidden) ~ #paymentList { display: none; }
+
+/* Ledger: one line per entry - status and payment type rails on the
+   left edge, then 8
+   centred columns split by dotted lines, then the + (or an equal blank
+   space) on the right. The header card uses the same shape so every
+   column lines up. Rails are drawn rotated 180deg, so the radius is
+   written for the rotated box. */
+.admin-card-head .ledger-status-rail {
+  order: -2;
+  margin: -16px 0 -16px -16px;
+  padding: 14px 0;
+  border-radius: 0 18px 18px 0;
+}
+.admin-card-head .ledger-purpose-rail {
+  order: -1;
+  margin: -16px 4px -16px -12px;
+  border-radius: 0;
+  border-right: 1px solid var(--border);
+}
+.ledger-grid {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 1.3fr 1.1fr 1.1fr 1.1fr 1fr 0.9fr;
+  align-items: center;
+}
+.ledger-cell {
+  min-width: 0;
+  padding: 6px 6px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-cell + .ledger-cell { border-left: 1px dotted var(--border-light); }
+/* Single-line card head row of N equal columns, cut with "..." - the
+   Subscription, Payment, Student and Tutor cards (see equalRow()). The
+   column count/widths come from the inline style equalRow() writes. */
+.eq-grid {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: grid;
+  align-items: center;
+}
+/* Standalone card, so the status rail rounds both right corners. */
+.admin-card-head .admin-rail-sub { border-radius: 18px 0 0 18px; }
+/* Money in / out arrow, right after the Type rail. */
+.ledger-flow {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.ledger-flow svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ledger-flow[data-flow="in"] { color: var(--lime); background: var(--lime-dim); }
+.ledger-flow[data-flow="out"] { color: var(--danger); background: var(--danger-dim); }
+.ledger-flow.ledger-flow-head {
+  height: auto;
+  white-space: nowrap;
+  font-size: 7px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ledger-record-space {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+}
+/* Same "record this payment" + as the cards, after Amount - just
+   smaller and non-interactive, so the header names the column without
+   growing past the row's own height. */
+.ledger-record-head {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin: 0 10px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+}
+.ledger-record-head svg {
+  width: 11px;
+  height: 11px;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  fill: none;
+}
+.ledger-record svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  fill: none;
+}
+#ledgerHeader { margin-bottom: 10px; }
+.ledger-header .ledger-cell {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ledger-header .admin-card-head { cursor: default; }
+/* Tall enough for the longest vertical rail word ("SUBSCRIPTION",
+   "AGENCY CHARGE") so every row is the same height. */
+.ledger-card .admin-card-head { min-height: 66px; }
+
+/* The header card is kept as short as it can be: tight padding, just
+   tall enough for its vertical "Status"/"Type" labels (same size as the
+   rows' rails), and no + space height - same widths throughout, so the
+   columns still line up with the rows below. */
+.ledger-card.ledger-header { padding-top: 6px; padding-bottom: 6px; }
+.ledger-header .admin-card-head { min-height: 0; }
+.ledger-header .ledger-cell { padding-top: 2px; padding-bottom: 2px; white-space: nowrap; }
+.ledger-header .admin-status-rail { padding: 6px 0; }
+.ledger-header .ledger-status-rail { margin: -6px 0 -6px -16px; }
+.ledger-header .ledger-purpose-rail { margin: -6px 4px -6px -12px; }
+.ledger-header .ledger-record-space { height: 0; }
+
+/* Slim header-row card above the Students/Payments/Subscriptions/
+   Tutors/Employees lists - same idea as the Ledger's own header
+   above: rounded corners, tight padding, bold small-caps labels. A
+   leading spacer the width of a real avatar (and the trailing caret,
+   kept but invisible) keeps its columns lined up with the rows below. */
+#tutorHeader, #studentHeader, #paymentHeader, #subscriptionHeader, #employeeHeader { margin-bottom: 10px; }
+.list-header { padding-top: 6px; padding-bottom: 6px; }
+.list-header .admin-card-head { cursor: default; min-height: 0; }
+.list-header-spacer { flex: 0 0 auto; width: 42px; }
+.list-header-avatar-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+/* Same neutral grey the ₹ avatar has on an actual payment card
+   (.admin-card[data-tone="neutral"] .admin-avatar) - the header isn't
+   inside that card, so it needs its own copy of the colour. */
+.list-header .admin-avatar {
+  color: var(--text);
+  background: var(--surface-3);
+  border-color: var(--border-light);
+}
+.list-header .admin-caret { visibility: hidden; }
+.list-header .ledger-cell {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.list-header .admin-status-rail { padding: 6px 0; }
+.list-header .admin-rail-purpose,
+.list-header .admin-rail-party { margin-top: -6px; margin-bottom: -6px; }
+.list-header .admin-rail-sub { margin-top: -6px; margin-bottom: -6px; }
+.list-header .admin-hl-top {
+  background: none;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.list-header .admin-hl-top .admin-info b { color: var(--muted); }
+.list-header .admin-hl-small { display: none; }
+
+/* Class card figures that open a New Payment when tapped. */
+.admin-box input[data-action] { cursor: pointer; }
+.admin-box:has(input[data-action]):hover { filter: brightness(1.2); }
+
+/* What a payment's ₹ jumped to: a white band sweeps across it once,
+   left to right, over 5 seconds. */
+.admin-wave {
+  position: relative;
+  overflow: hidden;
+}
+.admin-wave::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: admin-wave 5s ease-in-out forwards;
+}
+@keyframes admin-wave {
+  to { transform: translateX(100%); }
+}
+.admin-class-frac.admin-wave { border-radius: 8px; }
+
+.admin-status-rail[data-action] {
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.admin-status-rail[data-action]:hover {
+  filter: brightness(1.15);
+}
+
+.admin-status-rail[data-tone="new"],
+.admin-status-rail[data-tone="open"],
+.admin-status-rail[data-tone="pending"]     { background: var(--blue-dim); color: var(--blue); }
+.admin-status-rail[data-tone="running"],
+.admin-status-rail[data-tone="verified"]    { background: var(--lime-dim); color: var(--lime); }
+.admin-status-rail[data-tone="completed"]   { background: var(--surface-3); color: var(--muted); }
+.admin-status-rail[data-tone="terminated"],
+.admin-status-rail[data-tone="rejected"],
+.admin-status-rail[data-tone="declined"]    { background: rgba(255, 104, 104, 0.18); color: var(--danger); }
+.admin-status-rail[data-tone="schedule"]    { background: rgba(255, 140, 26, 0.18); color: var(--orange); }
+.admin-status-rail[data-tone="scheduled"],
+.admin-status-rail[data-tone="processing"]  { background: var(--violet-dim); color: var(--violet); }
+
+/* Once a class is Running/Completed, this card sits above the Tuition
+   card in the same stack, holding its own schedule (which days it
+   meets) and every payment collected against it. It's a plain
+   .admin-card so the existing first-child/last-child rules above round
+   it exactly like any other top-of-stack card - but that also makes
+   the Tuition card beneath it a middle card now, so its own status
+   rail (keyed by .tuition-card, not by position) needs to go square to
+   match, or it'd round against a corner that's no longer there. */
+.admin-stack.has-class-card .tuition-card .admin-status-rail { border-radius: 0; }
+
+/* The Class card is always the top of its stack (Tuition card and any
+   Tutor rows sit below it), so its own rail only rounds the top-right
+   corner, matching the card's own shape there. */
+.class-card .admin-status-rail { border-radius: 0 0 0 18px; }
+
+.class-card {
+  background: var(--surface-2);
+}
+
+/* Class card's collapsed head: Student's own Total Payment/Total
+   Amount on the far left, Tutor's on the far right, both sides' own
+   Agency Payment/Agency Amount centred between them. Each figure reads
+   as a real stacked fraction (numerator over denominator, divided by a
+   line), not a "paid/total" slash. */
+.admin-class-fracs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.admin-class-frac {
+  display: inline-flex;
+  flex-direction: column;
+  /* stretch (not center) so the numerator/denominator spans - and the
+     dividing line drawn under the numerator - both take the width of
+     whichever of the two is wider, not just the numerator's own text. */
+  align-items: stretch;
+  line-height: 1.2;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  padding: 0 4px;
+}
+
+.admin-class-frac-num,
+.admin-class-frac-den {
+  text-align: center;
+}
+
+.admin-class-frac-num {
+  padding-bottom: 1px;
+  border-bottom: 1.5px solid currentColor;
+}
+
+.admin-class-frac-den {
+  padding-top: 1px;
+}
+
+.admin-class-frac-center {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex: 0 1 auto;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.admin-day-chips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 8px;
+}
+
+.admin-day-chip {
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.admin-section-title-center {
+  text-align: center;
+}
+
+.admin-day-chip.is-on {
+  color: #050505;
+  background: var(--lime);
+  border-color: var(--lime);
+}
+
+.admin-day-chip:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.admin-class-count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.admin-class-count strong {
+  color: var(--text);
+}
+
+/* Student and Tutor sit side by side as two columns - each one's own
+   fields stack single-file within its column (a 2-up grid here would
+   be four columns wide and unreadable), and it collapses to one
+   column on a narrow screen instead of squeezing both. */
+.admin-class-parties {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 560px) {
+  .admin-class-parties {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* the name-letter avatar on the Tuition / Tutor Applied card also
+   follows its own status colour */
+.admin-card[data-tone="new"] .admin-avatar,
+.admin-card[data-tone="open"] .admin-avatar        { color: var(--blue); background: var(--blue-dim); border-color: var(--blue-line); }
+.admin-card[data-tone="running"] .admin-avatar     { color: var(--lime); background: var(--lime-dim); border-color: var(--lime-line); }
+.admin-card[data-tone="completed"] .admin-avatar   { color: var(--muted); background: var(--surface-3); border-color: var(--border-light); }
+
+/* Students / Payments: plain black - no status colour */
+.admin-card[data-tone="neutral"] .admin-avatar { color: var(--text); background: var(--surface-3); border-color: var(--border-light); }
+.admin-hl-top[data-tone="neutral"] { background: var(--surface-3); }
+.admin-hl-top[data-tone="neutral"] .admin-info b { color: var(--text); }
+.admin-card[data-tone="terminated"] .admin-avatar,
+.admin-card[data-tone="declined"] .admin-avatar    { color: var(--danger); background: rgba(255, 104, 104, 0.18); border-color: rgba(255, 104, 104, 0.3); }
+.admin-card[data-tone="schedule"] .admin-avatar    { color: var(--orange); background: rgba(255, 140, 26, 0.18); border-color: rgba(255, 140, 26, 0.3); }
+.admin-card[data-tone="scheduled"] .admin-avatar,
+.admin-card[data-tone="processing"] .admin-avatar  { color: var(--violet); background: var(--violet-dim); border-color: rgba(180, 144, 255, 0.3); }
+
+/* Tuition card's address line: address text on the left, the
+   "N Tutor(s) Applied" count pushed to the far right */
+.admin-hl-small-split {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.admin-hl-small-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.admin-hl-small-applied {
+  flex: 0 0 auto;
+  color: var(--lime);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Payment card's bottom line: status text on the left, the recorded
+   date/time on the right - plain grey, no bold, no label. */
+.admin-hl-small-right {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* Tuition card's top layer: Demo ID/Subject/Class/tutor preferences on
+   the left, "N Tutors Applied" pushed to the right, both in the same
+   coloured layer. The student's own name/mobile/gender/address sit
+   below in their own plain left-aligned line (.admin-hl-small). */
+.admin-hl-top-split {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.admin-hl-top-split .admin-info {
+  flex: 1 1 auto;
+}
+
+.admin-hl-top-right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* the name-line's ellipsis truncation, already used on Tutors/Students,
+   also applies to the Tuition and Tutor Applied cards */
+#tuitionList .admin-hl-top .admin-info {
+  display: block;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* "Student" section header inside the Tuition card - collapsed until tapped */
+.admin-section-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+
+.admin-caret-mini {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--muted-2);
+  border-bottom: 2px solid var(--muted-2);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+}
+
+.admin-caret-mini.is-open {
+  transform: rotate(-135deg);
+}
+
+
+/* =========================================================
+   SUBSCRIPTION PAY-STATUS BADGE - the classic scalloped verified seal
+   (its checkmark is cut out of the seal itself, not drawn on top) on
+   the avatar circle, coloured by how much of the student's / tutor's
+   current subscription has been paid.
+========================================================= */
+
+.admin-avatar {
+  position: relative;
+}
+
+.admin-sub-badge {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  /* a solid backing behind the seal, so the cut-out checkmark reads as
+     a clean neutral hole no matter what colour the avatar behind it is */
+  background: var(--card-bg, var(--surface));
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  color: var(--muted-2);
+}
+
+.admin-sub-badge svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 1.5px;
+}
+
+.admin-sub-badge svg path { fill: currentColor; }
+
+.admin-sub-badge[data-tone="paid"]    { color: var(--lime); }
+.admin-sub-badge[data-tone="partial"] { color: var(--orange); }
+.admin-sub-badge[data-tone="unpaid"]  { color: var(--danger); }
+
+/* ---------------- graph ---------------- */
+
+.graph-card { padding: 16px; }
+.graph-svg { width: 100%; height: auto; display: block; }
+.graph-bar-in { fill: var(--lime); }
+.graph-bar-out { fill: var(--danger); }
+.graph-gridline { stroke: var(--border-light); stroke-width: 1; }
+.graph-axis-label,
+.graph-month-label { fill: var(--muted); font-size: 10px; }
+.graph-legend {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.graph-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.graph-swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.graph-swatch[data-tone="in"] { background: var(--lime); }
+.graph-swatch[data-tone="out"] { background: var(--danger); }
+#graphStats { margin-bottom: 14px; }
+
+/* Graph tab: purpose + period chips together on one scrollable line,
+   the custom date-range row right below it (hidden unless "Select
+   Range" is picked), and the 5 stat tiles forced onto one row instead
+   of wrapping like the 8-tile dashboard grid does. */
+.graph-chips-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.graph-chips-row::-webkit-scrollbar { display: none; }
+.graph-chips-row .admin-chips { flex: 0 0 auto; overflow: visible; }
+.graph-chips-sep {
+  flex: 0 0 auto;
+  width: 1px;
+  align-self: stretch;
+  background: var(--border);
+}
+#graphStats {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+@media (max-width: 720px) {
+  #graphStats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Tutor header: as wide as the two Accept/Reject buttons on a row. */
+.list-header .list-header-vbtns { width: 88px; }
+
+/* ---------------- employee permissions checklist ---------------- */
+
+.perm-box { margin-top: 14px; grid-column: 1 / -1; }
+.perm-title { margin: 0 0 8px; font-size: 13px; font-weight: 800; color: var(--text); }
+.perm-title small { font-weight: 600; color: var(--muted); }
+.perm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.perm-group {
+  margin: 0;
+  padding: 8px 12px 10px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-2);
+  min-width: 0;
+}
+.perm-group legend {
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.perm-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 5px 0;
+  font-size: 13px;
+  line-height: 1.3;
+  cursor: pointer;
+}
+.perm-item input { flex: 0 0 auto; margin-top: 2px; accent-color: var(--lime); }
+.perm-item input:disabled + span { color: var(--muted); }
+.perm-item input:disabled { cursor: default; }
+@media (max-width: 720px) {
+  .perm-grid { grid-template-columns: 1fr; }
+}
+
+/* Employees: status as a plain coloured pill (no border), and a normal
+   (neutral) profile circle whatever their status. */
+.emp-status {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+.emp-status[data-active="yes"] { color: var(--lime); background: var(--lime-dim); }
+.emp-status[data-active="no"] { color: var(--danger); background: var(--danger-dim); }
+#employeeList .admin-card .admin-avatar {
+  color: var(--text);
+  background: var(--surface-3);
+  border-color: var(--border-light);
+}
+/* Employees: the card border never carries the Active/Suspended colour either. */
+#employeeList .admin-card[data-tone="verified"],
+#employeeList .admin-card[data-tone="rejected"] { border-color: var(--border); }
+
+/* ---------------- login: centred email, six-block code ---------------- */
+
+.admin-login .admin-float input { text-align: center; }
+.admin-login .admin-message { text-align: center; }
+
+.otp-boxes {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 340px;
+  margin: 0 auto;
+}
+.otp-box {
+  width: 100%;
+  aspect-ratio: 1 / 1.15;
+  padding: 0;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-size: 22px;
+  font-weight: 800;
+  text-align: center;
+  caret-color: var(--lime);
+}
+.otp-box:focus { outline: none; border-color: var(--lime-line); }
+.otp-box.is-wrong,
+.otp-box.is-wrong:focus { border-color: var(--danger); }
+
+
+/* Class card figures that record a payment when tapped */
+.admin-box input[data-action="class-figure"] { cursor: pointer; }
+.admin-box input[data-action="class-figure"]:hover { border-color: var(--lime); background: var(--lime-dim); }
+.admin-box input[data-action="class-figure"][data-empty] { cursor: default; }
+.admin-box input[data-action="class-figure"][data-empty]:hover { border-color: inherit; background: inherit; }
+
+
+/* Change Email | Resend Code: dark green while active */
+.admin-otp-actions > .admin-ghost:not(:disabled) {
+  background: #14532d;
+  border-color: #166534;
+  color: #dcfce7;
+}
+
+.admin-otp-actions > .admin-ghost:not(:disabled):hover {
+  background: #166534;
+  border-color: #166534;
+  color: #ffffff;
+}
+
+
+/* Tuition / Tutor-applied card heads: two layers of equal columns */
+.tuition-card .admin-hl-top .ledger-cell,
+.tutor-row-card .admin-hl-top .ledger-cell {
+  padding: 2px 6px;
+  font-size: 13.5px;
+  font-weight: 800;
+}
+
+.tuition-card .admin-hl-small .ledger-cell,
+.tutor-row-card .admin-hl-small .ledger-cell {
+  padding: 2px 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.admin-hl-top[data-tone="verified"] .ledger-cell,
+.admin-hl-top[data-tone="green"] .ledger-cell,
+.admin-hl-top[data-tone="running"] .ledger-cell     { color: var(--lime); }
+.admin-hl-top[data-tone="rejected"] .ledger-cell,
+.admin-hl-top[data-tone="terminated"] .ledger-cell,
+.admin-hl-top[data-tone="declined"] .ledger-cell    { color: var(--danger); }
+.admin-hl-top[data-tone="pending"] .ledger-cell,
+.admin-hl-top[data-tone="new"] .ledger-cell,
+.admin-hl-top[data-tone="open"] .ledger-cell        { color: var(--blue); }
+.admin-hl-top[data-tone="completed"] .ledger-cell   { color: var(--muted); }
+.admin-hl-top[data-tone="schedule"] .ledger-cell    { color: var(--orange); }
+.admin-hl-top[data-tone="scheduled"] .ledger-cell,
+.admin-hl-top[data-tone="processing"] .ledger-cell  { color: var(--violet); }
+
+
+/* Change Email | Resend Code: the site's green while active */
+.admin-otp-actions > .admin-ghost:not(:disabled) {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: #050505;
+}
+.admin-otp-actions > .admin-ghost:not(:disabled):hover {
+  background: var(--lime-hover);
+  border-color: var(--lime-hover);
+  color: #050505;
+}
+
+.otp-box {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  opacity: 1;
+  font-size: 24px;
+  line-height: 1;
+}
+.otp-box::selection { background: transparent; color: #ffffff; }
+.otp-box:-webkit-autofill,
+.otp-box:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff;
+  -webkit-box-shadow: 0 0 0 100px var(--surface-2) inset;
+  caret-color: #ffffff;
+}
+
+/* Employee permissions, read-only: clear ticks instead of the browser's pale disabled boxes */
+.perm-item input:disabled {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  border-radius: 4px;
+  border: 1.5px solid var(--border-light);
+  background: transparent;
+  opacity: 1;
+}
+.perm-item input:disabled:checked {
+  background: var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23050505' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / 12px no-repeat;
+  border-color: var(--lime);
+}
+.perm-item input:disabled:checked + span { color: var(--text); font-weight: 600; }
+.perm-item input:disabled:not(:checked) + span { color: var(--muted-2, var(--muted)); }
+
+
+/* Date columns (Payments, Ledger): the time sits under the date in small type */
+.ledger-cell .cell-sub {
+  display: block;
+  margin-top: 1px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+/* Employees > Privacy: its own full-width row, items side by side */
+.perm-group-privacy { grid-column: 1 / -1; }
+.perm-group-privacy .perm-item { display: inline-flex; width: calc(50% - 8px); vertical-align: top; }
+@media (max-width: 720px) {
+  .perm-group-privacy .perm-item { width: 100%; }
+}

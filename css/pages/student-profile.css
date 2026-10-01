@@ -1,0 +1,1538 @@
+/* =========================================================
+   URBANTUTORSITE - STUDENT PROFILE
+   ---------------------------------------------------------
+   Loaded AFTER tutor-profile.css, which supplies every shared
+   style (profile card, stats, filter tabs, class cards). This
+   file only adds what the Student Profile needs on top:
+   the student switcher, two student-only status colours and
+   the "Add a student" modal.
+========================================================= */
+
+
+/* ---------------- student switcher ---------------- */
+
+.student-switcher {
+  margin-bottom: 18px;
+}
+
+.switcher-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-bottom: 12px;
+}
+
+.switcher-head h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.switcher-head p {
+  margin: 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.switcher-list {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 2px 2px 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-light) transparent;
+}
+
+.student-pill {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.student-pill:hover {
+  border-color: var(--border-light);
+}
+
+.student-pill-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--lime);
+  background: var(--surface);
+  border: 1px solid var(--lime-line);
+}
+
+.student-pill strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.student-pill small {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.student-pill[aria-selected="true"] {
+  border-color: var(--lime-line);
+  background: var(--lime-dim);
+}
+
+.student-pill[aria-selected="true"] small {
+  color: var(--lime);
+}
+
+.student-pill.add-pill {
+  padding: 8px 18px;
+  border-style: dashed;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.student-pill.add-pill:hover {
+  color: var(--lime);
+  border-color: var(--lime-line);
+}
+
+
+/* ---------------- student-only statuses ---------------- */
+
+.status-finding-tutor,
+.class-spine.status-finding-tutor { background: rgba(37, 99, 235, 0.16); color: #2563eb; border-color: rgba(37, 99, 235, 0.35); }
+
+.status-tutors-applied,
+.class-spine.status-tutors-applied { background: var(--orange-dim); color: var(--orange); border-color: rgba(255, 161, 92, 0.3); }
+
+.class-spine.status-finding-tutor,
+.class-spine.status-tutors-applied { border-color: transparent; }
+
+.class-status-message a {
+  color: var(--lime);
+  font-weight: 700;
+}
+
+
+/* ---------------- add student modal ---------------- */
+
+.add-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.add-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.add-modal-box {
+  position: relative;
+  width: min(620px, 100%);
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.add-modal-box h2 {
+  margin: 0 0 4px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.add-hint {
+  margin: 0 0 20px;
+  font-size: 13.5px;
+}
+
+.add-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.add-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.add-wide {
+  grid-column: 1 / -1;
+}
+
+.add-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.add-field > span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.add-field input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+}
+
+.add-field input[type="text"]:focus {
+  outline: none;
+  border-color: var(--lime-line);
+}
+
+.add-field small {
+  font-size: 12px;
+}
+
+.add-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.add-options label {
+  position: relative;
+  cursor: pointer;
+}
+
+.add-options input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.add-options label span {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.add-options input:checked + span {
+  color: #050505;
+  background: var(--lime);
+  border-color: var(--lime);
+}
+
+.add-options input:focus-visible + span {
+  outline: 2px solid var(--lime);
+  outline-offset: 2px;
+}
+
+.add-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.add-check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--lime);
+}
+
+.add-message {
+  min-height: 1.3em;
+  margin: 16px 0 0;
+  font-size: 13.5px;
+  color: var(--danger);
+}
+
+.add-submit {
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 999px;
+  background: var(--lime);
+  color: #050505;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.add-submit:hover {
+  background: var(--lime-hover);
+}
+
+.add-submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+body.add-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 560px) {
+
+  .add-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .add-modal-box {
+    padding: 24px 18px 20px;
+  }
+
+}
+
+
+/* =========================================================
+   PROFILE CARD - LOCATION / SCHOOL (one per line)
+========================================================= */
+
+.profile-card {
+  /* Padding of .profile-card (tutor-profile.css), kept in one place
+     so the "Apply for new tuition" bar can bleed out to the card's
+     sides and bottom edge exactly. */
+  --pc-x: 28px;
+  --pc-b: 28px;
+  --pc-top: 28px;      /* radius of the concave curves at the bar's ends */
+}
+
+#profileStats.profile-stats {
+  display: block;
+}
+
+.profile-address {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+
+/* =========================================================
+   "APPLY FOR NEW TUITION" BAR
+   Fused to the bottom of the profile card: same width (both sides
+   flush with the card's sides), bottom edge + bottom corners identical
+   to the card's. The card's dark inside keeps ROUNDED bottom corners
+   that sink into the bar, so at each end the lime climbs up the card's
+   edge in a concave curve.
+
+   The curve is part of the bar's own background: its top --pc-top px
+   are transparent in the middle (the card shows through) and lime at
+   the two ends, with a quarter circle cut out of each end.
+========================================================= */
+
+.apply-tuition-bar {
+  --bar-bg: var(--lime);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(100% + (var(--pc-x) * 2));
+  margin: 10px calc(var(--pc-x) * -1) calc(var(--pc-b) * -1);
+  padding: calc(var(--pc-top) + 18px) 20px 18px;
+
+  border: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+
+  background:
+    radial-gradient(circle at 100% 0,
+      transparent var(--pc-top), var(--bar-bg) calc(var(--pc-top) + 0.5px))
+      left top / var(--pc-top) var(--pc-top) no-repeat,
+    radial-gradient(circle at 0 0,
+      transparent var(--pc-top), var(--bar-bg) calc(var(--pc-top) + 0.5px))
+      right top / var(--pc-top) var(--pc-top) no-repeat,
+    linear-gradient(var(--bar-bg), var(--bar-bg))
+      left bottom / 100% calc(100% - var(--pc-top) + 1px) no-repeat;
+
+  color: #050505;
+  font: inherit;
+  font-size: 15.5px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+
+.apply-tuition-bar:hover {
+  --bar-bg: var(--lime-hover);
+}
+
+.apply-tuition-bar:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: -4px;
+}
+
+.apply-tuition-bar.hidden {
+  display: none;
+}
+
+.tuition-stack > .class-card {
+  border-radius: 0;
+}
+
+.tuition-stack > .class-card:first-child {
+  border-radius: 16px 16px 0 0;
+  border-bottom: 0;
+}
+
+.tuition-stack > .class-card:last-child {
+  border-radius: 0 0 16px 16px;
+}
+
+/* dashed seam between the tuition and each tutor attached to it */
+.tuition-stack > .tutor-card {
+  border-top: 2px dashed var(--border-light);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 60%),
+    var(--surface);
+}
+
+.tuition-stack > .tutor-card + .tutor-card {
+  border-top: 2px dashed var(--border-light);
+}
+
+/* same dashed seam for a payment card stacked into the tuition -
+   below the assigned/active tutor(s), above any rejected one */
+.tuition-stack > .payment-card {
+  border-top: 2px dashed var(--border-light);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 60%),
+    var(--surface);
+}
+
+/* first layer of a tutor card has nothing above it */
+.tutor-info-grid {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.tutor-when {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.tutor-when svg {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+}
+
+/* ---------------------------------------------------------
+   Tutor card: paddings of .class-body, kept in variables so the
+   top strip and the bottom Accept / Reject layer can run flush to
+   the card's edges.
+--------------------------------------------------------- */
+
+.tutor-card {
+  --tc-top: 18px;
+  --tc-right: 20px;
+  --tc-bottom: 18px;
+  --tc-left: 6px;
+}
+
+/* top layer: "Applied by" / "Demo Scheduled" / "Your Tutor" (+ note).
+   Centred, always ONE line - student-profile.js shrinks the font
+   (fitHeadText) when the text would not fit. */
+.tutor-head {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  margin: calc(var(--tc-top) * -1) calc(var(--tc-right) * -1) 0 calc(var(--tc-left) * -1);
+  /* same left / right insets as the tuition card's row of
+     Subject | Status (.class-body padding), so both rows line up;
+     the single title is centred between the two insets */
+  padding: 11px var(--tc-right);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.tutor-head-row {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tutor-head-title {
+  display: inline;
+}
+
+.tutor-head-note {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 0.9;
+}
+
+/* the colour classes (.status-*) are the shared ones and also
+   draw a 1px outline - not wanted on a full-width strip */
+.tutor-head[class*="status-"] {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+/* two data sets (title + badge): one on the left, one on the right.
+   A single one stays centred (the default above). */
+.tutor-head-row.two {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+}
+
+.tutor-head-badge {
+  display: inline-block;
+  margin-left: 0;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  font-size: 0.88em;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+}
+
+/* third layer: Accept | Reject - 50% each, edge to edge */
+.tutor-actions {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 0 calc(var(--tc-right) * -1) calc(var(--tc-bottom) * -1) calc(var(--tc-left) * -1);
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+
+.tutor-btn {
+  flex: 0 0 50%;
+  width: 50%;
+  min-width: 0;
+  padding: 15px 10px;
+  border: 0;
+  border-radius: 0;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.tutor-btn + .tutor-btn {
+  border-left: 1px solid var(--border);
+}
+
+.tutor-btn-accept {
+  background: var(--lime);
+  color: #050505;
+}
+
+.tutor-btn-accept:hover:not(:disabled) {
+  background: var(--lime-hover);
+}
+
+.tutor-btn-reject {
+  background: var(--danger-dim);
+  color: var(--danger);
+}
+
+.tutor-btn-reject:hover:not(:disabled) {
+  background: rgba(255, 104, 104, 0.24);
+}
+
+/* disabled = the same grey look on every card, exactly as on a
+   "Your Tutor - Running" card (Accept once you have approved, both
+   buttons once you have answered or another tutor is confirmed) */
+.tutor-btn:disabled {
+  background: var(--surface-3);
+  color: var(--muted-2);
+  cursor: pointer;
+  /* clicks pass through to the card, so a disabled button collapses it */
+  pointer-events: none;
+}
+
+
+/* ---------------------------------------------------------
+   Semicircular cut-outs at every seam of a stack: between the
+   tuition card and its first tutor, and between one tutor and the
+   next. The half circle is CUT OUT of the cards themselves (a
+   mask, not something drawn on top), so the dashed seam line and
+   the cards' side lines stop at the notch instead of running
+   through it.
+     first card  -> its two bottom corners are cut
+     last card   -> its two top corners are cut
+     cards between -> both
+--------------------------------------------------------- */
+
+.tuition-stack > .class-card {
+  --cut: 12px;
+  --cut-tl: radial-gradient(circle at 0 0, transparent var(--cut), #000 calc(var(--cut) + 0.5px));
+  --cut-tr: radial-gradient(circle at 100% 0, transparent var(--cut), #000 calc(var(--cut) + 0.5px));
+  --cut-bl: radial-gradient(circle at 0 100%, transparent var(--cut), #000 calc(var(--cut) + 0.5px));
+  --cut-br: radial-gradient(circle at 100% 100%, transparent var(--cut), #000 calc(var(--cut) + 0.5px));
+}
+
+/* first card: bottom corners */
+.tuition-stack > .class-card:first-child {
+  -webkit-mask-image: var(--cut-bl), var(--cut-br);
+  -webkit-mask-composite: source-in;
+          mask-image: var(--cut-bl), var(--cut-br);
+          mask-composite: intersect;
+}
+
+/* last card: top corners */
+.tuition-stack > .class-card:last-child {
+  -webkit-mask-image: var(--cut-tl), var(--cut-tr);
+  -webkit-mask-composite: source-in;
+          mask-image: var(--cut-tl), var(--cut-tr);
+          mask-composite: intersect;
+}
+
+/* cards in the middle: top AND bottom corners */
+.tuition-stack > .class-card:not(:first-child):not(:last-child) {
+  -webkit-mask-image: var(--cut-tl), var(--cut-tr), var(--cut-bl), var(--cut-br);
+  -webkit-mask-composite: source-in, source-in, source-in;
+          mask-image: var(--cut-tl), var(--cut-tr), var(--cut-bl), var(--cut-br);
+          mask-composite: intersect, intersect, intersect;
+}
+
+
+@media (max-width: 560px) {
+
+  .profile-card {
+    --pc-x: 18px;
+    --pc-b: 20px;
+    --pc-top: 20px;
+  }
+
+  .tutor-card {
+    --tc-top: 16px;
+    --tc-right: 14px;
+    --tc-bottom: 16px;
+    --tc-left: 4px;
+  }
+
+  .apply-tuition-bar {
+    margin-top: 10px;
+    padding: calc(var(--pc-top) + 16px) 16px 16px;
+    font-size: 15px;
+  }
+
+}
+
+
+/* =========================================================
+   "Rejected" tuition status (every applicant turned down)
+========================================================= */
+
+.status-rejected,
+.class-spine.status-rejected,
+.status-terminated,
+.class-spine.status-terminated {
+  background: var(--danger-dim);
+  color: var(--danger);
+  border-color: rgba(255, 104, 104, 0.3);
+}
+
+.class-spine.status-rejected,
+.class-spine.status-terminated {
+  border-color: transparent;
+}
+
+
+/* =========================================================
+   COLLAPSED / EXPANDED CARDS
+   Every card starts collapsed and opens when clicked.
+     tuition card -> subject + status only
+     tutor card   -> name + gender only, coloured by its status
+========================================================= */
+
+.class-card[data-card] {
+  cursor: pointer;
+}
+
+.class-card[data-card]:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: -2px;
+}
+
+
+.tutor-mini {
+  display: none;
+}
+
+.class-card.is-collapsed .class-body > *:not(.class-row-top):not(.tutor-mini) {
+  display: none !important;
+}
+
+.class-card.is-collapsed .tutor-mini {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.tutor-mini-name {
+  min-width: 0;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tutor-mini-gender {
+  flex: 0 0 auto;
+  font-size: 12.5px;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.class-card.is-collapsed .class-body {
+  padding: 14px 16px 14px 14px;
+}
+
+.class-card.is-collapsed .class-spine {
+  width: 10px;
+  padding: 0;
+}
+
+.class-card.is-collapsed .class-spine > * {
+  display: none;
+}
+
+/* collapsed tutor card: the whole card takes its status colour */
+.tuition-stack > .tutor-card.is-collapsed.tone-applied,
+.tuition-stack > .tutor-card.is-collapsed.tone-processing {
+  background: var(--orange-dim);
+  color: var(--orange);
+  border-left-color: rgba(255, 161, 92, 0.3);
+  border-right-color: rgba(255, 161, 92, 0.3);
+  border-bottom-color: rgba(255, 161, 92, 0.3);
+}
+
+.tuition-stack > .tutor-card.is-collapsed.tone-demo-scheduled {
+  background: var(--violet-dim);
+  color: var(--violet);
+  border-left-color: rgba(180, 144, 255, 0.3);
+  border-right-color: rgba(180, 144, 255, 0.3);
+  border-bottom-color: rgba(180, 144, 255, 0.3);
+}
+
+.tuition-stack > .tutor-card.is-collapsed.tone-running {
+  background: rgba(22, 163, 74, 0.14);
+  color: var(--lime);
+  border-left-color: rgba(22, 163, 74, 0.3);
+  border-right-color: rgba(22, 163, 74, 0.3);
+  border-bottom-color: rgba(22, 163, 74, 0.3);
+}
+
+.tuition-stack > .tutor-card.is-collapsed.tone-completed {
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.tuition-stack > .tutor-card.is-collapsed.tone-declined {
+  background: var(--danger-dim);
+  color: var(--danger);
+  border-left-color: rgba(255, 104, 104, 0.3);
+  border-right-color: rgba(255, 104, 104, 0.3);
+  border-bottom-color: rgba(255, 104, 104, 0.3);
+}
+
+
+/* text that comes from the data (name, gender, degree, experience)
+   is regular weight, not bold */
+.tutor-info-grid .class-detail-value {
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   PROFILE HEADER - STUDENT ID SWITCHER, PARENT LINE, ACTIONS
+========================================================= */
+
+.sid-switch {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The Student ID keeps the look of the kicker text. */
+.sid-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: none;
+  font-family: inherit;
+  cursor: default;
+}
+
+.sid-button:disabled {
+  opacity: 1;
+  color: var(--muted-2);
+}
+
+/* More than one student: it becomes a small lime button with a caret. */
+.sid-button.is-switchable {
+  cursor: pointer;
+  color: var(--lime);
+  border-color: var(--lime-line);
+  background: var(--lime-dim);
+}
+
+.sid-button.is-switchable::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  transition: transform 0.15s ease;
+}
+
+.sid-button.is-switchable[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.sid-button.is-switchable:hover {
+  border-color: var(--lime);
+}
+
+.sid-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  z-index: 50;
+  transform: translateX(-50%);
+  min-width: 230px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid var(--border-light);
+  background: var(--surface-3);
+  box-shadow: var(--shadow-card);
+  text-align: left;
+}
+
+.sid-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.sid-option:hover {
+  background: var(--surface-2);
+}
+
+.sid-option.active {
+  background: var(--lime-dim);
+}
+
+.sid-option-id {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--lime);
+}
+
+.sid-option-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+/* "(Parent's name)" just above the student's name, tight to it */
+.profile-parent {
+  margin: 2px 0 -9px;
+  font-size: 13.5px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.profile-parent + h1 {
+  margin-top: 0;
+}
+
+/* + Add Student (left) | Log out (right), 50% each */
+.profile-actions {
+  width: 100%;
+  max-width: 420px;
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.profile-actions .logout-button {
+  margin-top: 0;
+  max-width: none;
+}
+
+.add-student-button {
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--lime-line);
+  background: var(--lime-dim);
+  color: var(--lime);
+  font: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.add-student-button:hover {
+  border-color: var(--lime);
+  background: rgba(22, 163, 74, 0.2);
+}
+
+
+/* =========================================================
+   MODALS - "Add a Student" + "Apply For New Tuition"
+========================================================= */
+
+/* ---------- titles ---------- */
+
+.add-modal-box .modal-title {
+  margin: 0 36px 4px;
+  text-align: center;
+}
+
+.modal-subtitle {
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+#addStudentTitle {
+  margin-bottom: 22px;
+}
+
+
+/* ---------- floating-label text boxes ----------
+   The label sits inside the box like a placeholder. As soon as the
+   box is focused or has text, it moves up onto the top border,
+   left-aligned. */
+
+.float-field {
+  position: relative;
+  display: block;
+  min-width: 0;
+}
+
+.float-field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px 20px 13px;
+  border-radius: 999px;   /* same radius as the buttons */
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  transition: border-color 0.15s ease;
+}
+
+.float-field input:focus {
+  outline: none;
+  border-color: var(--lime-line);
+}
+
+.float-field > span {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  max-width: calc(100% - 32px);
+  padding: 0 4px;
+  transform: translateY(-50%);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14.5px;
+  color: var(--muted-2);
+  pointer-events: none;
+  /* half modal background, half box background, so the label
+     "cuts" the border when it sits on it */
+  background: linear-gradient(to bottom, var(--surface) 50%, var(--surface-2) 50%);
+  border-radius: 4px;
+  transition: top 0.15s ease, font-size 0.15s ease, color 0.15s ease;
+}
+
+.float-field input:focus + span,
+.float-field input:not(:placeholder-shown) + span {
+  top: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.float-field input:focus + span {
+  color: var(--lime);
+}
+
+.float-field.hidden {
+  display: none;
+}
+
+
+/* ---------- equal-width choice buttons ---------- */
+
+.choice-row {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.choice-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.choice-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.choice-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.choice-row label {
+  position: relative;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.choice-row input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.choice-row label span {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 6px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--muted);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.choice-row input:checked + span {
+  color: #050505;
+  background: var(--lime);
+  border-color: var(--lime);
+}
+
+.choice-row input:focus-visible + span {
+  outline: 2px solid var(--lime);
+  outline-offset: 2px;
+}
+
+.timing-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.timing-title {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+
+/* ---------- "Same address" - full-width selectable pill ----------
+   The whole row is a pill; the circle on the right fills lime and
+   shows a tick when selected. */
+
+.pill-check {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 12px 11px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.pill-check input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pill-check-text {
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pill-check-icon {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-light);
+  display: grid;
+  place-items: center;
+  color: #050505;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.pill-check-icon svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.pill-check:hover {
+  border-color: var(--border-light);
+}
+
+.pill-check:has(input:checked) {
+  border-color: rgba(22, 163, 74, 0.45);
+  background: var(--lime-dim);
+}
+
+.pill-check input:checked ~ .pill-check-icon {
+  background: var(--lime);
+  border-color: var(--lime);
+}
+
+.pill-check input:checked ~ .pill-check-icon svg {
+  opacity: 1;
+}
+
+.pill-check input:focus-visible ~ .pill-check-icon {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+
+/* ---------- close (×) - light lime ---------- */
+
+.add-modal-close {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-color: var(--lime-line);
+  background: var(--lime-dim);
+  color: var(--lime);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.add-modal-close svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.add-modal-close:hover {
+  border-color: var(--lime);
+  background: rgba(22, 163, 74, 0.2);
+}
+
+
+/* ---------- "Apply For New Tuition": which student ----------
+   "Name · SID" under the title uses the same switcher look as the
+   Student ID under the profile photo. */
+
+.modal-subtitle.sid-switch {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 22px;
+}
+
+.modal-subtitle .sid-button {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ---------- scrolling (all screens, tuned for phones) ----------
+   The modal layer itself scrolls, so a tall form is never cut off
+   at the top or bottom and the page behind never moves. */
+
+.add-modal {
+  align-items: flex-start;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.add-modal-overlay {
+  position: fixed;
+}
+
+.add-modal-box {
+  margin: auto 0;
+  max-height: none;
+  overflow: visible;
+}
+
+body.add-modal-open {
+  overflow: hidden;
+}
+
+
+@media (max-width: 760px) {
+
+  /* hide the floating WhatsApp / Call buttons while a form is open */
+  body.add-modal-open .floating-contact,
+  body.add-modal-open .floating-whatsapp,
+  body.add-modal-open .floating-call {
+    display: none !important;
+  }
+
+}
+
+@media (max-width: 560px) {
+
+  .add-modal {
+    padding: 12px 10px calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .add-modal-box {
+    padding: 22px 16px 18px;
+  }
+
+  .add-modal-box .modal-title {
+    font-size: 20px;
+  }
+
+  .choice-row label span {
+    padding: 10px 4px;
+    font-size: 12.5px;
+  }
+
+  /* City + PIN keep one line each on a narrow phone */
+  .add-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =========================================================
+   FILTER - ICON TAB BAR (one line)
+   Normal screens: six equal-width tabs, icon on top and the
+   short label centred below it.
+   Small screens: icons only.
+========================================================= */
+
+.filter-tabs.icon-tabs {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4px;
+  padding: 6px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.icon-tabs .filter-tab {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
+  padding: 9px 2px 8px;
+  border: 0;
+  border-radius: 12px;
+  background: none;
+  box-shadow: none;
+  color: var(--muted-2);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon-tabs .filter-tab svg {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-tabs .filter-tab-label {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon-tabs .filter-tab:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.icon-tabs .filter-tab.active {
+  color: var(--lime);
+  background: var(--lime-dim);
+  box-shadow: inset 0 0 0 1px var(--lime-line);
+}
+
+/* small screens: icon only */
+@media (max-width: 420px) {
+
+  .filter-tabs.icon-tabs {
+    padding: 5px;
+  }
+
+  .icon-tabs .filter-tab {
+    padding: 11px 0;
+  }
+
+  .icon-tabs .filter-tab-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+}
+
+
+/* =========================================================
+   CARD LAYOUT FIXES
+========================================================= */
+
+/* The body is a one-column grid. Without an explicit column, a long
+   row inside (timing chips, long subject) could widen the column past
+   the card and push the status pill off to the right when expanded. */
+.class-body {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Subject always hugs the left, status always hugs the right. */
+.class-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.class-row-top .subject-badge {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.class-row-top .status-badge:not(.subject-badge) {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+/* Tutor card: the first layer spans the WHOLE card width and sits
+   above the Tutor ID spine, so the spine only runs alongside the
+   layers below it. */
+.tutor-card {
+  flex-wrap: wrap;
+}
+
+.tutor-card > .tutor-head {
+  flex: 0 0 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 11px 20px;
+}
+
+.tutor-card > .class-body {
+  flex: 1 1 0;
+}
+
+/* layer below the head no longer needs to pull itself up */
+.tutor-card > .class-body {
+  padding-top: 14px;
+}
+
+.class-card.is-collapsed > .tutor-head {
+  display: none;
+}
+
+/* collapsed tutor card: gender in bold */
+.tutor-mini-gender {
+  font-weight: 800;
+  opacity: 1;
+}
+
+
+/* "You already have a running request for ..." etc. - centred */
+#newTuitionMessage,
+#addStudentMessage {
+  text-align: center;
+}
+
+/* tuition opened from the homepage */
+.class-card.is-linked {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+  transition: outline-color 0.4s ease;
+}
+
+
+/* =========================================================
+   COLLAPSED TUITION CARD: the whole card takes its status colour
+   (blue finding, orange applied/processing, purple demo, green
+   running, red terminated, none once completed)
+========================================================= */
+
+.class-card.tuition-card.is-collapsed.tone-finding-tutor {
+  background: rgba(37, 99, 235, 0.16);
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
+.class-card.tuition-card.is-collapsed.tone-tutors-applied,
+.class-card.tuition-card.is-collapsed.tone-applied,
+.class-card.tuition-card.is-collapsed.tone-processing {
+  background: var(--orange-dim);
+  border-color: rgba(255, 161, 92, 0.3);
+}
+
+.class-card.tuition-card.is-collapsed.tone-demo-scheduled {
+  background: var(--violet-dim);
+  border-color: rgba(180, 144, 255, 0.3);
+}
+
+.class-card.tuition-card.is-collapsed.tone-running {
+  background: rgba(22, 163, 74, 0.14);
+  border-color: rgba(22, 163, 74, 0.3);
+}
+
+.class-card.tuition-card.is-collapsed.tone-terminated,
+.class-card.tuition-card.is-collapsed.tone-rejected,
+.class-card.tuition-card.is-collapsed.tone-declined {
+  background: var(--danger-dim);
+  border-color: rgba(255, 104, 104, 0.3);
+}
+
+
+/* EXPANDED TUITION CARD: the top line (subject + status) is a
+   full-width band in the status colour */
+.class-card.tuition-card:not(.is-collapsed) .class-body > .class-row-top {
+  margin: -18px -20px 0 -6px;
+  padding: 12px 20px 12px 6px;
+}
+
+.class-card.tuition-card.tone-finding-tutor:not(.is-collapsed) .class-body > .class-row-top {
+  background: rgba(37, 99, 235, 0.16);
+}
+
+.class-card.tuition-card.tone-tutors-applied:not(.is-collapsed) .class-body > .class-row-top,
+.class-card.tuition-card.tone-applied:not(.is-collapsed) .class-body > .class-row-top,
+.class-card.tuition-card.tone-processing:not(.is-collapsed) .class-body > .class-row-top {
+  background: var(--orange-dim);
+}
+
+.class-card.tuition-card.tone-demo-scheduled:not(.is-collapsed) .class-body > .class-row-top {
+  background: var(--violet-dim);
+}
+
+.class-card.tuition-card.tone-running:not(.is-collapsed) .class-body > .class-row-top {
+  background: rgba(22, 163, 74, 0.14);
+}
+
+.class-card.tuition-card.tone-terminated:not(.is-collapsed) .class-body > .class-row-top,
+.class-card.tuition-card.tone-rejected:not(.is-collapsed) .class-body > .class-row-top,
+.class-card.tuition-card.tone-declined:not(.is-collapsed) .class-body > .class-row-top {
+  background: var(--danger-dim);
+}

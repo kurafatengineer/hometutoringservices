@@ -1,0 +1,394 @@
+/* =========================================================
+   URBAN TUTOR SITE
+   GLOBAL HEADER
+   ========================================================= */
+
+:root {
+
+  --header-bg: #050505;
+
+  --header-text: #ffffff;
+
+  --header-muted: #999999;
+
+  /* Site accent - brand wordmark, focus rings */
+  --header-green: #16a34a;
+
+  /* Secondary accent - the circular login button */
+  --header-blue: #2563eb;
+
+  --header-border:
+    rgba(255, 255, 255, 0.08);
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+
+  width: 100%;
+
+  background:
+    var(--header-bg);
+
+  color:
+    var(--header-text);
+
+  border-bottom:
+    1px solid
+    var(--header-border);
+
+  position: relative;
+
+  z-index: 1000;
+
+}
+
+
+/* =========================================================
+   HEADER INNER
+   ========================================================= */
+
+.header-inner {
+
+  width: min(
+    1120px,
+    calc(100% - 40px)
+  );
+
+  min-height: 76px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.site-logo {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  font-size: 24px;
+
+  font-weight: 850;
+
+  line-height: 1;
+
+  letter-spacing: -0.8px;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+    transform 0.2s ease;
+
+}
+
+
+/* Urban */
+
+.brand-urban {
+
+  color: #ffffff;
+
+}
+
+
+/* TutorSite */
+
+.brand-tutorsite {
+
+  color: var(--header-green);
+
+}
+
+
+/* Brand hover */
+
+.site-logo:hover {
+
+  transform:
+    translateY(-1px);
+
+}
+
+
+/* =========================================================
+   CIRCULAR LOGIN BUTTON
+   ========================================================= */
+
+.header-login {
+
+  position: relative;
+
+  width: 46px;
+
+  height: 46px;
+
+  flex: 0 0 46px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    #101010;
+
+  border:
+    1px solid
+    rgba(37, 99, 235, 0.45);
+
+  color:
+    var(--header-blue);
+
+  text-decoration: none;
+
+  box-shadow:
+    0 5px 18px
+    rgba(0, 0, 0, 0.25);
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+}
+
+
+/* =========================================================
+   LOGIN ICON
+   ========================================================= */
+
+.header-login-icon {
+
+  width: 22px;
+
+  height: 22px;
+
+  display: block;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.8;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+}
+
+
+/* =========================================================
+   LOGIN HOVER
+   ========================================================= */
+
+.header-login:hover {
+
+  color:
+    #050505;
+
+  background:
+    var(--header-blue);
+
+  border-color:
+    var(--header-blue);
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 8px 25px
+    rgba(37, 99, 235, 0.18);
+
+}
+
+
+/* =========================================================
+   LOGIN ACTIVE
+   ========================================================= */
+
+.header-login:active {
+
+  transform:
+    translateY(0);
+
+}
+
+
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+   ========================================================= */
+
+.header-login:focus-visible,
+.site-logo:focus-visible {
+
+  outline:
+    2px solid
+    var(--header-green);
+
+  outline-offset:
+    4px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 699px) {
+
+  .header-inner {
+
+    width:
+      calc(100% - 28px);
+
+    min-height:
+      68px;
+
+  }
+
+
+  .site-logo {
+
+    font-size:
+      20px;
+
+    letter-spacing:
+      -0.6px;
+
+  }
+
+
+  .header-login {
+
+    width:
+      42px;
+
+    height:
+      42px;
+
+    flex-basis:
+      42px;
+
+  }
+
+
+  .header-login-icon {
+
+    width:
+      20px;
+
+    height:
+      20px;
+
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .site-logo,
+  .header-login {
+
+    transition:
+      none;
+
+  }
+
+}
+
+
+
+/* =========================================================
+   NEW: LOGGED-IN USER INITIALS
+   ========================================================= */
+
+.header-initials {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--header-blue);
+}
+
+.header-login.has-initials {
+  border-color: var(--header-blue);
+}
+
+.header-login.has-initials:hover .header-initials {
+  color: #050505;
+}
+
+
+/* Admin Panel: "AD" badge - a label, not a button */
+.header-login.header-login-static,
+.header-login.header-login-static:hover {
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+  background: #101010;
+  border-color: var(--header-blue);
+}
+
+.header-login.header-login-static:hover .header-initials {
+  color: var(--header-blue);
+}
+
+
+/* =========================================================
+   NEW: SUBSCRIPTION-STATUS VERIFIED BADGE
+   ========================================================= */
+
+.header-sub-badge {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #101010;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  color: #6f6f6f;
+}
+
+.header-sub-badge svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 1.5px;
+}
+
+.header-sub-badge svg path { fill: currentColor; }
+
+.header-sub-badge[data-tone="paid"]    { color: #16a34a; }
+.header-sub-badge[data-tone="partial"] { color: #ffa15c; }
+.header-sub-badge[data-tone="unpaid"]  { color: #ff6868; }

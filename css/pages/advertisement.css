@@ -1,0 +1,429 @@
+/* =========================================================
+   URBANTUTORSITE
+   TUITIONS AVAILABLE
+   Reuses the design tokens, .page/.container, .spinner and
+   the exact card component from tutor-profile.css (.class-card,
+   .class-spine, .class-body, .class-row-top, .status-badge,
+   .class-detail-grid, .class-row-bottom, .filter-empty) so a
+   tuition card looks identical to a "My Classes" card on the
+   Tutor Profile page. Only what's new to this page (hero copy,
+   horizontal filter bar, grid, small content tweaks, apply
+   toast) lives here.
+========================================================= */
+
+/* Page heading - same two-colour treatment as the homepage
+   "Meet our tutors." / "Meet our students." headings. */
+.tuitions-hero {
+  text-align: center;
+  padding: 24px 0 32px;
+}
+
+.tuitions-hero h1 {
+  margin: 0;
+  color: #f5f5f5;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.tuitions-hero h1 span {
+  color: #16a34a;
+}
+
+/* ================= WIDER PAGE CONTAINER ================= */
+/* tutor-profile.css caps .container at 960px, which squeezed
+   three cards per row. This page alone gets a wider container
+   so three cards sit comfortably side by side. */
+
+.tuitions-page .container {
+  max-width: 1240px;
+}
+
+/* ================= HORIZONTAL FILTER BAR ================= */
+/* No labels above the selects (each select carries an
+   aria-label instead). All filters + "Clear all" always stay
+   on ONE line - on narrow screens the bar scrolls sideways
+   rather than wrapping. */
+
+.tuitions-filterbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 22px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.filter-field {
+  display: flex;
+  flex: 1 1 0;
+  min-width: 120px;
+}
+
+.filter-field select {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  width: 100%;
+}
+
+.filter-field select:focus {
+  outline: none;
+  border-color: var(--lime-line);
+}
+
+.filter-field select:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.clear-filters-button {
+  flex: 0 0 auto;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--muted);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.clear-filters-button:hover {
+  border-color: var(--lime-line);
+  color: var(--text);
+}
+
+.tuitions-count {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 0 16px;
+}
+
+/* ================= TUITIONS GRID ================= */
+/* 1 column on phones, 2 on tablets, 3 on desktop (max). */
+
+.tuitions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.tuitions-grid .class-card {
+  height: 100%;
+}
+
+/* Body has NO outer padding here so the Subject bar (top) and
+   the Apply bar (bottom) can sit flush against the card's
+   edges and the Demo ID spine. Only the middle layer is padded. */
+.tuitions-grid .class-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  gap: 0;
+}
+
+@media (min-width: 700px) {
+  .tuitions-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .tuitions-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================
+   CARD CONTENT TWEAKS (still the same .class-card component
+   tutor-profile.css defines - only small overrides scoped to
+   this page's grid)
+========================================================= */
+
+/* Open tuitions have no running/completed/etc. status, so the
+   spine gets one consistent "open" accent instead of a status
+   colour. */
+.tuitions-grid .class-spine {
+  background: var(--lime-dim);
+  color: var(--lime);
+}
+
+/* ================= TOP LAYER: SUBJECT BAR =================
+   Full-width bar, flush with:
+     left   -> right after the Demo ID spine
+     top    -> the card's top edge
+     right  -> the card's right edge
+     bottom -> the divider line of the middle layer
+   Only the top-right corner is curved (matches the card's own
+   corner); the other three are square. */
+
+.tuitions-grid .class-row-top {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.tuitions-grid .class-row-top .subject-badge {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  background: #000;
+  color: var(--text);
+  border: none;
+  border-radius: 0 15px 0 0;
+  padding: 11px 16px 11px 14px;
+  font-size: 15px;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* No dot before the subject name. */
+.tuitions-grid .class-row-top .subject-badge::before {
+  display: none;
+}
+
+/* ================= MIDDLE LAYER ================= */
+/* Divider line on top (touching the subject bar) - the line is
+   the grid's own border-top from tutor-profile.css. */
+
+.tuitions-grid .class-detail-grid {
+  margin: 0;
+  padding: 14px 18px 16px 14px;
+}
+
+/* Third row: Location icon + address (small, regular) followed
+   by the PIN Code (bold), across the full width of the card. */
+.tuitions-grid .class-detail-location {
+  grid-column: 1 / -1;
+}
+
+.tuitions-grid .class-detail-location .class-detail-value {
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.tuitions-grid .location-address,
+.tuitions-grid .location-sep {
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.tuitions-grid .location-pin {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* ================= BOTTOM LAYER: APPLY BAR =================
+   Pushed to the bottom of the card so the buttons line up
+   across a row. Its border-top is the divider line; the button
+   touches that line, the card's bottom edge, the card's right
+   edge and the Demo ID spine on the left. */
+
+.tuitions-grid .class-row-bottom {
+  display: flex;
+  margin-top: auto;
+  padding: 0;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ================= APPLY BUTTON ================= */
+/* Mirror of the subject bar: only the bottom-right corner is
+   curved (matches the card's own corner); the other three are
+   square. */
+
+.apply-button {
+  flex: 1 1 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background: var(--lime);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 0 0 15px 0;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 800;
+  font-family: inherit;
+  line-height: 1.4;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.apply-button:hover {
+  background: var(--lime-hover);
+}
+
+.apply-button:disabled {
+  cursor: not-allowed;
+}
+
+/* Already applied by THIS tutor: greyed-out, disabled. */
+/* Already applied by THIS tutor: same lime colour as Apply,
+   just muted/darker, so it clearly reads as "done". */
+.apply-button.applied,
+.apply-button.applied:hover {
+  background: rgba(22, 163, 74, 0.45);
+  color: rgba(10, 10, 10, 0.75);
+}
+
+/* ================= TOAST ================= */
+
+.apply-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--surface-3);
+  border: 1px solid var(--border-light);
+  color: var(--text);
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 50;
+  max-width: min(90vw, 380px);
+  text-align: center;
+}
+
+.apply-toast.error {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.apply-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ================= MOBILE ================= */
+/* tutor-profile.css re-pads .class-body and shrinks the status
+   badge under 560px - undo that here so the Subject and Apply
+   bars stay flush with the card edges on phones too. Filters
+   stay on one line (the bar scrolls sideways). */
+
+@media (max-width: 560px) {
+
+  .tuitions-grid .class-body {
+    padding: 0;
+    gap: 0;
+  }
+
+  .tuitions-grid .class-row-top .subject-badge {
+    font-size: 14px;
+    padding: 10px 14px 10px 12px;
+  }
+
+  .tuitions-grid .class-detail-grid {
+    padding: 12px 14px 14px 12px;
+  }
+
+  .tuitions-grid .class-row-bottom {
+    gap: 0;
+  }
+
+}
+
+
+
+/* =========================================================
+   VERIFICATION NOTICE
+========================================================= */
+
+.verify-notice {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 209, 102, 0.35);
+  background: rgba(255, 209, 102, 0.12);
+  color: #ffd166;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.verify-notice.hidden {
+  display: none;
+}
+
+
+/* =========================================================
+   EMBEDDED ON THE HOMEPAGE  (html.embed)
+   No header / footer / floating buttons, no full-screen
+   heights (the frame grows to fit the content instead).
+========================================================= */
+
+html.embed,
+html.embed body {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: hidden;
+}
+
+html.embed #site-header,
+html.embed #site-footer,
+html.embed .site-header,
+html.embed .site-footer,
+html.embed .floating-contact,
+html.embed .floating-whatsapp,
+html.embed .floating-call {
+  display: none !important;
+}
+
+html.embed .page,
+html.embed .loading-page .container,
+html.embed .error-page .container {
+  min-height: 0 !important;
+}
+
+html.embed .loading-page .container,
+html.embed .error-page .container {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+
+/* card opened from the tutor homepage ("Apply" in Matching you) */
+.class-card.is-linked {
+  outline: 2px solid #16a34a;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 8px rgba(22, 163, 74, 0.12);
+  transition: outline-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+
+/* Tuition card: subject centred in the top bar */
+.tuitions-grid .class-row-top .subject-badge {
+  justify-content: center;
+  text-align: center;
+  padding-left: 16px;
+  padding-right: 16px;
+}

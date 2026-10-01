@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="Urbantutorsite — Tutor Registration">
+  <title>Urbantutorsite — Tutor Registration</title>
+
+  <link rel="stylesheet" href="css/header.css?v=20260930a">
+  <link rel="stylesheet" href="css/footer.css?v=20260928b">
+  <link rel="stylesheet" href="css/registration-common.css?v=20261001a">
+  <link rel="stylesheet" href="css/pages/tutor-registration.css?v=20260930mbc">
+  <link rel="stylesheet" href="css/otpboxes.css?v=20261001f">
+</head>
+
+<body data-page="tutorregistration">
+
+<!-- Reusable Header -->
+<div id="site-header"></div>
+
+<!-- =====================================================
+     PAGE 1 : EMAIL  (new tutor -> registration, existing tutor -> login OTP)
+===================================================== -->
+
+<main id="emailPage" class="page email-page">
+  <div class="container">
+
+    <div class="intro">
+      <h1 class="one-line-title">Join as a <span>tutor.</span></h1>
+    </div>
+
+    <div class="form-card email-card">
+      <div class="section">
+
+        <form id="emailForm" novalidate>
+
+          <div class="field">
+            <label class="float-field"><input id="email" aria-label="Email Address" type="email" maxlength="254" autocomplete="email" placeholder=" " required><span>Enter Your Email</span></label>
+            <small id="emailError" class="field-error"></small>
+          </div>
+
+          <div class="submit-area">
+            <button id="continueButton" class="submit" type="submit">
+              <span id="continueText">Continue</span>
+              <span id="continueLoader" class="loader hidden"></span>
+            </button>
+          </div>
+
+          <div id="emailMessage" class="message"></div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+
+<!-- =====================================================
+     PAGE 2 : REGISTRATION
+===================================================== -->
+
+<main id="registrationPage" class="page hidden">
+  <div class="container">
+
+    <div class="intro registration-intro">
+      <h1 class="one-line-title">Tell us about <span>yourself.</span></h1>
+    </div>
+
+    <div class="form-card">
+
+      <button id="registrationBackButton" class="back-link" type="button">← Change Email</button>
+
+      <form id="tutorForm" novalidate>
+
+        <section class="section" id="sectionContact">
+          <div class="field step-toggle basic-info-toggle-field" id="basicInfoToggleField">
+            <label class="pill-check"><input id="basicInfoToggle" type="checkbox"><span class="pill-check-text">Basic Information</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label>
+          </div>
+
+          <div class="vertical-fields" id="basicInfoFields">
+            <div class="field email-registration-field"><label class="float-field"><input id="registrationEmail" type="email" aria-label="Email Address" placeholder=" " readonly><span>Email Address</span></label></div>
+            <div class="field">
+              <div class="phone-input"><span class="country-code flag-code" aria-label="India (+91)"><svg class="in-flag" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" rx="3" fill="#fff"/><path d="M3 0h24a3 3 0 0 1 3 3v3.67H0V3a3 3 0 0 1 3-3Z" fill="#FF9933"/><path d="M0 13.33h30V17a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3Z" fill="#138808"/><circle cx="15" cy="10" r="2.6" fill="none" stroke="#000080" stroke-width=".7"/><circle cx="15" cy="10" r=".55" fill="#000080"/></svg></span><label class="float-field in-phone"><input id="mobile" type="tel" aria-label="Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder=" " required><span>Enter Your Mobile Number</span></label></div>
+              <small id="mobileError" class="field-error"></small>
+            </div>
+            <div class="field">
+              <!-- Ticked (default): WhatsApp = mobile number, box hidden. Unticked: box shown. -->
+              <label class="pill-check"><input id="sameWhatsapp" type="checkbox" checked><span class="pill-check-text">WhatsApp same as mobile number</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label>
+              <div class="phone-input whatsapp-box hidden" id="whatsappWrap"><span class="country-code flag-code" aria-label="India (+91)"><svg class="in-flag" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" rx="3" fill="#fff"/><path d="M3 0h24a3 3 0 0 1 3 3v3.67H0V3a3 3 0 0 1 3-3Z" fill="#FF9933"/><path d="M0 13.33h30V17a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3Z" fill="#138808"/><circle cx="15" cy="10" r="2.6" fill="none" stroke="#000080" stroke-width=".7"/><circle cx="15" cy="10" r=".55" fill="#000080"/></svg></span><label class="float-field in-phone"><input id="whatsapp" type="tel" aria-label="WhatsApp Number" inputmode="numeric" maxlength="10" placeholder=" " required><span>Enter Your WhatsApp Number</span></label></div>
+              <small id="whatsappError" class="field-error"></small>
+            </div>
+
+            <div class="field"><label class="float-field"><input id="fullName" type="text" aria-label="Full Name" placeholder=" " maxlength="120" autocomplete="name" required><span>Full Name</span></label><small id="fullNameError" class="field-error"></small></div>
+
+            <!-- Date of birth: a real date input with a custom placeholder on top of it -->
+            <div class="field">
+              <div id="birthDateWrap" class="date-field">
+                <input id="birthDate" type="date" aria-label="Date of Birth" required>
+                <span class="date-placeholder">Choose Date of Birth</span>
+              </div>
+              <small id="birthDateError" class="field-error"></small>
+            </div>
+
+            <div class="field"><div class="selection-box "><label class="selection-option"><input type="radio" name="gender" value="Male"><span>Male</span></label><label class="selection-option"><input type="radio" name="gender" value="Female"><span>Female</span></label></div><small id="genderError" class="field-error"></small></div>
+
+            <div class="field"><div class="selection-box cols-2 small"><label class="selection-option"><input type="radio" name="registerAs" value="Full Time Tutor"><span>Full Time Tutor</span></label><label class="selection-option"><input type="radio" name="registerAs" value="Part Time Tutor"><span>Part Time Tutor</span></label></div><small id="registerAsError" class="field-error"></small></div>
+          </div>
+        </section>
+
+
+        <section class="section" id="sectionLanguages">
+          <div class="field step-toggle lang-toggle-field" id="langToggleField">
+            <label class="pill-check"><input id="langToggle" type="checkbox"><span class="pill-check-text">Languages Known</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label>
+          </div>
+
+          <div id="languagesFields" class="hidden">
+            <div class="field"><div class="selection-box cols-3 small" id="languages"><label class="selection-option"><input type="checkbox" value="Hindi"><span>Hindi</span></label><label class="selection-option"><input type="checkbox" value="English"><span>English</span></label><label class="selection-option"><input type="checkbox" value="Marathi"><span>Marathi</span></label><label class="selection-option"><input type="checkbox" value="Bengali"><span>Bengali</span></label><label class="selection-option"><input type="checkbox" value="Tamil"><span>Tamil</span></label><label class="selection-option"><input type="checkbox" value="Telugu"><span>Telugu</span></label></div><small id="languagesError" class="field-error"></small></div>
+          </div>
+        </section>
+
+
+        <section class="section" id="sectionIdentity">
+          <div class="field step-toggle identity-toggle-field" id="identityToggleField">
+            <label class="pill-check"><input id="identityToggle" type="checkbox"><span class="pill-check-text">Identity Proof</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label>
+          </div>
+
+          <div id="identityFields" class="hidden">
+            <!-- Upload cards: state (file name, size, preview) is handled in tutor-registration.js -->
+            <div id="identityCard" class="upload-card">
+              <div class="upload-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.7-1.5 1.8-2.2 3-2.2s2.3.7 3 2.2M14.5 10h3.5M14.5 13.5h3.5"/></svg></div>
+              <div class="upload-info">
+                <strong>Identity Proof</strong>
+                <span class="upload-hint">PDF, JPG, JPEG or PNG · max 5 MB</span>
+                <span id="identityFile" class="upload-file"></span>
+              </div>
+              <label class="upload-button"><span id="identityBtnText">Upload</span><input id="identityProof" type="file" accept=".pdf,.jpg,.jpeg,.png" required></label>
+            </div>
+            <small id="identityError" class="field-error"></small>
+
+            <div id="profileCard" class="upload-card">
+              <div class="upload-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.6-2.2h6.8L17 8h3v11H4z"/><circle cx="12" cy="13.2" r="3.4"/></svg><img id="profilePreview" class="upload-preview hidden" alt="Profile preview"></div>
+              <div class="upload-info">
+                <strong>Profile Photo</strong>
+                <span class="upload-hint">Profile photo for verification · JPG, JPEG or PNG · max 5 MB</span>
+                <span id="profileFile" class="upload-file"></span>
+              </div>
+              <label class="upload-button"><span id="profileBtnText">Upload</span><input id="profileImage" type="file" accept=".jpg,.jpeg,.png" required></label>
+            </div>
+            <small id="profileError" class="field-error"></small>
+          </div>
+        </section>
+
+
+        <section class="section" id="sectionEducation">
+          <div class="section-title centered-section-title"><div><h2>Education & Qualification</h2></div></div>
+          <div class="vertical-fields">
+            <div class="field step-toggle twelfth-toggle-field" id="twelfthToggleField">
+              <label class="pill-check"><input id="twelfthToggle" type="checkbox"><span class="pill-check-text">Class 12<sup>th</sup></span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label>
+            </div>
+
+            <div id="twelfthFields" class="vertical-fields hidden">
+            <div class="field" id="eduStream"><label class="field-label">Class 12<sup>th</sup> - Stream</label><div class="selection-box cols-3 small"><label class="selection-option"><input type="radio" name="twelfthStream" value="Science"><span>Science</span></label><label class="selection-option"><input type="radio" name="twelfthStream" value="Commerce"><span>Commerce</span></label><label class="selection-option"><input type="radio" name="twelfthStream" value="Arts"><span>Arts</span></label></div><small id="twelfthStreamError" class="field-error"></small></div>
+            <div class="field" id="eduYear"><label class="float-field"><input id="twelfthYear" type="text" aria-label="Class 12th - Passing Year" placeholder=" " inputmode="numeric" maxlength="4"><span>Class 12<sup>th</sup> - Passing Year</span></label><small id="twelfthYearError" class="field-error"></small></div>
+
+            <!-- 12th result: fill EITHER Percentage OR CGPA (the other box is disabled by JS) -->
+            <div class="field" id="eduResult">
+              <div class="two-col">
+                <div class="field"><label class="float-field"><input id="twelfthPercentage" type="text" aria-label="12th Percentage" placeholder=" " inputmode="decimal" maxlength="5"><span>12<sup>th</sup> Percentage</span></label><small id="twelfthPercentageError" class="field-error"></small></div>
+                <div class="field"><label class="float-field"><input id="twelfthCgpa" type="text" aria-label="12th CGPA" placeholder=" " inputmode="decimal" maxlength="5"><span>12<sup>th</sup> CGPA</span></label><small id="twelfthCgpaError" class="field-error"></small></div>
+              </div>
+            </div>
+
+            <div class="field" id="eduBoard"><div class="selection-box cols-3 small"><label class="selection-option"><input type="radio" name="twelfthBoard" value="IB"><span>IB</span></label><label class="selection-option"><input type="radio" name="twelfthBoard" value="ICSE"><span>ICSE</span></label><label class="selection-option"><input type="radio" name="twelfthBoard" value="CBSE"><span>CBSE</span></label><label class="selection-option"><input type="radio" name="twelfthBoard" value="IGCSE"><span>IGCSE</span></label><label class="selection-option"><input type="radio" name="twelfthBoard" value="State Board"><span>State Board</span></label><label class="selection-option"><input type="radio" name="twelfthBoard" value="Other"><span>Other</span></label></div><small id="twelfthBoardError" class="field-error"></small>
+              <div class="field board-other-field hidden" id="twelfthBoardOtherWrap"><label class="float-field"><input id="twelfthBoardOther" type="text" aria-label="Board Name" placeholder=" " maxlength="80"><span>Board Name</span></label><small id="twelfthBoardOtherError" class="field-error"></small></div>
+            </div>
+            </div>
+            <div class="field step-toggle graduation-toggle-field" id="graduationToggleField">
+              <label class="pill-check"><input id="graduationToggle" type="checkbox"><span class="pill-check-text">Graduation</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label>
+            </div>
+
+            <div id="eduGraduation" class="vertical-fields hidden">
+            <div class="two-col">
+              <div class="field"><label class="float-field"><input id="graduationCourse" type="text" aria-label="Graduation - Course" placeholder=" " ><span>Graduation - Course</span></label><small id="graduationCourseError" class="field-error"></small></div>
+              <div class="field"><label class="float-field"><input id="graduationSubject" type="text" aria-label="Graduation - Subject" placeholder=" " ><span>Graduation - Subject</span></label><small id="graduationSubjectError" class="field-error"></small></div>
+            </div>
+            <div class="two-col">
+              <div class="field"><label class="float-field"><input id="graduationCollege" type="text" aria-label="Graduation - College/University" placeholder=" " ><span>Graduation - College/University</span></label><small id="graduationCollegeError" class="field-error"></small></div>
+              <div class="field"><label class="float-field"><input id="graduationYear" type="text" aria-label="Graduation - Passing Year" placeholder=" " inputmode="numeric" maxlength="4"><span>Graduation - Passing Year</span></label><small id="graduationYearError" class="field-error"></small></div>
+            </div>
+            <div class="two-col">
+              <div class="field"><label class="float-field"><input id="graduationPercentage" type="text" aria-label="Graduation Percentage" placeholder=" " inputmode="decimal" maxlength="5"><span>Graduation Percentage</span></label><small id="graduationPercentageError" class="field-error"></small></div>
+              <div class="field"><label class="float-field"><input id="graduationCgpa" type="text" aria-label="Graduation CGPA" placeholder=" " inputmode="decimal" maxlength="5"><span>Graduation CGPA</span></label><small id="graduationCgpaError" class="field-error"></small></div>
+            </div>
+            </div>
+            <div class="field step-toggle" id="pgToggleField"><label class="pill-check"><input id="pgToggle" type="checkbox"><span class="pill-check-text">Post Graduation</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+            <div id="eduPg" class="vertical-fields hidden">
+            <div class="two-col">
+              <div class="field"><label class="float-field"><input id="pgSubject" type="text" aria-label="Post Graduation Subject" placeholder=" " ><span>Post Graduation Subject</span></label><small id="pgSubjectError" class="field-error"></small></div>
+              <div class="field"><label class="float-field"><input id="pgCollege" type="text" aria-label="Post Graduation College/University" placeholder=" " ><span>Post Graduation College/University</span></label><small id="pgCollegeError" class="field-error"></small></div>
+            </div>
+            <div class="two-col">
+              <div class="field"><label class="float-field"><input id="pgYear" type="text" aria-label="Post Graduation Passing Year" placeholder=" " inputmode="numeric" maxlength="4"><span>Post Graduation Passing Year</span></label><small id="pgYearError" class="field-error"></small></div>
+              <div class="field"><label class="float-field"><input id="pgPercentage" type="text" aria-label="Post Graduation Percentage" placeholder=" " ><span>Post Graduation Percentage</span></label></div>
+            </div>
+            </div>
+            <div class="field step-toggle" id="specialToggleField"><label class="pill-check"><input id="specialToggle" type="checkbox"><span class="pill-check-text">Special Courses</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+            <div class="field hidden" id="eduSpecial"><div class="selection-box cols-3 small" id="specialCourses"><label class="selection-option"><input type="checkbox" value="B. Ed"><span>B. Ed</span></label><label class="selection-option"><input type="checkbox" value="M. Ed"><span>M. Ed</span></label><label class="selection-option"><input type="checkbox" value="D. Ed"><span>D. Ed</span></label><label class="selection-option"><input type="checkbox" value="D. El. Ed."><span>D. El. Ed.</span></label><label class="selection-option"><input type="checkbox" value="D. P. Ed"><span>D. P. Ed</span></label><label class="selection-option"><input type="checkbox" value="M. P. Ed"><span>M. P. Ed</span></label><label class="selection-option"><input type="checkbox" value="B. P. Ed"><span>B. P. Ed</span></label><label class="selection-option"><input type="checkbox" value="NET/IRF"><span>NET/IRF</span></label><label class="selection-option"><input type="checkbox" value="Phd"><span>Phd</span></label><label class="selection-option"><input type="checkbox" value="PHE"><span>PHE</span></label></div></div>
+            <div class="field step-toggle" id="disabilityToggleField"><label class="pill-check"><input id="disabilityToggle" type="checkbox"><span class="pill-check-text">Special Child Disability</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+            <div class="field hidden" id="eduDisability"><div class="selection-box cols-2 small" id="disability"><label class="selection-option"><input type="checkbox" value="Specific Learning Disability (SLD)"><span>Specific Learning Disability (SLD)</span></label><label class="selection-option"><input type="checkbox" value="Health Impairment"><span>Health Impairment</span></label><label class="selection-option"><input type="checkbox" value="Autism Spectrum Disorder"><span>Autism Spectrum Disorder</span></label><label class="selection-option"><input type="checkbox" value="Emotional disturbance"><span>Emotional disturbance</span></label><label class="selection-option"><input type="checkbox" value="Speech or language impairment"><span>Speech or language impairment</span></label><label class="selection-option"><input type="checkbox" value="Shadow Teacher"><span>Shadow Teacher</span></label></div></div>
+          </div>
+        </section>
+
+
+        <section class="section" id="sectionTeaching">
+          <div class="section-title centered-section-title"><div><h2>Teaching Preferences</h2></div></div>
+          <div class="vertical-fields">
+            <div class="field step-toggle" id="experienceToggleField"><label class="pill-check"><input id="experienceToggle" type="checkbox"><span class="pill-check-text">Experience</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+            <div id="experienceFields" class="hidden">
+              <div class="field" id="expContent"><label class="float-field"><input id="experience" type="number" aria-label="Experience (In Years)" min="0" max="60" step="0.1" placeholder=" " required><span>Experience (In Years)</span></label><small id="experienceError" class="field-error"></small></div>
+            </div>
+            <div class="field step-toggle" id="classesToggleField"><label class="pill-check"><input id="classesToggle" type="checkbox"><span class="pill-check-text">Classes You Teach</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+            <div class="field hidden" id="teachClasses"><div class="selection-box cols-2 small" id="classesTeach"><label class="selection-option"><input type="checkbox" value="1st-5th"><span>1st-5th</span></label><label class="selection-option"><input type="checkbox" value="6th-8th"><span>6th-8th</span></label><label class="selection-option"><input type="checkbox" value="9th-10th"><span>9th-10th</span></label><label class="selection-option"><input type="checkbox" value="11th-12th"><span>11th-12th</span></label></div><small id="classesError" class="field-error"></small></div>
+            <div class="field step-toggle" id="subjectsToggleField"><label class="pill-check"><input id="subjectsToggle" type="checkbox"><span class="pill-check-text">Subjects You Teach</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+            <div class="field hidden" id="teachSubjects"><div class="selection-box cols-3m2 small" id="subjectsTeach"><label class="selection-option"><input type="checkbox" value="Accountancy"><span>Accountancy</span></label><label class="selection-option"><input type="checkbox" value="Arts & Craft"><span>Arts & Craft</span></label><label class="selection-option"><input type="checkbox" value="Biology"><span>Biology</span></label><label class="selection-option"><input type="checkbox" value="Biology/Biotechnology"><span>Biology/Biotechnology</span></label><label class="selection-option"><input type="checkbox" value="Business Administration (BBA/MBA)"><span>Business Administration (BBA/MBA)</span></label><label class="selection-option"><input type="checkbox" value="Business Studies"><span>Business Studies</span></label><label class="selection-option"><input type="checkbox" value="Chemistry"><span>Chemistry</span></label><label class="selection-option"><input type="checkbox" value="Civis"><span>Civis</span></label><label class="selection-option"><input type="checkbox" value="Computer Applications"><span>Computer Applications</span></label><label class="selection-option"><input type="checkbox" value="Computer Science"><span>Computer Science</span></label><label class="selection-option"><input type="checkbox" value="Dance"><span>Dance</span></label><label class="selection-option"><input type="checkbox" value="Economics"><span>Economics</span></label><label class="selection-option"><input type="checkbox" value="English"><span>English</span></label><label class="selection-option"><input type="checkbox" value="Environmental Studies (EVS)"><span>Environmental Studies (EVS)</span></label><label class="selection-option"><input type="checkbox" value="Geography"><span>Geography</span></label><label class="selection-option"><input type="checkbox" value="Hindi"><span>Hindi</span></label><label class="selection-option"><input type="checkbox" value="History"><span>History</span></label><label class="selection-option"><input type="checkbox" value="Home Science"><span>Home Science</span></label><label class="selection-option"><input type="checkbox" value="Informatics Practices"><span>Informatics Practices</span></label><label class="selection-option"><input type="checkbox" value="Information Technology"><span>Information Technology</span></label><label class="selection-option"><input type="checkbox" value="Marathi"><span>Marathi</span></label><label class="selection-option"><input type="checkbox" value="Mathematics"><span>Mathematics</span></label><label class="selection-option"><input type="checkbox" value="Music"><span>Music</span></label><label class="selection-option"><input type="checkbox" value="Philosophy"><span>Philosophy</span></label><label class="selection-option"><input type="checkbox" value="Physical Education"><span>Physical Education</span></label><label class="selection-option"><input type="checkbox" value="Physics"><span>Physics</span></label><label class="selection-option"><input type="checkbox" value="Political Science"><span>Political Science</span></label><label class="selection-option"><input type="checkbox" value="Psychology"><span>Psychology</span></label><label class="selection-option"><input type="checkbox" value="Sanskrit"><span>Sanskrit</span></label><label class="selection-option"><input type="checkbox" value="Sciences"><span>Sciences</span></label><label class="selection-option"><input type="checkbox" value="Sociology"><span>Sociology</span></label><label class="selection-option"><input type="checkbox" value="French"><span>French</span></label><label class="selection-option"><input type="checkbox" value="German"><span>German</span></label><label class="selection-option"><input type="checkbox" value="Spanish"><span>Spanish</span></label><label class="selection-option"><input type="checkbox" value="Korean"><span>Korean</span></label><label class="selection-option"><input type="checkbox" value="Punjabi"><span>Punjabi</span></label><label class="selection-option"><input type="checkbox" value="Yoga & Gymnastics"><span>Yoga & Gymnastics</span></label></div><small id="subjectsError" class="field-error"></small></div>
+            <div class="field step-toggle" id="boardsToggleField"><label class="pill-check"><input id="boardsToggle" type="checkbox"><span class="pill-check-text">Boards You Teach</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+            <div class="field hidden" id="teachBoards"><div class="selection-box cols-3 small" id="boardsTeach"><label class="selection-option"><input type="checkbox" value="IB"><span>IB</span></label><label class="selection-option"><input type="checkbox" value="ICSE"><span>ICSE</span></label><label class="selection-option"><input type="checkbox" value="CBSE"><span>CBSE</span></label><label class="selection-option"><input type="checkbox" value="IGCSE"><span>IGCSE</span></label><label class="selection-option"><input type="checkbox" value="State Board"><span>State Board</span></label></div><small id="boardsError" class="field-error"></small></div>
+          </div>
+        </section>
+
+
+        <section class="section" id="sectionAreas">
+          <div class="field step-toggle" id="areasToggleField"><label class="pill-check"><input id="areasToggle" type="checkbox"><span class="pill-check-text">Areas You Teach</span><span class="pill-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></label></div>
+          <div class="vertical-fields">
+            <div id="areasContent" class="vertical-fields hidden">
+            <div class="field"><select id="location" aria-label="Location"><option value="">Select Location</option><option>New Delhi</option><option>Navi Mumbai</option><option>Mumbai</option><option>Pune</option><option>Faridabad</option><option>Ghaziabad</option><option>Noida</option><option>Gurugram</option></select></div>
+            <div class="field"><label class="float-field"><input id="city" type="text" aria-label="City" placeholder=" " maxlength="80" required><span>City</span></label><small id="cityError" class="field-error"></small></div>
+            <div class="field"><label class="float-field is-area"><textarea id="address" aria-label="Present Address" rows="4" maxlength="400" placeholder=" " required></textarea><span>Present Address</span></label><small id="addressError" class="field-error"></small></div>
+            <div class="field"><label class="float-field"><input id="pinCode" type="text" aria-label="Pin Code" inputmode="numeric" maxlength="6" placeholder=" " required><span>Pin Code</span></label><small id="pinError" class="field-error"></small></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section last-section" id="sectionTerms">
+
+          <label class="terms">
+            <input id="terms" type="checkbox" required>
+            <span class="terms-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="seal" d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81C14.67 2.63 13.43 1.75 12 1.75s-2.67.88-3.33 2.19c-1.4-.46-2.91-.2-3.92.81s-1.26 2.52-.8 3.91C2.63 9.33 1.75 10.57 1.75 12s.88 2.67 2.2 3.34c-.46 1.39-.21 2.9.8 3.91s2.52 1.26 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.68-.88 3.34-2.19c1.39.45 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34Z"/><path class="tick" d="m8 12.3 2.7 2.7L16.2 9.5"/></svg></span>
+            <span class="terms-text">
+              I confirm that the information provided by me is accurate and I agree to the
+              <button id="termsButton" type="button" class="inline-link">Terms & Conditions</button>
+              and privacy requirements of Urbantutorsite.
+            </span>
+          </label>
+          <small id="termsError" class="field-error"></small>
+
+          <div class="submit-area">
+            <button id="registerButton" class="submit" type="submit">
+              <span id="registerText">Register</span>
+              <span id="registerLoader" class="loader hidden"></span>
+            </button>
+          </div>
+
+          <div id="registrationMessage" class="message"></div>
+
+        </section>
+
+      </form>
+    </div>
+
+  </div>
+</main>
+
+
+<!-- =====================================================
+     PAGE 3 : OTP  (used for BOTH registration and login)
+===================================================== -->
+
+<main id="otpPage" class="page hidden">
+  <div class="container">
+
+    <div class="form-card otp-card">
+
+      <!-- kept for the script, never shown -->
+      <div class="otp-hidden" aria-hidden="true"><div id="otpEyebrow"></div><h2 id="otpTitle"></h2></div>
+
+      <p class="otp-sent">Code sent to <strong id="emailDisplay" class="otp-email"></strong>.</p>
+
+      <form id="otpForm" novalidate>
+
+        <div class="field">
+          <!-- the real field the script reads; the six boxes below drive it -->
+          <input id="otp" class="otp-input" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="Enter OTP" aria-label="OTP" tabindex="-1" required>
+          <div id="otpBoxes" class="otp-boxes" role="group" aria-label="6-digit code">
+            <input class="otp-box" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="1" aria-label="Digit 1">
+            <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2">
+            <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3">
+            <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4">
+            <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5">
+            <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 6">
+          </div>
+          <small id="otpError" class="field-error center"></small>
+        </div>
+
+        <div class="submit-area" id="otpSubmitArea" style="display:none;">
+          <button id="verifyOtpButton" class="submit" type="submit">
+            <span id="verifyOtpText">Verify OTP</span>
+            <span id="verifyOtpLoader" class="loader hidden"></span>
+          </button>
+        </div>
+
+      </form>
+
+      <div id="otpMessage" class="message"></div>
+
+      <div class="otp-pair">
+        <button id="otpBackButton" class="otp-pair-btn" type="button">Change Email</button>
+        <button id="resendButton" class="otp-pair-btn" type="button" disabled>Resend Code</button>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+
+<!-- =====================================================
+     PAGE 4 : SUCCESS  (registration complete / login complete)
+===================================================== -->
+
+<main id="successPage" class="page hidden">
+  <div class="container">
+    <div class="form-card success-card">
+
+      <div class="success-mark">✓</div>
+
+      <div class="kicker"><span id="successEyebrow">SUCCESS</span></div>
+
+      <h1 id="successTitle">You're verified.</h1>
+
+      <p id="successDescription" class="success-description">Your request has been completed successfully.</p>
+
+      <div class="registered-email">
+        <span>Email</span>
+        <strong id="successEmail"></strong>
+      </div>
+
+      <!-- Shown only after a tutor LOGIN -->
+      <div id="successIdBox" class="registered-email hidden">
+        <span>Tutor ID</span>
+        <strong id="successTutorId"></strong>
+      </div>
+
+      <a class="submit login-button" href="index.html">Continue to Home</a>
+
+    </div>
+  </div>
+</main>
+
+<!-- Reusable Footer -->
+<div id="site-footer"></div>
+
+<!-- =====================================================
+     TERMS MODAL
+===================================================== -->
+
+<div id="termsModal" class="modal hidden">
+  <div class="modal-overlay"></div>
+  <div class="modal-box">
+
+    <button id="closeTerms" class="modal-close" type="button">×</button>
+
+    <div class="kicker">Urbantutorsite</div>
+
+    <h2>Terms & Conditions</h2>
+
+    <p>By registering, you confirm that the information and documents submitted by you are accurate and belong to you or have been provided with appropriate permission.</p>
+
+    <p>Your information and documents may be used for tutor verification, profile creation, tutor matching and communication regarding requested services.</p>
+
+    <p>You agree not to submit misleading, fraudulent or unlawful information.</p>
+
+    <button id="acceptTerms" class="submit" type="button">I Understand</button>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js?v=20260930r"></script>
+<script src="js/header.js?v=20260930a"></script>
+<script src="js/footer.js?v=20260928b"></script>
+<script src="js/otp-boxes.js?v=20260930b" defer></script>
+<script src="js/pages/tutor-registration.js?v=20261001g" defer></script>
+
+</body>
+</html>

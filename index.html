@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- =====================================================
+       BASIC PAGE INFORMATION
+       ===================================================== -->
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Urbantutorsite</title>
+
+
+
+  <!-- =====================================================
+       GLOBAL COMPONENT STYLES
+       ===================================================== -->
+
+  <link rel="stylesheet" href="css/header.css?v=20260930a">
+  <link rel="stylesheet" href="css/footer.css?v=20260928b">
+
+
+
+  <!-- =====================================================
+       HOMEPAGE STYLES
+       ===================================================== -->
+
+
+  <!-- -----------------------------------------------------
+       LANDING (visitors who are NOT logged in)
+       -----------------------------------------------------
+       Live figures and charts from Supabase
+       (get_home_stats).
+       ----------------------------------------------------- -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600&display=swap"
+  >
+
+  <link
+    rel="stylesheet"
+    href="homepage/landing/landing.css?v=20260928b"
+  >
+
+
+
+  <!-- -----------------------------------------------------
+       DASHBOARD (logged-in student / tutor homepage)
+       ----------------------------------------------------- -->
+
+  <link
+    rel="stylesheet"
+    href="homepage/dashboard/dashboard.css?v=20260930s"
+  >
+
+
+</head>
+
+
+
+<body data-page="home">
+
+
+  <!-- =====================================================
+       GLOBAL HEADER
+       ===================================================== -->
+
+  <div id="site-header"></div>
+
+
+
+  <!-- =====================================================
+       HOMEPAGE
+       =====================================================
+       Exactly one of these two is shown:
+         - nobody logged in  -> LANDING
+         - student / tutor   -> DASHBOARD
+       ===================================================== -->
+
+  <main id="homepage">
+
+    <div id="home-landing"></div>
+
+    <div id="home-dashboard"></div>
+
+  </main>
+
+
+
+  <!-- =====================================================
+       GLOBAL FOOTER
+       ===================================================== -->
+
+  <div id="site-footer"></div>
+
+
+
+  <!-- =====================================================
+       GLOBAL JAVASCRIPT
+       ===================================================== -->
+
+  <!-- Supabase (database + login) - must load before every script below -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script src="js/supabase-client.js?v=20260930r"></script>
+
+  <script src="js/header.js?v=20260930a"></script>
+
+  <script src="js/footer.js?v=20260928b"></script>
+
+
+
+  <!-- =====================================================
+       HOMEPAGE JAVASCRIPT
+       ===================================================== -->
+
+  <!-- Landing (+ Chart.js for its charts) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+  <script src="homepage/landing/landing.js?v=20260930a"></script>
+
+  <!-- Dashboard -->
+  <script src="homepage/dashboard/dashboard.js?v=20260930z"></script>
+
+
+
+  <!-- =====================================================
+       HOMEPAGE LOADER
+       =====================================================
+       Loads the landing OR the dashboard HTML into its box,
+       then starts that component.
+       ===================================================== -->
+
+  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      async function () {
+
+
+        /* Fetch a component's HTML into its box, then start it.
+           A failure is logged and never breaks header / footer. */
+
+        async function loadComponent(containerId, filePath, componentObject, componentName) {
+
+          const container = document.getElementById(containerId);
+
+          if (!container) return;
+
+          try {
+
+            const response = await fetch(filePath);
+
+            if (!response.ok) {
+              throw new Error(`Could not load ${filePath}`);
+            }
+
+            container.innerHTML = await response.text();
+
+            if (componentObject && typeof componentObject.init === "function") {
+              componentObject.init();
+            }
+
+          } catch (error) {
+
+            console.error(`${componentName} component failed to load:`, error);
+
+          }
+
+        }
+
+
+
+        /* Who is logged in: "" | "student" | "tutor" (js/header.js) */
+
+        const role =
+          window.UrbanSession ? window.UrbanSession.role() : "";
+
+        document.body.dataset.role = role || "guest";
+
+
+
+        /* ---------------- VISITOR -> LANDING ---------------- */
+
+        if (!role) {
+
+          // Visitors always get the DESKTOP layout of the homepage
+          // (phones and tablets show it scaled to fit, like the
+          // Admin Panel). Logged-in views keep the normal layout.
+          const viewport = document.querySelector('meta[name="viewport"]');
+          if (viewport) viewport.setAttribute("content", "width=1200");
+
+          document.getElementById("home-dashboard")?.remove();
+
+          await loadComponent(
+            "home-landing",
+            "homepage/landing/landing.html",
+            window.LandingComponent,
+            "Landing"
+          );
+
+          return;
+
+        }
+
+
+
+        /* ---------------- LOGGED IN -> DASHBOARD ---------------- */
+
+        document.getElementById("home-landing")?.remove();
+
+        await loadComponent(
+          "home-dashboard",
+          "homepage/dashboard/dashboard.html",
+          window.DashboardComponent,
+          "Dashboard"
+        );
+
+
+      }
+    );
+
+  </script>
+
+
+</body>
+
+</html>

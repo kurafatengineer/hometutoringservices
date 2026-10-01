@@ -1,0 +1,1533 @@
+/* =========================================================
+   URBANTUTORSITE
+   TUTOR PROFILE — "BEAST" REDESIGN
+   Same dark brand system as the rest of the site, with a
+   richer multi-accent palette for stats / class cards.
+   Every class name and id below is identical to the markup
+   in tutorprofile.html and every hook tutor-profile.js reads
+   or writes. No selector was renamed, so no functionality
+   changes are required elsewhere on the site.
+========================================================= */
+
+:root {
+  --bg: #050505;
+  --surface: #101010;
+  --surface-2: #151515;
+  --surface-3: #1a1a1a;
+
+  --border: #292929;
+  --border-light: #353535;
+
+  --text: #f5f5f5;
+  --muted: #9a9a9a;
+  --muted-2: #6f6f6f;
+
+  --lime: #16a34a;
+  --lime-hover: #22c55e;
+  --lime-dim: rgba(22, 163, 74, 0.12);
+  --lime-line: rgba(22, 163, 74, 0.28);
+
+  --danger: #ff6868;
+  --danger-dim: rgba(255, 104, 104, 0.14);
+  --success: #72e39a;
+  --success-dim: rgba(114, 227, 154, 0.14);
+  --info: #8fa0ff;
+  --info-dim: rgba(143, 160, 255, 0.14);
+  --warn: #ffd166;
+  --warn-dim: rgba(255, 209, 102, 0.14);
+
+  /* Extra accents used by the stat rail / class-card spine /
+     subject icons in the new design. */
+  --violet: #b490ff;
+  --violet-dim: rgba(180, 144, 255, 0.14);
+  --emerald: #4fe3a8;
+  --emerald-dim: rgba(79, 227, 168, 0.14);
+  --amber: #ffc44d;
+  --amber-dim: rgba(255, 196, 77, 0.14);
+  --cyan: #5ed8e8;
+  --cyan-dim: rgba(94, 216, 232, 0.14);
+  --rose: #ff8fb0;
+  --rose-dim: rgba(255, 143, 176, 0.14);
+  --orange: #ffa15c;
+  --orange-dim: rgba(255, 161, 92, 0.14);
+  --indigo: #8f9dff;
+  --indigo-dim: rgba(143, 157, 255, 0.14);
+
+  /* Border colours for the subject pill (same rgb as each accent's
+     -dim above, just a stronger alpha), so a subject pill gets an
+     outline the same way the status pills already do. */
+  --success-line: rgba(114, 227, 154, 0.3);
+  --info-line: rgba(143, 160, 255, 0.3);
+  --emerald-line: rgba(79, 227, 168, 0.3);
+  --amber-line: rgba(255, 196, 77, 0.3);
+  --cyan-line: rgba(94, 216, 232, 0.3);
+  --rose-line: rgba(255, 143, 176, 0.3);
+  --orange-line: rgba(255, 161, 92, 0.3);
+  --indigo-line: rgba(143, 157, 255, 0.3);
+
+  --radius: 20px;
+
+  --shadow-card: 0 24px 60px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 10px 26px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  background: var(--bg);
+  color: var(--text);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  line-height: 1.5;
+
+  background-image:
+    radial-gradient(680px 420px at 82% -6%, rgba(22, 163, 74, 0.07), transparent 60%),
+    radial-gradient(900px 560px at 14% 8%, rgba(22, 163, 74, 0.04), transparent 65%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+svg {
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px 90px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   LOADING / ERROR PAGES
+========================================================= */
+
+.loading-page .container,
+.error-page .container {
+  min-height: 64vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid var(--border-light);
+  border-top-color: var(--lime);
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 6px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-page p {
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
+
+.error-page h1 {
+  margin: 0 0 6px;
+  font-size: clamp(22px, 4vw, 26px);
+  letter-spacing: -0.02em;
+}
+
+.error-page .submit {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 13px 30px;
+  border-radius: 999px;
+  background: var(--lime);
+  color: #050505;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 10px 26px rgba(22, 163, 74, 0.18);
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.error-page .submit:hover {
+  background: var(--lime-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(22, 163, 74, 0.24);
+}
+
+
+/* =========================================================
+   PROFILE CARD
+========================================================= */
+
+.profile-card {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(165deg, var(--surface-3) 0%, var(--surface) 55%, var(--surface-2) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 34px 28px 28px;
+  margin-bottom: 36px;
+
+  box-shadow: var(--shadow-card);
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--lime) 45%, transparent 90%);
+  opacity: 0.7;
+}
+
+.profile-card-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+
+.profile-avatar {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--lime-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 6px;
+
+  box-shadow:
+    0 0 0 6px rgba(22, 163, 74, 0.06),
+    0 0 26px rgba(22, 163, 74, 0.18),
+    0 8px 22px rgba(0, 0, 0, 0.4);
+}
+
+.profile-avatar span {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--lime);
+}
+
+.profile-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted-2);
+}
+
+.profile-card-center h1 {
+  margin: 4px 0 2px;
+  font-size: clamp(23px, 4vw, 29px);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.profile-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border: 1px solid var(--border-light);
+  background: var(--surface-2);
+  color: var(--text);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.chip-muted {
+  color: var(--muted);
+  background: transparent;
+}
+
+.chip-verified,
+.chip-pending,
+.chip-rejected {
+  position: relative;
+  padding-left: 22px;
+  border: 1px solid transparent;
+  text-transform: capitalize;
+}
+
+.chip-verified::before,
+.chip-pending::before,
+.chip-rejected::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.chip-verified   { color: var(--success); background: var(--success-dim); border-color: rgba(114, 227, 154, 0.3); }
+.chip-verified::before { background: var(--success); box-shadow: 0 0 0 3px var(--success-dim); }
+
+.chip-pending    { color: var(--warn); background: var(--warn-dim); border-color: rgba(255, 209, 102, 0.3); }
+.chip-pending::before { background: var(--warn); box-shadow: 0 0 0 3px var(--warn-dim); }
+
+.chip-rejected   { color: var(--danger); background: var(--danger-dim); border-color: rgba(255, 104, 104, 0.3); }
+.chip-rejected::before { background: var(--danger); box-shadow: 0 0 0 3px var(--danger-dim); }
+
+.logout-button {
+  margin-top: 18px;
+  width: 100%;
+  max-width: 420px;
+  padding: 13px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--border-light);
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.logout-button:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+  background: var(--danger-dim);
+}
+
+.profile-stats {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  min-height: 74px;
+  padding: 0;
+  overflow: hidden;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.stat:hover {
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+}
+
+/* The rotated accent rail on the left of every stat tile,
+   colour-coded per metric and carrying its own label so the
+   tile reads at a glance without extra copy. Fixed width plus
+   the tile's min-height guarantees the rotated word always has
+   enough room and is never clipped by the tile's overflow:hidden. */
+.stat-rail {
+  flex: 0 0 auto;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat > div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 14px 18px 14px 0;
+}
+
+.stat-rail span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.stat[data-accent="green"]  .stat-rail { background: rgba(114, 227, 154, 0.16); }
+.stat[data-accent="green"]  .stat-rail span { color: var(--success); }
+.stat[data-accent="blue"]   .stat-rail { background: rgba(143, 160, 255, 0.16); }
+.stat[data-accent="blue"]   .stat-rail span { color: var(--info); }
+.stat[data-accent="gold"]   .stat-rail { background: rgba(255, 196, 77, 0.16); }
+.stat[data-accent="gold"]   .stat-rail span { color: var(--amber); }
+.stat[data-accent="purple"] .stat-rail { background: rgba(180, 144, 255, 0.16); }
+.stat[data-accent="purple"] .stat-rail span { color: var(--violet); }
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--lime);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.stat-label {
+  display: none;
+}
+
+
+/* =========================================================
+   CLASSES SECTION
+========================================================= */
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.filter-tab {
+  flex: 1 1 0;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 6px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: clamp(11px, 2.6vw, 13px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.filter-tab svg {
+  flex: 0 0 auto;
+  width: clamp(13px, 3vw, 15px);
+  height: clamp(13px, 3vw, 15px);
+}
+
+.filter-tab:hover {
+  border-color: var(--border-light);
+  color: var(--text);
+}
+
+.filter-tab.active {
+  color: #050505;
+  border-color: transparent;
+  background: linear-gradient(120deg, var(--indigo), var(--violet));
+  box-shadow: 0 8px 20px rgba(143, 157, 255, 0.25);
+}
+
+.classes-list {
+  display: grid;
+  gap: 14px;
+}
+
+.class-card {
+  position: relative;
+  display: flex;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.class-card:hover {
+  border-color: var(--border-light);
+}
+
+/* The coloured "Demo ID" spine, keyed to the subject icon's
+   accent colour so each card reads distinctly at a glance. */
+.class-spine {
+  flex: 0 0 auto;
+  width: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 0;
+}
+
+.class-spine-id,
+.class-spine-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+
+.class-spine-id {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.class-spine-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.class-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 18px 20px 18px 6px;
+  display: grid;
+  gap: 14px;
+}
+
+/* TOP ROW: subject pill (left) + status pill (right). Both use
+   the exact same .status-badge component, just recoloured per
+   subject — so "Subject" always reads visually identical to
+   "Demo Scheduled" / "Completed" / etc. flex-wrap stays off so
+   this never collapses to two lines; each pill truncates with
+   an ellipsis instead if the card gets too narrow to fit both. */
+.class-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.class-row-top .status-badge {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px 4px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.status-badge::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Subject pill: always a plain black chip, never colour-keyed
+   to the subject — keeps it visually distinct from every
+   status pill, "Completed" included. */
+.subject-badge { background: #000; color: var(--text); border-color: var(--border-light); }
+
+.status-running               { background: rgba(22, 163, 74, 0.14); color: var(--lime); border-color: rgba(22, 163, 74, 0.3); }
+.status-demo-scheduled        { background: var(--violet-dim);  color: var(--violet);  border-color: rgba(180, 144, 255, 0.3); }
+.status-processing            { background: var(--orange-dim);  color: var(--orange);  border-color: rgba(255, 161, 92, 0.3); }
+.status-completed             { background: var(--surface-2);   color: var(--muted);   border-color: var(--border-light); }
+.status-declined              { background: var(--danger-dim);  color: var(--danger);  border-color: rgba(255, 104, 104, 0.3); }
+
+/* The "Demo ID" spine picks up the same status colour as the
+   status-badge above, so the two always agree at a glance. */
+.class-spine.status-running               { background: rgba(22, 163, 74, 0.14); color: var(--lime); }
+.class-spine.status-demo-scheduled        { background: var(--violet-dim);  color: var(--violet); }
+.class-spine.status-processing            { background: var(--orange-dim);  color: var(--orange); }
+
+/* "Applied" - the tutor has applied, nothing scheduled yet. */
+.status-applied                           { background: var(--orange-dim);  color: var(--orange);  border-color: rgba(255, 161, 92, 0.3); }
+.class-spine.status-applied               { background: var(--orange-dim);  color: var(--orange); }
+
+/* Middle layer, third row: takes the WHOLE line of the card.
+   Location (address + city) in small regular text, followed by
+   the PIN Code in bold. */
+.class-detail-location {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.class-detail-location .class-detail-value {
+  flex: 1 1 auto;
+  display: block;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.location-address,
+.location-sep {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.location-pin {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* Third layer: one centred status line (no box). For "Demo
+   Scheduled" it's the calendar icon + date/time in bold. */
+.class-row-message {
+  justify-content: center;
+}
+
+.class-status-message {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+.class-status-message.strong {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.class-status-message svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+}
+.class-spine.status-completed             { background: var(--surface-2);   color: var(--muted); }
+.class-spine.status-declined              { background: var(--danger-dim);  color: var(--danger); }
+
+.class-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.class-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  min-width: 0;
+}
+
+.class-detail-icon {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.class-detail-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.class-detail-value {
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* BOTTOM ROW: preferred-timing (left half) + the demo date/time
+   badge (right half). Always a fixed 50/50 split regardless of
+   how much content either side has — a long timing list scrolls
+   sideways inside its own half (with a visible slim scrollbar,
+   the "slider") instead of pushing into the date badge's half. */
+.class-row-bottom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.timing-col {
+  flex: 0 1 50%;
+  max-width: 50%;
+  min-width: 0;
+}
+
+/* Non-"Demo Scheduled" cards have no date/time block, so
+   Preferred Timing takes the full width of the bottom row. */
+.timing-col-full {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+/* Date/Time column, "Demo Scheduled" cards only: bottom-left,
+   the other 50% (Preferred Timing sits on the right, per
+   .timing-col above). */
+.class-when-col {
+  flex: 0 1 50%;
+  max-width: 50%;
+  min-width: 0;
+}
+
+.timing-empty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+}
+
+.timing-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-light) transparent;
+}
+
+/* Visible slim scrollbar ("slider") so a long Preferred Timing
+   list is discoverable as scrollable, not hidden/invisible. */
+.timing-chips::-webkit-scrollbar {
+  height: 4px;
+}
+
+.timing-chips::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.timing-chips::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 999px;
+}
+
+.timing-icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  color: var(--muted-2);
+}
+
+.timing-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.timing-chip {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.timing-chip svg {
+  width: 13px;
+  height: 13px;
+}
+
+.timing-chip.am { background: var(--amber-dim); color: var(--amber); }
+.timing-chip.pm { background: var(--indigo-dim); color: var(--indigo); }
+
+.class-when {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border-radius: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  box-sizing: border-box;
+}
+
+/* "Not scheduled" — icon + text only, no box around it. */
+.class-when-empty {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12.5px;
+}
+
+.class-when-empty svg {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+}
+
+.class-when svg {
+  width: 17px;
+  height: 17px;
+  color: var(--muted);
+  flex: 0 0 auto;
+}
+
+.class-when > div {
+  min-width: 0;
+}
+
+.class-when-day {
+  font-size: 11px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.class-when-time {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.classes-empty {
+  background: var(--surface);
+  border: 1px dashed var(--border-light);
+  border-radius: 16px;
+  padding: 34px 20px;
+  text-align: center;
+}
+
+.classes-empty p {
+  margin: 4px 0;
+}
+
+.classes-empty p:first-child {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 560px) {
+
+  .container {
+    padding: 28px 16px 70px;
+  }
+
+  .profile-card {
+    padding: 24px 18px 20px;
+  }
+
+  .profile-card-center {
+    padding: 0;
+  }
+
+  .profile-avatar {
+    width: 72px;
+    height: 72px;
+  }
+
+  .profile-avatar span {
+    font-size: 23px;
+  }
+
+  .profile-card-center h1 {
+    font-size: 21px;
+  }
+
+  .class-body {
+    padding: 16px 14px 16px 4px;
+    gap: 12px;
+  }
+
+  .class-row-top .status-badge {
+    font-size: 10.5px;
+    padding: 4px 9px 4px 8px;
+  }
+
+  .class-row-bottom {
+    gap: 6px;
+  }
+
+  .timing-chip {
+    font-size: 11.5px;
+    padding: 5px 9px;
+  }
+
+  .class-when {
+    padding: 7px 8px;
+    gap: 5px;
+  }
+
+  .class-when svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .class-when-time {
+    font-size: 12.5px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+
+  .stat,
+  .class-card,
+  .logout-button,
+  .filter-tab,
+  .error-page .submit {
+    transition: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   TUTOR PROFILE - ADDITIONS
+   Everything below is scoped to the Tutor Profile page
+   (body[data-page="tutorprofile"]) because the Student Profile
+   also loads this stylesheet and has its own versions.
+========================================================= */
+
+/* ---------- filter: icon tab bar (one line, 7 tabs) ---------- */
+
+[data-page="tutorprofile"] .filter-tabs.icon-tabs {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  padding: 6px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+[data-page="tutorprofile"] .icon-tabs .filter-tab {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
+  padding: 9px 2px 8px;
+  border: 0;
+  border-radius: 12px;
+  background: none;
+  box-shadow: none;
+  color: var(--muted-2);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+  cursor: pointer;
+}
+
+[data-page="tutorprofile"] .icon-tabs .filter-tab svg {
+  width: 20px;
+  height: 20px;
+}
+
+[data-page="tutorprofile"] .icon-tabs .filter-tab-label {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-page="tutorprofile"] .icon-tabs .filter-tab:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+[data-page="tutorprofile"] .icon-tabs .filter-tab.active {
+  color: var(--lime);
+  background: var(--lime-dim);
+  box-shadow: inset 0 0 0 1px var(--lime-line);
+}
+
+
+/* ---------- card layout ---------- */
+
+[data-page="tutorprofile"] .class-card {
+  --tc-top: 18px;
+  --tc-right: 20px;
+  --tc-bottom: 18px;
+  --tc-left: 6px;
+}
+
+/* one-column body: a long row can never widen the card and push the
+   status pill to the right */
+[data-page="tutorprofile"] .class-body {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+[data-page="tutorprofile"] .class-row-top .subject-badge {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+[data-page="tutorprofile"] .class-row-top .status-badge:not(.subject-badge) {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+
+/* ---------- fourth layer: Accept | Reject, 50% each ---------- */
+
+[data-page="tutorprofile"] .tutor-actions {
+  display: flex;
+  align-items: stretch;
+  margin: 0 calc(var(--tc-right) * -1) calc(var(--tc-bottom) * -1) calc(var(--tc-left) * -1);
+  border-top: 1px solid var(--border);
+}
+
+[data-page="tutorprofile"] .tutor-btn {
+  flex: 0 0 50%;
+  width: 50%;
+  min-width: 0;
+  padding: 15px 10px;
+  border: 0;
+  border-radius: 0;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+[data-page="tutorprofile"] .tutor-btn + .tutor-btn {
+  border-left: 1px solid var(--border);
+}
+
+[data-page="tutorprofile"] .tutor-btn-accept {
+  background: var(--lime);
+  color: #050505;
+}
+
+[data-page="tutorprofile"] .tutor-btn-accept:hover:not(:disabled) {
+  background: var(--lime-hover);
+}
+
+[data-page="tutorprofile"] .tutor-btn-reject {
+  background: var(--danger-dim);
+  color: var(--danger);
+}
+
+[data-page="tutorprofile"] .tutor-btn-reject:hover:not(:disabled) {
+  background: rgba(255, 104, 104, 0.24);
+}
+
+/* disabled = the same grey everywhere; the tap passes through to the
+   card, so a disabled button collapses it like any other spot */
+[data-page="tutorprofile"] .tutor-btn:disabled {
+  background: var(--surface-3);
+  color: var(--muted-2);
+  cursor: pointer;
+  pointer-events: none;
+}
+
+
+/* ---------- collapsed / expanded ---------- */
+
+[data-page="tutorprofile"] .class-card[data-card] {
+  cursor: pointer;
+}
+
+[data-page="tutorprofile"] .class-card[data-card]:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: -2px;
+}
+
+[data-page="tutorprofile"] .class-mini {
+  display: none;
+}
+
+[data-page="tutorprofile"] .class-card.is-collapsed .class-body > *:not(.class-mini) {
+  display: none !important;
+}
+
+/* collapsed: Subject pill on the left, Class pill on the right -
+   the same pills (with the dot) as the Student Profile. The Medium
+   pill takes the card's status colour. */
+[data-page="tutorprofile"] .class-card.is-collapsed .class-mini {
+  display: flex;
+}
+
+/* collapsed card: the whole card takes the tuition's status colour */
+[data-page="tutorprofile"] .class-card.is-collapsed.tone-applied {
+  background: var(--orange-dim);
+  border-color: rgba(255, 161, 92, 0.3);
+}
+
+[data-page="tutorprofile"] .class-card.is-collapsed.tone-demo-scheduled {
+  background: var(--violet-dim);
+  border-color: rgba(180, 144, 255, 0.3);
+}
+
+[data-page="tutorprofile"] .class-card.is-collapsed.tone-processing {
+  background: var(--orange-dim);
+  border-color: rgba(255, 161, 92, 0.3);
+}
+
+[data-page="tutorprofile"] .class-card.is-collapsed.tone-running {
+  background: rgba(22, 163, 74, 0.14);
+  border-color: rgba(22, 163, 74, 0.3);
+}
+
+[data-page="tutorprofile"] .class-card.is-collapsed.tone-completed {
+  background: var(--surface-2);
+  border-color: var(--border-light);
+}
+
+[data-page="tutorprofile"] .class-card.is-collapsed.tone-declined {
+  background: var(--danger-dim);
+  border-color: rgba(255, 104, 104, 0.3);
+}
+
+[data-page="tutorprofile"] .class-card.is-collapsed .class-body {
+  padding: 14px 16px 14px 14px;
+}
+
+[data-page="tutorprofile"] .class-card.is-collapsed .class-spine {
+  width: 10px;
+  padding: 0;
+}
+
+[data-page="tutorprofile"] .class-card.is-collapsed .class-spine > * {
+  display: none;
+}
+
+
+@media (max-width: 560px) {
+
+  [data-page="tutorprofile"] .class-card {
+    --tc-top: 16px;
+    --tc-right: 14px;
+    --tc-bottom: 16px;
+    --tc-left: 4px;
+  }
+
+}
+
+/* small screens: icons only in the filter bar */
+@media (max-width: 460px) {
+
+  [data-page="tutorprofile"] .filter-tabs.icon-tabs {
+    padding: 5px;
+    gap: 2px;
+  }
+
+  [data-page="tutorprofile"] .icon-tabs .filter-tab {
+    padding: 11px 0;
+  }
+
+  [data-page="tutorprofile"] .icon-tabs .filter-tab-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+}
+
+
+/* ---------- verification notice (Tutor Profile) ---------- */
+
+[data-page="tutorprofile"] .verify-notice {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 209, 102, 0.35);
+  background: var(--warn-dim);
+  color: var(--warn);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-align: center;
+}
+
+
+/* Location tile: value text aligned to the right. */
+.stat[data-accent="purple"] {
+  flex-direction: row-reverse;
+}
+
+.stat[data-accent="purple"] > div:last-child {
+  flex: 1;
+  text-align: right;
+  padding: 14px 0 14px 18px;
+}
+
+
+/* One payments card per tuition: date left, amount right, total at the
+   bottom right. */
+.pay-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pay-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 13.5px;
+}
+
+.pay-date {
+  color: var(--muted);
+  text-align: left;
+}
+
+.pay-amount {
+  color: var(--text);
+  font-weight: 700;
+  text-align: right;
+}
+
+.pay-total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-light);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.pay-total strong {
+  color: var(--lime);
+  font-size: 15px;
+}
+
+/* collapsed: "Payments" left, total amount right - plain text, no dot;
+   expanded: only the lines and the total. */
+.payment-card .pay-mini {
+  display: none;
+}
+
+body .class-card.payment-card.is-collapsed .class-body > .pay-mini {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+body .class-card.payment-card.is-collapsed .class-body > *:not(.pay-mini) {
+  display: none !important;
+}
+
+.tuition-stack > .class-card {
+  --cut: 12px;
+  --cut-tl: radial-gradient(circle at 0 0, transparent var(--cut), #000 calc(var(--cut) + 0.5px));
+  --cut-tr: radial-gradient(circle at 100% 0, transparent var(--cut), #000 calc(var(--cut) + 0.5px));
+  --cut-bl: radial-gradient(circle at 0 100%, transparent var(--cut), #000 calc(var(--cut) + 0.5px));
+  --cut-br: radial-gradient(circle at 100% 100%, transparent var(--cut), #000 calc(var(--cut) + 0.5px));
+  border-radius: 0;
+}
+
+.tuition-stack > .class-card:first-child {
+  border-radius: 16px 16px 0 0;
+  border-bottom: 0;
+  -webkit-mask-image: var(--cut-bl), var(--cut-br);
+  -webkit-mask-composite: source-in;
+          mask-image: var(--cut-bl), var(--cut-br);
+          mask-composite: intersect;
+}
+
+.tuition-stack > .class-card:last-child {
+  border-radius: 0 0 16px 16px;
+  -webkit-mask-image: var(--cut-tl), var(--cut-tr);
+  -webkit-mask-composite: source-in;
+          mask-image: var(--cut-tl), var(--cut-tr);
+          mask-composite: intersect;
+}
+
+.tuition-stack > .payment-card {
+  border-top: 2px dashed var(--border-light);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 60%),
+    var(--surface);
+}
+
+
+/* =========================================================
+   "SEARCH FOR NEW TUITION" BAR
+   Same full-width bar fused to the bottom of the profile card as the
+   Student Profile's "Apply for New Tuition" (here a link to the
+   Tutor Advertisement page).
+========================================================= */
+
+.profile-card {
+  --pc-x: 28px;
+  --pc-b: 28px;
+  --pc-top: 28px;
+}
+
+.apply-tuition-bar {
+  --bar-bg: var(--lime);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(100% + (var(--pc-x) * 2));
+  margin: 10px calc(var(--pc-x) * -1) calc(var(--pc-b) * -1);
+  padding: calc(var(--pc-top) + 18px) 20px 18px;
+
+  border: 0;
+  border-radius: 0 0 var(--radius) var(--radius);
+
+  background:
+    radial-gradient(circle at 100% 0,
+      transparent var(--pc-top), var(--bar-bg) calc(var(--pc-top) + 0.5px))
+      left top / var(--pc-top) var(--pc-top) no-repeat,
+    radial-gradient(circle at 0 0,
+      transparent var(--pc-top), var(--bar-bg) calc(var(--pc-top) + 0.5px))
+      right top / var(--pc-top) var(--pc-top) no-repeat,
+    linear-gradient(var(--bar-bg), var(--bar-bg))
+      left bottom / 100% calc(100% - var(--pc-top) + 1px) no-repeat;
+
+  color: #050505;
+  font: inherit;
+  font-size: 15.5px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+
+.apply-tuition-bar:hover {
+  --bar-bg: var(--lime-hover);
+}
+
+.apply-tuition-bar:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: -4px;
+}
+
+.apply-tuition-bar {
+  text-decoration: none;
+  --radius: 20px;
+}
+
+@media (max-width: 560px) {
+  .profile-card {
+    --pc-x: 18px;
+    --pc-b: 20px;
+    --pc-top: 20px;
+  }
+
+  .apply-tuition-bar {
+    margin-top: 10px;
+    padding: calc(var(--pc-top) + 16px) 16px 16px;
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================================
+   TOP-OF-CARD PILLS (collapsed rows + Subject | Status row)
+   One height, centred text; every left pill is as wide as the
+   widest left pill on the page, every right pill as the widest
+   right pill (--pill-l-w / --pill-r-w, set by js/pills.js).
+========================================================= */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 34px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border-width: 1.5px;
+  border-style: solid;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pill::before { display: none; }
+
+.pill.pill-l,
+.pill.pill-r {
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: calc(50% - 6px);
+}
+
+.pill.pill-l { width: var(--pill-l-w, auto); }
+.pill.pill-r { width: var(--pill-r-w, auto); margin-left: auto; }
+
+.pill-dark  { background: #000; color: var(--text); border-color: var(--border-light); }
+.pill-soft  { background: var(--surface-2); color: var(--text); border-color: var(--border-light); }
+.pill-green { background: rgba(22, 163, 74, 0.14); color: var(--lime); border-color: rgba(22, 163, 74, 0.3); }
+
+/* collapsed rows: the pills sit edge to edge, left and right */
+.class-card.is-collapsed .tutor-mini,
+.class-card.is-collapsed .class-mini,
+.class-card.payment-card.is-collapsed .pay-mini {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* pills carry no border */
+.pill,
+.pill.pill-l,
+.pill.pill-r {
+  border: 0 !important;
+}
+
+/* expanded card: no divider line right under the top row */
+.class-card .class-row-top + .class-detail-grid {
+  border-top: 0;
+}
+
+/* Tutor Profile, expanded: the top row (Subject | Status) is a full-width
+   band in the status colour, same as the Student Profile */
+[data-page="tutorprofile"] .class-card:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini) {
+  margin: -18px -20px 0 -6px;
+  padding: 12px 20px 12px 6px;
+}
+
+[data-page="tutorprofile"] .class-card.tone-applied:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini),
+[data-page="tutorprofile"] .class-card.tone-processing:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini) {
+  background: var(--orange-dim);
+}
+
+[data-page="tutorprofile"] .class-card.tone-demo-scheduled:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini) {
+  background: var(--violet-dim);
+}
+
+[data-page="tutorprofile"] .class-card.tone-running:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini) {
+  background: rgba(22, 163, 74, 0.14);
+}
+
+[data-page="tutorprofile"] .class-card.tone-declined:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini) {
+  background: var(--danger-dim);
+}
+
+/* Never overlap: each pill is capped at half the row, and its text is cut
+   with "..." once the pill can't grow further. (inline-block, not flex, so
+   text-overflow actually applies.) */
+.pill {
+  display: inline-block;
+  line-height: 34px;
+  vertical-align: middle;
+}
+
+.pill.pill-l,
+.pill.pill-r {
+  max-width: calc(50% - 6px);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
