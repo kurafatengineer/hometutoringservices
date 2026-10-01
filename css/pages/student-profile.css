@@ -113,14 +113,14 @@
 
 
 /* ---------------- student-only statuses ---------------- */
-
 .status-finding-tutor,
-.class-spine.status-finding-tutor { background: rgba(244, 180, 0, 0.16); color: #f4b400; border-color: rgba(244, 180, 0, 0.35); }
+.class-spine.status-finding-tutor { background: var(--st-blue-dim); color: var(--st-blue); border-color: var(--st-blue-line); }
 
 .status-tutors-applied,
-.class-spine.status-tutors-applied { background: var(--orange-dim); color: var(--orange); border-color: rgba(166, 112, 0, 0.3); }
+.class-spine.status-tutors-applied { background: var(--st-orange-dim); color: var(--st-orange); border-color: var(--st-orange-line); }
 
-.class-spine.status-finding-tutor,
+.class-spine.status-finding-tutor { border-color: transparent; }
+
 .class-spine.status-tutors-applied { border-color: transparent; }
 
 .class-status-message a {
@@ -684,14 +684,13 @@ body.add-modal-open {
 /* =========================================================
    "Rejected" tuition status (every applicant turned down)
 ========================================================= */
-
 .status-rejected,
 .class-spine.status-rejected,
 .status-terminated,
 .class-spine.status-terminated {
-  background: var(--danger-dim);
-  color: var(--danger);
-  border-color: rgba(179, 18, 27, 0.3);
+  background: var(--st-red-dim);
+  color: var(--st-red);
+  border-color: var(--st-red-line);
 }
 
 .class-spine.status-rejected,
@@ -764,27 +763,27 @@ body.add-modal-open {
 /* collapsed tutor card: the whole card takes its status colour */
 .tuition-stack > .tutor-card.is-collapsed.tone-applied,
 .tuition-stack > .tutor-card.is-collapsed.tone-processing {
-  background: var(--orange-dim);
-  color: var(--orange);
-  border-left-color: rgba(166, 112, 0, 0.3);
-  border-right-color: rgba(166, 112, 0, 0.3);
-  border-bottom-color: rgba(166, 112, 0, 0.3);
+  background: var(--st-orange-dim);
+  color: var(--st-orange);
+  border-left-color: var(--st-orange-line);
+  border-right-color: var(--st-orange-line);
+  border-bottom-color: var(--st-orange-line);
 }
 
 .tuition-stack > .tutor-card.is-collapsed.tone-demo-scheduled {
-  background: var(--violet-dim);
-  color: var(--violet);
-  border-left-color: rgba(166, 112, 0, 0.3);
-  border-right-color: rgba(166, 112, 0, 0.3);
-  border-bottom-color: rgba(166, 112, 0, 0.3);
+  background: var(--st-purple-dim);
+  color: var(--st-purple);
+  border-left-color: var(--st-purple-line);
+  border-right-color: var(--st-purple-line);
+  border-bottom-color: var(--st-purple-line);
 }
 
 .tuition-stack > .tutor-card.is-collapsed.tone-running {
-  background: rgba(214, 40, 40, 0.14);
-  color: var(--lime);
-  border-left-color: rgba(214, 40, 40, 0.3);
-  border-right-color: rgba(214, 40, 40, 0.3);
-  border-bottom-color: rgba(214, 40, 40, 0.3);
+  background: var(--st-green-dim);
+  color: var(--st-green);
+  border-left-color: var(--st-green-line);
+  border-right-color: var(--st-green-line);
+  border-bottom-color: var(--st-green-line);
 }
 
 .tuition-stack > .tutor-card.is-collapsed.tone-completed {
@@ -793,11 +792,11 @@ body.add-modal-open {
 }
 
 .tuition-stack > .tutor-card.is-collapsed.tone-declined {
-  background: var(--danger-dim);
-  color: var(--danger);
-  border-left-color: rgba(179, 18, 27, 0.3);
-  border-right-color: rgba(179, 18, 27, 0.3);
-  border-bottom-color: rgba(179, 18, 27, 0.3);
+  background: var(--st-red-dim);
+  color: var(--st-red);
+  border-left-color: var(--st-red-line);
+  border-right-color: var(--st-red-line);
+  border-bottom-color: var(--st-red-line);
 }
 
 
@@ -1475,34 +1474,33 @@ body.add-modal-open {
    (blue finding, orange applied/processing, purple demo, green
    running, red terminated, none once completed)
 ========================================================= */
-
 .class-card.tuition-card.is-collapsed.tone-finding-tutor {
-  background: rgba(244, 180, 0, 0.16);
-  border-color: rgba(244, 180, 0, 0.35);
+  background: var(--st-blue-dim);
+  border-color: var(--st-blue-line);
 }
 
 .class-card.tuition-card.is-collapsed.tone-tutors-applied,
 .class-card.tuition-card.is-collapsed.tone-applied,
 .class-card.tuition-card.is-collapsed.tone-processing {
-  background: var(--orange-dim);
-  border-color: rgba(166, 112, 0, 0.3);
+  background: var(--st-orange-dim);
+  border-color: var(--st-orange-line);
 }
 
 .class-card.tuition-card.is-collapsed.tone-demo-scheduled {
-  background: var(--violet-dim);
-  border-color: rgba(166, 112, 0, 0.3);
+  background: var(--st-purple-dim);
+  border-color: var(--st-purple-line);
 }
 
 .class-card.tuition-card.is-collapsed.tone-running {
-  background: rgba(214, 40, 40, 0.14);
-  border-color: rgba(214, 40, 40, 0.3);
+  background: var(--st-green-dim);
+  border-color: var(--st-green-line);
 }
 
 .class-card.tuition-card.is-collapsed.tone-terminated,
 .class-card.tuition-card.is-collapsed.tone-rejected,
 .class-card.tuition-card.is-collapsed.tone-declined {
-  background: var(--danger-dim);
-  border-color: rgba(179, 18, 27, 0.3);
+  background: var(--st-red-dim);
+  border-color: var(--st-red-line);
 }
 
 
@@ -1514,25 +1512,25 @@ body.add-modal-open {
 }
 
 .class-card.tuition-card.tone-finding-tutor:not(.is-collapsed) .class-body > .class-row-top {
-  background: rgba(244, 180, 0, 0.16);
+  background: var(--st-blue-dim);
 }
 
 .class-card.tuition-card.tone-tutors-applied:not(.is-collapsed) .class-body > .class-row-top,
 .class-card.tuition-card.tone-applied:not(.is-collapsed) .class-body > .class-row-top,
 .class-card.tuition-card.tone-processing:not(.is-collapsed) .class-body > .class-row-top {
-  background: var(--orange-dim);
+  background: var(--st-orange-dim);
 }
 
 .class-card.tuition-card.tone-demo-scheduled:not(.is-collapsed) .class-body > .class-row-top {
-  background: var(--violet-dim);
+  background: var(--st-purple-dim);
 }
 
 .class-card.tuition-card.tone-running:not(.is-collapsed) .class-body > .class-row-top {
-  background: rgba(214, 40, 40, 0.14);
+  background: var(--st-green-dim);
 }
 
 .class-card.tuition-card.tone-terminated:not(.is-collapsed) .class-body > .class-row-top,
 .class-card.tuition-card.tone-rejected:not(.is-collapsed) .class-body > .class-row-top,
 .class-card.tuition-card.tone-declined:not(.is-collapsed) .class-body > .class-row-top {
-  background: var(--danger-dim);
+  background: var(--st-red-dim);
 }
