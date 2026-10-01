@@ -1,7 +1,7 @@
 "use strict";
 
 /************************************************************
- * URBANTUTORSITE - TUITIONS AVAILABLE (front-end)
+ * HOME TUTORING SERVICES - TUITIONS AVAILABLE (front-end)
  *
  * Anyone can VIEW this page (no login needed) - same pattern
  * as the homepage "Meet our Tutors" / "Meet our Students"

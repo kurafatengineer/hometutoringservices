@@ -11,7 +11,7 @@
 // =====================================================================
 
 // =====================================================================
-// URBANTUTORSITE - WHATSAPP WEBHOOK  (Supabase Edge Function "whatsapp-webhook")
+// HOME TUTORING SERVICES - WHATSAPP WEBHOOK  (Supabase Edge Function "whatsapp-webhook")
 //
 // Meta calls THIS function for two reasons:
 //   1. Once, with a GET request, to prove you own this URL (the
@@ -89,7 +89,7 @@ async function sendRegisterButtons(to: string) {
     interactive: {
       type: "button",
       body: {
-        text: "Welcome to Urbantutorsite! Are you looking to register as a Student (find a tutor) or as a Tutor (start teaching)?",
+        text: "Welcome to Home Tutoring Services! Are you looking to register as a Student (find a tutor) or as a Tutor (start teaching)?",
       },
       action: {
         buttons: [

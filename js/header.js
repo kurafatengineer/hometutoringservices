@@ -1,7 +1,7 @@
 "use strict";
 
 /* =========================================================
-   URBAN TUTOR SITE
+   HOME TUTORING SERVICES
    GLOBAL HEADER
    ========================================================= */
 
@@ -132,9 +132,9 @@ function createFallbackHeader() {
         <a
           href="index.html"
           class="site-logo"
-          aria-label="UrbanTutorSite Home"
+          aria-label="Home Tutoring Services Home"
         >
-          <span class="brand-urban">Urban</span><span class="brand-tutorsite">TutorSite</span>
+          <span class="brand-urban">Home&nbsp;</span><span class="brand-tutorsite">Tutoring Services</span>
         </a>
 
 
@@ -612,7 +612,7 @@ async function renderHeaderAvatar() {
   // Admin Panel: the employee's initials ("AD" until known), not clickable.
   if (isAdminPage_()) {
 
-    // the UrbanTutorSite logo does nothing on the Admin Panel
+    // the Home Tutoring Services logo does nothing on the Admin Panel
     document.querySelectorAll(".site-logo").forEach(function (logo) {
       logo.removeAttribute("href");
       logo.setAttribute("aria-disabled", "true");

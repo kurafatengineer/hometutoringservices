@@ -1,7 +1,7 @@
 "use strict";
 
 /************************************************************
- * URBANTUTORSITE - ADMIN PANEL (front-end)
+ * HOME TUTORING SERVICES - ADMIN PANEL (front-end)
  *
  * TUITIONS  one card per Demo ID (collapsed; tap to open):
  *           student's full details, the requirement (editable),

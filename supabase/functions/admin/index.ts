@@ -1,5 +1,5 @@
 // =====================================================================
-// URBANTUTORSITE - ADMIN PANEL SERVER  (Supabase Edge Function "admin")
+// HOME TUTORING SERVICES - ADMIN PANEL SERVER  (Supabase Edge Function "admin")
 //
 // admin.html / admin.js talk ONLY to this function. It:
 //   1. verifies the caller's Supabase Auth session (they signed in with

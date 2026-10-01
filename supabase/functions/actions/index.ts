@@ -1,5 +1,5 @@
 // =====================================================================
-// URBANTUTORSITE - STUDENT/TUTOR SELF-SERVICE ACTIONS  (Edge Function "actions")
+// HOME TUTORING SERVICES - STUDENT/TUTOR SELF-SERVICE ACTIONS  (Edge Function "actions")
 //
 // Thin wrapper around the self-service RPCs that students and tutors call
 // from the site: add_tuition, register_student, apply_for_tuition,

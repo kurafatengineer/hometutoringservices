@@ -1,7 +1,7 @@
 "use strict";
 
 /************************************************************
- * URBANTUTORSITE - TUTOR PROFILE (front-end)
+ * HOME TUTORING SERVICES - TUTOR PROFILE (front-end)
  *
  * Guards itself: no valid session -> sent back to
  * tutorregistration.html. Valid session -> calls

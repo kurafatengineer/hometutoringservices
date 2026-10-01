@@ -16,16 +16,16 @@ Supabase Dashboard → your project → **Authentication → Email Templates**.
 1. Open the **Magic Link** template (this is the one used for every
    OTP login, despite the name - Supabase shares one template between
    "magic link" and "OTP" sign-in).
-   - Subject: `{{ .Token }} is your Urban Tutor Site login code`
+   - Subject: `{{ .Token }} is your Home Tutoring Services login code`
    - Body: paste the contents of `magic_link.html`
 2. Open the **Confirm signup** template (only used the very first time
    a new email address signs in).
-   - Subject: `{{ .Token }} is your Urban Tutor Site login code`
+   - Subject: `{{ .Token }} is your Home Tutoring Services login code`
    - Body: paste the contents of `confirm_signup.html`
 3. Save each template.
 
 Both use `{{ .Token }}` (Supabase's Go-template variable for the 6-digit
-code), styled the same dark-card way as every other Urban Tutor Site
+code), styled the same dark-card way as every other Home Tutoring Services
 email (see `supabase/functions/_shared/email.ts`).
 
 No further code change is needed - Supabase Auth uses whatever HTML is
