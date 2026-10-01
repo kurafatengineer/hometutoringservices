@@ -56,9 +56,9 @@
 .db-pill svg { width: 16px; height: 16px; }
 /* the verified seal takes the subscription payment colour (blue if none) */
 .db-pill svg.db-seal { color: #f4b400; }
-.db-pill svg.db-seal[data-tone="paid"] { color: #d62828; }
-.db-pill svg.db-seal[data-tone="partial"] { color: #a67000; }
-.db-pill svg.db-seal[data-tone="unpaid"] { color: #b3121b; }
+.db-pill svg.db-seal[data-tone="paid"] { color: #16a34a; }
+.db-pill svg.db-seal[data-tone="partial"] { color: #f97316; }
+.db-pill svg.db-seal[data-tone="unpaid"] { color: #dc2626; }
 .db-pill.ok { background: rgba(214, 40, 40, 0.28); color: var(--db-green); border: 1px solid rgba(214, 40, 40, 0.55); }
 .db-pill.wait { background: rgba(244, 180, 0, 0.12); color: var(--db-amber); border: 1px solid rgba(244, 180, 0, 0.3); }
 .db-pill.no { background: rgba(179, 18, 27, 0.12); color: var(--db-red); border: 1px solid rgba(179, 18, 27, 0.3); }
