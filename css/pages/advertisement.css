@@ -162,7 +162,7 @@
    colour. */
 .tuitions-grid .class-spine {
   background: var(--lime-dim);
-  color: #ffffff;
+  color: var(--lime);
 }
 
 /* ================= TOP LAYER: SUBJECT BAR =================

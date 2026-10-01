@@ -1526,8 +1526,8 @@ sup {
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: rgba(214, 40, 40, 0.07);
-  border: 1px solid rgba(214, 40, 40, 0.28);
+  background: rgba(214, 40, 40, 0.28);
+  border: 1px solid rgba(214, 40, 40, 0.55);
   border-radius: 15px;
 }
 
@@ -1578,7 +1578,7 @@ sup {
 }
 
 .upload-card.has-file {
-  background: #fdeaea;
+  background: #f4c3c3;
   border-style: solid;
   border-color: rgba(214, 40, 40, 0.55);
 }
@@ -1588,7 +1588,7 @@ sup {
 }
 
 .upload-card.has-file .upload-icon {
-  background: rgba(214, 40, 40, 0.14);
+  background: rgba(214, 40, 40, 0.28);
 }
 
 .upload-button {
@@ -1618,11 +1618,11 @@ sup {
 .upload-card.has-file .upload-button {
   color: var(--lime);
   background: transparent;
-  border: 1px solid rgba(214, 40, 40, 0.5);
+  border: 1px solid rgba(214, 40, 40, 0.55);
 }
 
 .upload-card.has-file .upload-button:hover {
-  background: rgba(214, 40, 40, 0.08);
+  background: rgba(214, 40, 40, 0.28);
 }
 
 /* ---------------------------------------------------------
@@ -1863,8 +1863,8 @@ sup {
 }
 
 .pill-check:has(input:checked) {
-  border-color: rgba(214, 40, 40, 0.45);
-  background: rgba(214, 40, 40, 0.1);
+  border-color: rgba(214, 40, 40, 0.55);
+  background: rgba(214, 40, 40, 0.28);
 }
 
 .pill-check input:checked ~ .pill-check-icon {
@@ -1902,7 +1902,7 @@ sup {
 .field .float-field input[type="email"]:focus,
 .field .float-field input[type="tel"]:focus,
 .field .float-field textarea:focus {
-  border-color: rgba(214, 40, 40, 0.35);
+  border-color: rgba(214, 40, 40, 0.55);
 }
 
 .float-field > span {
@@ -1930,7 +1930,7 @@ sup {
 }
 
 .phone-input:focus-within {
-  border-color: rgba(214, 40, 40, 0.35);
+  border-color: rgba(214, 40, 40, 0.55);
 }
 
 .phone-input .flag-code {
@@ -2160,7 +2160,7 @@ a.submit {
 }
 
 .field .float-field input[type="number"]:focus {
-  border-color: rgba(214, 40, 40, 0.35);
+  border-color: rgba(214, 40, 40, 0.55);
 }
 
 /* disabled 12th Percentage / CGPA keeps the pill shape */
@@ -2183,7 +2183,7 @@ a.submit {
 }
 
 .field select:focus {
-  border-color: rgba(214, 40, 40, 0.35);
+  border-color: rgba(214, 40, 40, 0.55);
 }
 
 /* date of birth */
@@ -2202,7 +2202,7 @@ a.submit {
 }
 
 .date-field input[type="date"]:focus {
-  border-color: rgba(214, 40, 40, 0.35);
+  border-color: rgba(214, 40, 40, 0.55);
 }
 
 .date-placeholder {
@@ -2313,7 +2313,7 @@ a.submit {
 }
 
 #emailPage .field .float-field input[type="email"]:focus {
-  border-color: rgba(214, 40, 40, 0.35);
+  border-color: rgba(214, 40, 40, 0.55);
 }
 
 /* errors: light red border, no text (email + OTP pages) */
@@ -2383,7 +2383,7 @@ a.submit {
 }
 
 #otpPage .otp-input:focus {
-  border-color: rgba(214, 40, 40, 0.35);
+  border-color: rgba(214, 40, 40, 0.55);
 }
 
 /* spinner inside the OTP box while checking / saving */
@@ -2396,7 +2396,7 @@ a.submit {
   height: 18px;
   margin-top: -9px;
   border-radius: 50%;
-  border: 2px solid rgba(214, 40, 40, 0.25);
+  border: 2px solid rgba(214, 40, 40, 0.55);
   border-top-color: var(--lime);
   animation: spin 0.7s linear infinite;
 }

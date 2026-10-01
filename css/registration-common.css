@@ -410,7 +410,7 @@ textarea:focus {
   height: 44px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(214, 40, 40, 0.45);
+  border: 1px solid rgba(214, 40, 40, 0.55);
   border-radius: 50%;
   background: #fff9f8;
   color: inherit;

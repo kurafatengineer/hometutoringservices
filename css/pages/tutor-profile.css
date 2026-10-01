@@ -24,8 +24,8 @@
 
   --lime: #d62828;
   --lime-hover: #d62828;
-  --lime-dim: rgba(214, 40, 40, 0.12);
-  --lime-line: rgba(214, 40, 40, 0.28);
+  --lime-dim: rgba(214, 40, 40, 0.28);
+  --lime-line: rgba(214, 40, 40, 0.55);
 
   --danger: #b3121b;
   --danger-dim: rgba(179, 18, 27, 0.14);
@@ -1036,7 +1036,7 @@ svg {
 }
 
 [data-page="tutorprofile"] .icon-tabs .filter-tab.active {
-  color: #ffffff;
+  color: var(--lime);
   background: var(--lime-dim);
   box-shadow: inset 0 0 0 1px var(--lime-line);
 }
@@ -1469,7 +1469,7 @@ body .class-card.payment-card.is-collapsed .class-body > *:not(.pay-mini) {
 
 .pill-dark  { background: #ffffff; color: var(--text); border-color: var(--border-light); }
 .pill-soft  { background: var(--surface-2); color: var(--text); border-color: var(--border-light); }
-.pill-green { background: rgba(214, 40, 40, 0.14); color: var(--lime); border-color: rgba(214, 40, 40, 0.3); }
+.pill-green { background: rgba(214, 40, 40, 0.28); color: var(--lime); border-color: rgba(214, 40, 40, 0.55); }
 
 /* collapsed rows: the pills sit edge to edge, left and right */
 .class-card.is-collapsed .tutor-mini,

@@ -1487,8 +1487,8 @@ button.submit:disabled {
 }
 
 .pill-check:has(input:checked) {
-  border-color: rgba(214, 40, 40, 0.45);
-  background: rgba(214, 40, 40, 0.1);
+  border-color: rgba(214, 40, 40, 0.55);
+  background: rgba(214, 40, 40, 0.28);
 }
 
 .pill-check input:checked ~ .pill-check-icon {
@@ -1526,7 +1526,7 @@ button.submit:disabled {
 .field .float-field input[type="email"]:focus,
 .field .float-field input[type="tel"]:focus,
 .field .float-field textarea:focus {
-  border-color: rgba(214, 40, 40, 0.35);
+  border-color: rgba(214, 40, 40, 0.55);
 }
 
 .float-field > span {
@@ -1554,7 +1554,7 @@ button.submit:disabled {
 }
 
 .phone-input:focus-within {
-  border-color: rgba(214, 40, 40, 0.35);
+  border-color: rgba(214, 40, 40, 0.55);
 }
 
 .phone-input .flag-code {
@@ -1773,7 +1773,7 @@ a.submit {
 }
 
 .float-field.is-time input[type="time"]:focus {
-  border-color: rgba(214, 40, 40, 0.35);
+  border-color: rgba(214, 40, 40, 0.55);
 }
 
 /* label always on the top border, centred */
@@ -1842,7 +1842,7 @@ a.submit {
 }
 
 #emailPage .field .float-field input[type="email"]:focus {
-  border-color: rgba(214, 40, 40, 0.35);
+  border-color: rgba(214, 40, 40, 0.55);
 }
 
 /* errors: light red border, no text (email + OTP pages) */
@@ -1912,7 +1912,7 @@ a.submit {
 }
 
 #otpPage .otp-input:focus {
-  border-color: rgba(214, 40, 40, 0.35);
+  border-color: rgba(214, 40, 40, 0.55);
 }
 
 /* spinner inside the OTP box while checking / saving */
@@ -1925,7 +1925,7 @@ a.submit {
   height: 18px;
   margin-top: -9px;
   border-radius: 50%;
-  border: 2px solid rgba(214, 40, 40, 0.25);
+  border: 2px solid rgba(214, 40, 40, 0.55);
   border-top-color: var(--lime);
   animation: spin 0.7s linear infinite;
 }
