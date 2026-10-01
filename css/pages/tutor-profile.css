@@ -1036,7 +1036,7 @@ svg {
 }
 
 [data-page="tutorprofile"] .icon-tabs .filter-tab.active {
-  color: #ffffff;
+  color: var(--lime);
   background: var(--lime-dim);
   box-shadow: inset 0 0 0 1px var(--lime-line);
 }

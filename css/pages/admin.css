@@ -111,7 +111,7 @@ button { cursor: pointer; }
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: #ffffff;
+  color: var(--lime);
   background: var(--lime-dim);
   border: 1px solid var(--lime-line);
 }
@@ -204,7 +204,7 @@ button { cursor: pointer; }
 .admin-ghost[data-action="edit"] {
   border-color: var(--lime-line);
   background: var(--lime-dim);
-  color: #ffffff;
+  color: var(--lime);
 }
 
 .admin-ghost[data-action="edit"]:hover {
@@ -276,10 +276,10 @@ button { cursor: pointer; }
 .admin-stat-value { font-size: 26px; font-weight: 800; }
 .admin-stat-label { margin-top: 2px; font-size: 12.5px; color: var(--muted); }
 
-.admin-stat[data-tone="amber"] .admin-stat-value { color: var(--warn); }
-.admin-stat[data-tone="violet"] .admin-stat-value { color: var(--violet); }
-.admin-stat[data-tone="green"] .admin-stat-value { color: var(--lime); }
-.admin-stat[data-tone="lime"] .admin-stat-value { color: var(--lime); }
+.admin-stat[data-tone="amber"] .admin-stat-value { color: var(--st-orange); }
+.admin-stat[data-tone="violet"] .admin-stat-value { color: var(--st-purple); }
+.admin-stat[data-tone="green"] .admin-stat-value { color: var(--st-green); }
+.admin-stat[data-tone="lime"] .admin-stat-value { color: var(--st-blue); }
 
 
 /* ---------------- tabs, tools, chips ---------------- */
@@ -306,7 +306,7 @@ button { cursor: pointer; }
 }
 
 .admin-tab.active {
-  color: #ffffff;
+  color: var(--lime);
   background: var(--lime-dim);
 }
 
@@ -350,7 +350,7 @@ button { cursor: pointer; }
 }
 
 .admin-chip.active {
-  color: #ffffff;
+  color: var(--lime);
   background: var(--lime-dim);
   border-color: transparent;
 }
@@ -389,7 +389,7 @@ button { cursor: pointer; }
   color: var(--blue); background: var(--blue-dim); border-color: var(--blue-line);
 }
 .admin-card[data-tone="verified"] .admin-avatar {
-  color: #ffffff; background: var(--lime-dim); border-color: var(--lime-line);
+  color: var(--lime); background: var(--lime-dim); border-color: var(--lime-line);
 }
 .admin-card[data-tone="rejected"] .admin-avatar {
   color: var(--st-red); background: var(--st-red-dim); border-color: var(--st-red-line);
@@ -411,7 +411,7 @@ button { cursor: pointer; }
   place-items: center;
   font-weight: 800;
   font-size: 14px;
-  color: #ffffff;
+  color: var(--lime);
   background: var(--lime-dim);
   border: 1px solid var(--lime-line);
 }
@@ -506,7 +506,7 @@ button { cursor: pointer; }
   border-radius: 999px;
   border: 1px solid var(--lime-line);
   background: var(--lime-dim);
-  color: #ffffff;
+  color: var(--lime);
   font-weight: 700;
   font-size: 13px;
 }
@@ -1010,7 +1010,7 @@ button { cursor: pointer; }
 }
 
 .admin-stat[data-tone="grey"] .admin-stat-value { color: var(--muted); }
-.admin-stat[data-tone="red"] .admin-stat-value { color: var(--danger); }
+.admin-stat[data-tone="red"] .admin-stat-value { color: var(--st-red); }
 
 
 /* ---------- search: "Search" moves onto the top border ---------- */
@@ -1088,7 +1088,7 @@ button { cursor: pointer; }
   border-radius: 999px;
   border: 0;
   background: var(--lime-dim);
-  color: #ffffff;
+  color: var(--lime);
   font-size: 12px;
   font-weight: 700;
 }
@@ -1585,7 +1585,7 @@ button { cursor: pointer; }
 .admin-mode-seg input:checked + .admin-mode-opt {
   background: var(--lime-dim);
   border-color: rgba(214, 40, 40, 0.45);
-  color: #ffffff;
+  color: var(--text);
 }
 
 .admin-mode-seg input:checked + .admin-mode-opt .admin-mode-dot {
@@ -2208,7 +2208,7 @@ body[data-page="admin"] {
   border-radius: 999px;
   border: 1px solid var(--lime-line);
   background: var(--lime-dim);
-  color: #ffffff;
+  color: var(--lime);
   font-weight: 800;
   font-size: 11px;
   letter-spacing: 0.04em;
@@ -2393,7 +2393,7 @@ body[data-page="admin"] {
   border-radius: 12px;
   background: var(--lime-dim);
   border: 1px solid var(--lime-line);
-  color: #ffffff;
+  color: var(--text);
   font-size: 12.5px;
   font-weight: 600;
   overflow-wrap: anywhere;
@@ -2548,7 +2548,7 @@ body[data-page="admin"] {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.ledger-flow[data-flow="in"] { color: #ffffff; background: var(--lime-dim); }
+.ledger-flow[data-flow="in"] { color: var(--lime); background: var(--lime-dim); }
 .ledger-flow[data-flow="out"] { color: var(--danger); background: var(--danger-dim); }
 .ledger-flow.ledger-flow-head {
   height: auto;
@@ -3101,7 +3101,7 @@ body[data-page="admin"] {
   font-size: 12px;
   font-weight: 800;
 }
-.emp-status[data-active="yes"] { color: #ffffff; background: var(--lime-dim); }
+.emp-status[data-active="yes"] { color: var(--lime); background: var(--lime-dim); }
 .emp-status[data-active="no"] { color: var(--danger); background: var(--danger-dim); }
 #employeeList .admin-card .admin-avatar {
   color: var(--text);

@@ -92,7 +92,7 @@ function esc(value) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#f4b400;");
+    .replace(/'/g, "&#039;");
 }
 
 // Money text, Indian style: 1500 -> "₹1,500".
