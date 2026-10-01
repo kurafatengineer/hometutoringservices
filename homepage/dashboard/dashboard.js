@@ -195,6 +195,24 @@
     closed: ["Closed", ...ST_RED]
   };
 
+  // Every status pill gets the width of the widest possible label
+  // ("Tutors applied" / "Demo scheduled" / ...), so the pills line up
+  // across cards whatever status each tuition is in.
+  function equalizeStatePills() {
+    const list = $("dbSList");
+    if (!list) return;
+    const labels = Object.values(STAGE_LABEL).map(x => x[0]).concat("Processing");
+    const probe = document.createElement("div");
+    probe.className = "db-tc-top";
+    probe.style.cssText = "position:absolute;visibility:hidden;left:-9999px;top:0;width:auto";
+    probe.innerHTML = labels.map(l => `<span class="db-state">${l}</span>`).join("");
+    list.appendChild(probe);
+    let widest = 0;
+    probe.querySelectorAll(".db-state").forEach(el => { widest = Math.max(widest, el.getBoundingClientRect().width); });
+    probe.remove();
+    if (widest) list.style.setProperty("--db-state-w", Math.ceil(widest) + "px");
+  }
+
   async function loadStudent(session) {
 
     const result = await api({ action: "getStudentProfile", sessionToken: session.sessionToken });
@@ -318,6 +336,9 @@
         </a>`;
 
     }).join("") : `<div class="db-empty">No tuitions yet. Tap <b>Apply for New Tuition</b> to post one.</div>`;
+
+    equalizeStatePills();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(equalizeStatePills);
 
   }
 

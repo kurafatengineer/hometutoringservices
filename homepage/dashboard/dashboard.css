@@ -107,7 +107,7 @@
 .db-tc-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
 .db-tc-top b { font-size: 16px; font-family: Sora, Inter, sans-serif; font-weight: 600; }
 .db-tc-top span { font-size: 12.5px; color: var(--db-muted); }
-.db-state { font-size: 12px; font-weight: 700; padding: 5px 11px; border-radius: 999px; white-space: nowrap; }
+.db-state { font-size: 12px; font-weight: 700; padding: 5px 11px; border-radius: 999px; white-space: nowrap; box-sizing: border-box; min-width: var(--db-state-w, 0); text-align: center; }
 .db-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
 .db-st { height: 6px; border-radius: 999px; background: rgba(120, 20, 20, 0.08); display: block; }
 .db-st.done { background: var(--db-lime); }
