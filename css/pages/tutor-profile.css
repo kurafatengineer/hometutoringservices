@@ -10,60 +10,60 @@
 ========================================================= */
 
 :root {
-  --bg: #050505;
-  --surface: #101010;
-  --surface-2: #151515;
-  --surface-3: #1a1a1a;
+  --bg: #ffffff;
+  --surface: #fffaf9;
+  --surface-2: #fff5f3;
+  --surface-3: #fcf0ed;
 
-  --border: #292929;
-  --border-light: #353535;
+  --border: #f4e0dc;
+  --border-light: #ead4d0;
 
-  --text: #f5f5f5;
-  --muted: #9a9a9a;
-  --muted-2: #6f6f6f;
+  --text: #2c0b0b;
+  --muted: #7a5553;
+  --muted-2: #ab8f8c;
 
-  --lime: #16a34a;
-  --lime-hover: #22c55e;
-  --lime-dim: rgba(22, 163, 74, 0.12);
-  --lime-line: rgba(22, 163, 74, 0.28);
+  --lime: #d62828;
+  --lime-hover: #d62828;
+  --lime-dim: rgba(214, 40, 40, 0.12);
+  --lime-line: rgba(214, 40, 40, 0.28);
 
-  --danger: #ff6868;
-  --danger-dim: rgba(255, 104, 104, 0.14);
-  --success: #72e39a;
-  --success-dim: rgba(114, 227, 154, 0.14);
-  --info: #8fa0ff;
-  --info-dim: rgba(143, 160, 255, 0.14);
-  --warn: #ffd166;
-  --warn-dim: rgba(255, 209, 102, 0.14);
+  --danger: #b3121b;
+  --danger-dim: rgba(179, 18, 27, 0.14);
+  --success: #b3121b;
+  --success-dim: rgba(179, 18, 27, 0.14);
+  --info: #a67000;
+  --info-dim: rgba(166, 112, 0, 0.14);
+  --warn: #a67000;
+  --warn-dim: rgba(166, 112, 0, 0.14);
 
   /* Extra accents used by the stat rail / class-card spine /
      subject icons in the new design. */
-  --violet: #b490ff;
-  --violet-dim: rgba(180, 144, 255, 0.14);
-  --emerald: #4fe3a8;
-  --emerald-dim: rgba(79, 227, 168, 0.14);
-  --amber: #ffc44d;
-  --amber-dim: rgba(255, 196, 77, 0.14);
-  --cyan: #5ed8e8;
-  --cyan-dim: rgba(94, 216, 232, 0.14);
-  --rose: #ff8fb0;
-  --rose-dim: rgba(255, 143, 176, 0.14);
-  --orange: #ffa15c;
-  --orange-dim: rgba(255, 161, 92, 0.14);
-  --indigo: #8f9dff;
-  --indigo-dim: rgba(143, 157, 255, 0.14);
+  --violet: #a67000;
+  --violet-dim: rgba(166, 112, 0, 0.14);
+  --emerald: #d62828;
+  --emerald-dim: rgba(214, 40, 40, 0.14);
+  --amber: #a67000;
+  --amber-dim: rgba(166, 112, 0, 0.14);
+  --cyan: #f4b400;
+  --cyan-dim: rgba(244, 180, 0, 0.14);
+  --rose: #b3121b;
+  --rose-dim: rgba(179, 18, 27, 0.14);
+  --orange: #a67000;
+  --orange-dim: rgba(166, 112, 0, 0.14);
+  --indigo: #a67000;
+  --indigo-dim: rgba(166, 112, 0, 0.14);
 
   /* Border colours for the subject pill (same rgb as each accent's
      -dim above, just a stronger alpha), so a subject pill gets an
      outline the same way the status pills already do. */
-  --success-line: rgba(114, 227, 154, 0.3);
-  --info-line: rgba(143, 160, 255, 0.3);
-  --emerald-line: rgba(79, 227, 168, 0.3);
-  --amber-line: rgba(255, 196, 77, 0.3);
-  --cyan-line: rgba(94, 216, 232, 0.3);
-  --rose-line: rgba(255, 143, 176, 0.3);
-  --orange-line: rgba(255, 161, 92, 0.3);
-  --indigo-line: rgba(143, 157, 255, 0.3);
+  --success-line: rgba(179, 18, 27, 0.3);
+  --info-line: rgba(166, 112, 0, 0.3);
+  --emerald-line: rgba(214, 40, 40, 0.3);
+  --amber-line: rgba(166, 112, 0, 0.3);
+  --cyan-line: rgba(244, 180, 0, 0.3);
+  --rose-line: rgba(179, 18, 27, 0.3);
+  --orange-line: rgba(166, 112, 0, 0.3);
+  --indigo-line: rgba(166, 112, 0, 0.3);
 
   --radius: 20px;
 
@@ -98,8 +98,8 @@ body {
   line-height: 1.5;
 
   background-image:
-    radial-gradient(680px 420px at 82% -6%, rgba(22, 163, 74, 0.07), transparent 60%),
-    radial-gradient(900px 560px at 14% 8%, rgba(22, 163, 74, 0.04), transparent 65%);
+    radial-gradient(680px 420px at 82% -6%, rgba(214, 40, 40, 0.07), transparent 60%),
+    radial-gradient(900px 560px at 14% 8%, rgba(214, 40, 40, 0.04), transparent 65%);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -180,17 +180,17 @@ svg {
   padding: 13px 30px;
   border-radius: 999px;
   background: var(--lime);
-  color: #050505;
+  color: #ffffff;
   font-weight: 700;
   font-size: 14px;
-  box-shadow: 0 10px 26px rgba(22, 163, 74, 0.18);
+  box-shadow: 0 10px 26px rgba(214, 40, 40, 0.18);
   transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .error-page .submit:hover {
   background: var(--lime-hover);
   transform: translateY(-1px);
-  box-shadow: 0 14px 32px rgba(22, 163, 74, 0.24);
+  box-shadow: 0 14px 32px rgba(214, 40, 40, 0.24);
 }
 
 
@@ -246,8 +246,8 @@ svg {
   margin-bottom: 6px;
 
   box-shadow:
-    0 0 0 6px rgba(22, 163, 74, 0.06),
-    0 0 26px rgba(22, 163, 74, 0.18),
+    0 0 0 6px rgba(214, 40, 40, 0.06),
+    0 0 26px rgba(214, 40, 40, 0.18),
     0 8px 22px rgba(0, 0, 0, 0.4);
 }
 
@@ -325,13 +325,13 @@ svg {
   border-radius: 50%;
 }
 
-.chip-verified   { color: var(--success); background: var(--success-dim); border-color: rgba(114, 227, 154, 0.3); }
+.chip-verified   { color: var(--success); background: var(--success-dim); border-color: rgba(179, 18, 27, 0.3); }
 .chip-verified::before { background: var(--success); box-shadow: 0 0 0 3px var(--success-dim); }
 
-.chip-pending    { color: var(--warn); background: var(--warn-dim); border-color: rgba(255, 209, 102, 0.3); }
+.chip-pending    { color: var(--warn); background: var(--warn-dim); border-color: rgba(166, 112, 0, 0.3); }
 .chip-pending::before { background: var(--warn); box-shadow: 0 0 0 3px var(--warn-dim); }
 
-.chip-rejected   { color: var(--danger); background: var(--danger-dim); border-color: rgba(255, 104, 104, 0.3); }
+.chip-rejected   { color: var(--danger); background: var(--danger-dim); border-color: rgba(179, 18, 27, 0.3); }
 .chip-rejected::before { background: var(--danger); box-shadow: 0 0 0 3px var(--danger-dim); }
 
 .logout-button {
@@ -411,13 +411,13 @@ svg {
   white-space: nowrap;
 }
 
-.stat[data-accent="green"]  .stat-rail { background: rgba(114, 227, 154, 0.16); }
+.stat[data-accent="green"]  .stat-rail { background: rgba(179, 18, 27, 0.16); }
 .stat[data-accent="green"]  .stat-rail span { color: var(--success); }
-.stat[data-accent="blue"]   .stat-rail { background: rgba(143, 160, 255, 0.16); }
+.stat[data-accent="blue"]   .stat-rail { background: rgba(166, 112, 0, 0.16); }
 .stat[data-accent="blue"]   .stat-rail span { color: var(--info); }
-.stat[data-accent="gold"]   .stat-rail { background: rgba(255, 196, 77, 0.16); }
+.stat[data-accent="gold"]   .stat-rail { background: rgba(166, 112, 0, 0.16); }
 .stat[data-accent="gold"]   .stat-rail span { color: var(--amber); }
-.stat[data-accent="purple"] .stat-rail { background: rgba(180, 144, 255, 0.16); }
+.stat[data-accent="purple"] .stat-rail { background: rgba(166, 112, 0, 0.16); }
 .stat[data-accent="purple"] .stat-rail span { color: var(--violet); }
 
 .stat-value {
@@ -477,10 +477,10 @@ svg {
 }
 
 .filter-tab.active {
-  color: #050505;
+  color: #ffffff;
   border-color: transparent;
   background: linear-gradient(120deg, var(--indigo), var(--violet));
-  box-shadow: 0 8px 20px rgba(143, 157, 255, 0.25);
+  box-shadow: 0 8px 20px rgba(166, 112, 0, 0.25);
 }
 
 .classes-list {
@@ -589,22 +589,22 @@ svg {
 /* Subject pill: always a plain black chip, never colour-keyed
    to the subject — keeps it visually distinct from every
    status pill, "Completed" included. */
-.subject-badge { background: #000; color: var(--text); border-color: var(--border-light); }
+.subject-badge { background: #ffffff; color: var(--text); border-color: var(--border-light); }
 
-.status-running               { background: rgba(22, 163, 74, 0.14); color: var(--lime); border-color: rgba(22, 163, 74, 0.3); }
-.status-demo-scheduled        { background: var(--violet-dim);  color: var(--violet);  border-color: rgba(180, 144, 255, 0.3); }
-.status-processing            { background: var(--orange-dim);  color: var(--orange);  border-color: rgba(255, 161, 92, 0.3); }
+.status-running               { background: rgba(214, 40, 40, 0.14); color: var(--lime); border-color: rgba(214, 40, 40, 0.3); }
+.status-demo-scheduled        { background: var(--violet-dim);  color: var(--violet);  border-color: rgba(166, 112, 0, 0.3); }
+.status-processing            { background: var(--orange-dim);  color: var(--orange);  border-color: rgba(166, 112, 0, 0.3); }
 .status-completed             { background: var(--surface-2);   color: var(--muted);   border-color: var(--border-light); }
-.status-declined              { background: var(--danger-dim);  color: var(--danger);  border-color: rgba(255, 104, 104, 0.3); }
+.status-declined              { background: var(--danger-dim);  color: var(--danger);  border-color: rgba(179, 18, 27, 0.3); }
 
 /* The "Demo ID" spine picks up the same status colour as the
    status-badge above, so the two always agree at a glance. */
-.class-spine.status-running               { background: rgba(22, 163, 74, 0.14); color: var(--lime); }
+.class-spine.status-running               { background: rgba(214, 40, 40, 0.14); color: var(--lime); }
 .class-spine.status-demo-scheduled        { background: var(--violet-dim);  color: var(--violet); }
 .class-spine.status-processing            { background: var(--orange-dim);  color: var(--orange); }
 
 /* "Applied" - the tutor has applied, nothing scheduled yet. */
-.status-applied                           { background: var(--orange-dim);  color: var(--orange);  border-color: rgba(255, 161, 92, 0.3); }
+.status-applied                           { background: var(--orange-dim);  color: var(--orange);  border-color: rgba(166, 112, 0, 0.3); }
 .class-spine.status-applied               { background: var(--orange-dim);  color: var(--orange); }
 
 /* Middle layer, third row: takes the WHOLE line of the card.
@@ -1036,7 +1036,7 @@ svg {
 }
 
 [data-page="tutorprofile"] .icon-tabs .filter-tab.active {
-  color: var(--lime);
+  color: #ffffff;
   background: var(--lime-dim);
   box-shadow: inset 0 0 0 1px var(--lime-line);
 }
@@ -1098,7 +1098,7 @@ svg {
 
 [data-page="tutorprofile"] .tutor-btn-accept {
   background: var(--lime);
-  color: #050505;
+  color: #ffffff;
 }
 
 [data-page="tutorprofile"] .tutor-btn-accept:hover:not(:disabled) {
@@ -1111,7 +1111,7 @@ svg {
 }
 
 [data-page="tutorprofile"] .tutor-btn-reject:hover:not(:disabled) {
-  background: rgba(255, 104, 104, 0.24);
+  background: rgba(179, 18, 27, 0.24);
 }
 
 /* disabled = the same grey everywhere; the tap passes through to the
@@ -1153,22 +1153,22 @@ svg {
 /* collapsed card: the whole card takes the tuition's status colour */
 [data-page="tutorprofile"] .class-card.is-collapsed.tone-applied {
   background: var(--orange-dim);
-  border-color: rgba(255, 161, 92, 0.3);
+  border-color: rgba(166, 112, 0, 0.3);
 }
 
 [data-page="tutorprofile"] .class-card.is-collapsed.tone-demo-scheduled {
   background: var(--violet-dim);
-  border-color: rgba(180, 144, 255, 0.3);
+  border-color: rgba(166, 112, 0, 0.3);
 }
 
 [data-page="tutorprofile"] .class-card.is-collapsed.tone-processing {
   background: var(--orange-dim);
-  border-color: rgba(255, 161, 92, 0.3);
+  border-color: rgba(166, 112, 0, 0.3);
 }
 
 [data-page="tutorprofile"] .class-card.is-collapsed.tone-running {
-  background: rgba(22, 163, 74, 0.14);
-  border-color: rgba(22, 163, 74, 0.3);
+  background: rgba(214, 40, 40, 0.14);
+  border-color: rgba(214, 40, 40, 0.3);
 }
 
 [data-page="tutorprofile"] .class-card.is-collapsed.tone-completed {
@@ -1178,7 +1178,7 @@ svg {
 
 [data-page="tutorprofile"] .class-card.is-collapsed.tone-declined {
   background: var(--danger-dim);
-  border-color: rgba(255, 104, 104, 0.3);
+  border-color: rgba(179, 18, 27, 0.3);
 }
 
 [data-page="tutorprofile"] .class-card.is-collapsed .class-body {
@@ -1236,7 +1236,7 @@ svg {
   margin: 0 0 16px;
   padding: 12px 16px;
   border-radius: 14px;
-  border: 1px solid rgba(255, 209, 102, 0.35);
+  border: 1px solid rgba(166, 112, 0, 0.35);
   background: var(--warn-dim);
   color: var(--warn);
   font-size: 13.5px;
@@ -1323,10 +1323,10 @@ body .class-card.payment-card.is-collapsed .class-body > *:not(.pay-mini) {
 
 .tuition-stack > .class-card {
   --cut: 12px;
-  --cut-tl: radial-gradient(circle at 0 0, transparent var(--cut), #000 calc(var(--cut) + 0.5px));
-  --cut-tr: radial-gradient(circle at 100% 0, transparent var(--cut), #000 calc(var(--cut) + 0.5px));
-  --cut-bl: radial-gradient(circle at 0 100%, transparent var(--cut), #000 calc(var(--cut) + 0.5px));
-  --cut-br: radial-gradient(circle at 100% 100%, transparent var(--cut), #000 calc(var(--cut) + 0.5px));
+  --cut-tl: radial-gradient(circle at 0 0, transparent var(--cut), #ffffff calc(var(--cut) + 0.5px));
+  --cut-tr: radial-gradient(circle at 100% 0, transparent var(--cut), #ffffff calc(var(--cut) + 0.5px));
+  --cut-bl: radial-gradient(circle at 0 100%, transparent var(--cut), #ffffff calc(var(--cut) + 0.5px));
+  --cut-br: radial-gradient(circle at 100% 100%, transparent var(--cut), #ffffff calc(var(--cut) + 0.5px));
   border-radius: 0;
 }
 
@@ -1350,7 +1350,7 @@ body .class-card.payment-card.is-collapsed .class-body > *:not(.pay-mini) {
 .tuition-stack > .payment-card {
   border-top: 2px dashed var(--border-light);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 60%),
+    linear-gradient(180deg, rgba(120, 20, 20, 0.025), transparent 60%),
     var(--surface);
 }
 
@@ -1392,7 +1392,7 @@ body .class-card.payment-card.is-collapsed .class-body > *:not(.pay-mini) {
     linear-gradient(var(--bar-bg), var(--bar-bg))
       left bottom / 100% calc(100% - var(--pc-top) + 1px) no-repeat;
 
-  color: #050505;
+  color: #ffffff;
   font: inherit;
   font-size: 15.5px;
   font-weight: 800;
@@ -1467,9 +1467,9 @@ body .class-card.payment-card.is-collapsed .class-body > *:not(.pay-mini) {
 .pill.pill-l { width: var(--pill-l-w, auto); }
 .pill.pill-r { width: var(--pill-r-w, auto); margin-left: auto; }
 
-.pill-dark  { background: #000; color: var(--text); border-color: var(--border-light); }
+.pill-dark  { background: #ffffff; color: var(--text); border-color: var(--border-light); }
 .pill-soft  { background: var(--surface-2); color: var(--text); border-color: var(--border-light); }
-.pill-green { background: rgba(22, 163, 74, 0.14); color: var(--lime); border-color: rgba(22, 163, 74, 0.3); }
+.pill-green { background: rgba(214, 40, 40, 0.14); color: var(--lime); border-color: rgba(214, 40, 40, 0.3); }
 
 /* collapsed rows: the pills sit edge to edge, left and right */
 .class-card.is-collapsed .tutor-mini,
@@ -1508,7 +1508,7 @@ body .class-card.payment-card.is-collapsed .class-body > *:not(.pay-mini) {
 }
 
 [data-page="tutorprofile"] .class-card.tone-running:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini) {
-  background: rgba(22, 163, 74, 0.14);
+  background: rgba(214, 40, 40, 0.14);
 }
 
 [data-page="tutorprofile"] .class-card.tone-declined:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini) {

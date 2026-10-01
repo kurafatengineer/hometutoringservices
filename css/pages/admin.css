@@ -4,32 +4,32 @@
 ========================================================= */
 
 :root {
-  --bg: #050505;
-  --surface: #101010;
-  --surface-2: #151515;
-  --surface-3: #1a1a1a;
-  --border: #292929;
-  --border-light: #353535;
-  --text: #f5f5f5;
-  --muted: #9a9a9a;
-  --muted-2: #6f6f6f;
-  --lime: #16a34a;
-  --lime-hover: #22c55e;
-  --lime-dim: rgba(22, 163, 74, 0.12);
-  --lime-line: rgba(22, 163, 74, 0.3);
-  --blue: #2563eb;
-  --blue-hover: #3b82f6;
-  --blue-dim: rgba(37, 99, 235, 0.12);
-  --blue-line: rgba(37, 99, 235, 0.3);
-  --danger: #ff6868;
-  --danger-dim: rgba(255, 104, 104, 0.14);
-  --success: #72e39a;
-  --success-dim: rgba(114, 227, 154, 0.14);
-  --warn: #ffd166;
-  --warn-dim: rgba(255, 209, 102, 0.14);
-  --orange: #ff8c1a;
-  --violet: #b490ff;
-  --violet-dim: rgba(180, 144, 255, 0.14);
+  --bg: #ffffff;
+  --surface: #fffaf9;
+  --surface-2: #fff5f3;
+  --surface-3: #fcf0ed;
+  --border: #f4e0dc;
+  --border-light: #ead4d0;
+  --text: #2c0b0b;
+  --muted: #7a5553;
+  --muted-2: #ab8f8c;
+  --lime: #d62828;
+  --lime-hover: #d62828;
+  --lime-dim: rgba(214, 40, 40, 0.12);
+  --lime-line: rgba(214, 40, 40, 0.3);
+  --blue: #f4b400;
+  --blue-hover: #f4b400;
+  --blue-dim: rgba(244, 180, 0, 0.12);
+  --blue-line: rgba(244, 180, 0, 0.3);
+  --danger: #b3121b;
+  --danger-dim: rgba(179, 18, 27, 0.14);
+  --success: #b3121b;
+  --success-dim: rgba(179, 18, 27, 0.14);
+  --warn: #a67000;
+  --warn-dim: rgba(166, 112, 0, 0.14);
+  --orange: #f4b400;
+  --violet: #a67000;
+  --violet-dim: rgba(166, 112, 0, 0.14);
   --radius: 20px;
 }
 
@@ -111,7 +111,7 @@ button { cursor: pointer; }
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: var(--lime);
+  color: #ffffff;
   background: var(--lime-dim);
   border: 1px solid var(--lime-line);
 }
@@ -177,7 +177,7 @@ button { cursor: pointer; }
   border: 0;
   border-radius: 999px;
   background: var(--lime);
-  color: #050505;
+  color: #ffffff;
   font-weight: 800;
   font-size: 15px;
 }
@@ -204,12 +204,12 @@ button { cursor: pointer; }
 .admin-ghost[data-action="edit"] {
   border-color: var(--lime-line);
   background: var(--lime-dim);
-  color: var(--lime);
+  color: #ffffff;
 }
 
 .admin-ghost[data-action="edit"]:hover {
   border-color: var(--lime);
-  background: rgba(22, 163, 74, 0.2);
+  background: rgba(214, 40, 40, 0.2);
   color: var(--lime);
 }
 
@@ -221,7 +221,7 @@ button { cursor: pointer; }
 
 .admin-ghost[data-action="cancel"]:hover {
   border-color: var(--blue);
-  background: rgba(37, 99, 235, 0.2);
+  background: rgba(244, 180, 0, 0.2);
   color: var(--blue);
 }
 
@@ -306,7 +306,7 @@ button { cursor: pointer; }
 }
 
 .admin-tab.active {
-  color: var(--lime);
+  color: #ffffff;
   background: var(--lime-dim);
 }
 
@@ -350,7 +350,7 @@ button { cursor: pointer; }
 }
 
 .admin-chip.active {
-  color: var(--lime);
+  color: #ffffff;
   background: var(--lime-dim);
   border-color: transparent;
 }
@@ -381,17 +381,17 @@ button { cursor: pointer; }
 #tutorList .admin-card[data-tone="verified"],
 #tutorList .admin-card[data-tone="rejected"] { border-color: var(--border); }
 .admin-card[data-tone="verified"] { border-color: var(--lime-line); }
-.admin-card[data-tone="rejected"] { border-color: rgba(255, 104, 104, 0.3); }
+.admin-card[data-tone="rejected"] { border-color: rgba(179, 18, 27, 0.3); }
 
 /* the name-letter avatar also follows the tutor's status */
 .admin-card[data-tone="pending"] .admin-avatar {
   color: var(--blue); background: var(--blue-dim); border-color: var(--blue-line);
 }
 .admin-card[data-tone="verified"] .admin-avatar {
-  color: var(--lime); background: var(--lime-dim); border-color: var(--lime-line);
+  color: #ffffff; background: var(--lime-dim); border-color: var(--lime-line);
 }
 .admin-card[data-tone="rejected"] .admin-avatar {
-  color: var(--danger); background: var(--danger-dim); border-color: rgba(255, 104, 104, 0.3);
+  color: var(--danger); background: var(--danger-dim); border-color: rgba(179, 18, 27, 0.3);
 }
 
 .admin-card-head {
@@ -410,7 +410,7 @@ button { cursor: pointer; }
   place-items: center;
   font-weight: 800;
   font-size: 14px;
-  color: var(--lime);
+  color: #ffffff;
   background: var(--lime-dim);
   border: 1px solid var(--lime-line);
 }
@@ -447,12 +447,12 @@ button { cursor: pointer; }
 }
 
 .admin-pill[data-tone="verified"],
-.admin-pill[data-tone="running"] { color: var(--lime); background: var(--lime-dim); border-color: var(--lime-line); }
+.admin-pill[data-tone="running"] { color: #ffffff; background: var(--lime-dim); border-color: var(--lime-line); }
 .admin-pill[data-tone="pending"] { color: var(--blue); background: var(--blue-dim); border-color: var(--blue-line); }
-.admin-pill[data-tone="schedule"] { color: var(--warn); background: var(--warn-dim); border-color: rgba(255, 209, 102, 0.3); }
+.admin-pill[data-tone="schedule"] { color: var(--warn); background: var(--warn-dim); border-color: rgba(166, 112, 0, 0.3); }
 .admin-pill[data-tone="rejected"],
-.admin-pill[data-tone="declined"] { color: var(--danger); background: var(--danger-dim); border-color: rgba(255, 104, 104, 0.3); }
-.admin-pill[data-tone="scheduled"] { color: var(--violet); background: var(--violet-dim); border-color: rgba(180, 144, 255, 0.3); }
+.admin-pill[data-tone="declined"] { color: var(--danger); background: var(--danger-dim); border-color: rgba(179, 18, 27, 0.3); }
+.admin-pill[data-tone="scheduled"] { color: var(--violet); background: var(--violet-dim); border-color: rgba(166, 112, 0, 0.3); }
 .admin-pill[data-tone="completed"] { color: var(--muted); background: var(--surface-2); border-color: var(--border-light); }
 
 .admin-facts {
@@ -504,12 +504,12 @@ button { cursor: pointer; }
   border-radius: 999px;
   border: 1px solid var(--lime-line);
   background: var(--lime-dim);
-  color: var(--lime);
+  color: #ffffff;
   font-weight: 700;
   font-size: 13px;
 }
 
-.admin-select select option { color: #050505; }
+.admin-select select option { color: #ffffff; }
 
 
 /* ---------------- tuition rows ---------------- */
@@ -854,9 +854,9 @@ button { cursor: pointer; }
 .tutor-row-card[data-tone="completed"] { box-shadow: inset 3px 0 0 var(--muted-2); }
 
 .admin-pill[data-tone="new"],
-.admin-pill[data-tone="open"] { color: var(--lime); background: var(--lime-dim); border-color: var(--lime-line); }
-.admin-pill[data-tone="processing"] { color: var(--violet); background: var(--violet-dim); border-color: rgba(180, 144, 255, 0.3); }
-.admin-pill[data-tone="terminated"] { color: var(--danger); background: var(--danger-dim); border-color: rgba(255, 104, 104, 0.3); }
+.admin-pill[data-tone="open"] { color: #ffffff; background: var(--lime-dim); border-color: var(--lime-line); }
+.admin-pill[data-tone="processing"] { color: var(--violet); background: var(--violet-dim); border-color: rgba(166, 112, 0, 0.3); }
+.admin-pill[data-tone="terminated"] { color: var(--danger); background: var(--danger-dim); border-color: rgba(179, 18, 27, 0.3); }
 
 .admin-assign {
   display: flex;
@@ -914,8 +914,8 @@ button { cursor: pointer; }
 }
 
 .admin-seg input:checked + span[data-v="pending"] { background: var(--surface-2); color: var(--text); box-shadow: inset 0 0 0 1px var(--border-light); }
-.admin-seg input:checked + span[data-v="accepted"] { background: var(--lime); color: #050505; }
-.admin-seg input:checked + span[data-v="rejected"] { background: var(--danger-dim); color: var(--danger); box-shadow: inset 0 0 0 1px rgba(255, 104, 104, 0.4); }
+.admin-seg input:checked + span[data-v="accepted"] { background: var(--lime); color: #ffffff; }
+.admin-seg input:checked + span[data-v="rejected"] { background: var(--danger-dim); color: var(--danger); box-shadow: inset 0 0 0 1px rgba(179, 18, 27, 0.4); }
 .admin-seg input:disabled + span { opacity: 0.5; cursor: default; }
 .admin-seg input:focus-visible + span { outline: 2px solid var(--lime); outline-offset: 2px; }
 
@@ -1084,7 +1084,7 @@ button { cursor: pointer; }
   border-radius: 999px;
   border: 0;
   background: var(--lime-dim);
-  color: var(--lime);
+  color: #ffffff;
   font-size: 12px;
   font-weight: 700;
 }
@@ -1098,7 +1098,7 @@ button { cursor: pointer; }
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background: rgba(22, 163, 74, 0.22);
+  background: rgba(214, 40, 40, 0.22);
   color: var(--lime);
   cursor: pointer;
   transition: background 0.15s ease, transform 0.15s ease;
@@ -1260,7 +1260,7 @@ button { cursor: pointer; }
 .admin-box.is-edit select,
 .admin-box.is-edit textarea {
   border-color: var(--lime-line);
-  background: rgba(22, 163, 74, 0.05);
+  background: rgba(214, 40, 40, 0.05);
 }
 
 .admin-box.is-edit > span {
@@ -1272,7 +1272,7 @@ button { cursor: pointer; }
 .admin-box.is-edit textarea:focus {
   outline: none;
   border-color: var(--lime);
-  background: rgba(22, 163, 74, 0.09);
+  background: rgba(214, 40, 40, 0.09);
 }
 
 .admin-box.is-edit input:disabled {
@@ -1280,7 +1280,7 @@ button { cursor: pointer; }
 }
 
 .admin-box select option {
-  color: #050505;
+  color: #ffffff;
 }
 
 /* a card in edit mode gets a lime outline */
@@ -1340,7 +1340,7 @@ button { cursor: pointer; }
   padding: 10px 14px;
   border-radius: 0;
   border: 0;
-  background: rgba(255, 140, 26, 0.16);
+  background: rgba(244, 180, 0, 0.16);
   color: var(--orange);
   font-size: 12.5px;
   font-weight: 700;
@@ -1472,7 +1472,7 @@ button { cursor: pointer; }
   border: 1.5px solid var(--border-light);
   display: grid;
   place-items: center;
-  color: #050505;
+  color: #ffffff;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 
@@ -1488,7 +1488,7 @@ button { cursor: pointer; }
 }
 
 .pill-check:has(input:checked) {
-  border-color: rgba(22, 163, 74, 0.45);
+  border-color: rgba(214, 40, 40, 0.45);
   background: var(--lime-dim);
 }
 
@@ -1568,7 +1568,7 @@ button { cursor: pointer; }
   border: 1.5px solid var(--border-light);
   display: grid;
   place-items: center;
-  color: #050505;
+  color: #ffffff;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 
@@ -1580,8 +1580,8 @@ button { cursor: pointer; }
 
 .admin-mode-seg input:checked + .admin-mode-opt {
   background: var(--lime-dim);
-  border-color: rgba(22, 163, 74, 0.45);
-  color: var(--text);
+  border-color: rgba(214, 40, 40, 0.45);
+  color: #ffffff;
 }
 
 .admin-mode-seg input:checked + .admin-mode-opt .admin-mode-dot {
@@ -1818,7 +1818,7 @@ button { cursor: pointer; }
   padding: 8px 10px;
   border: 0;
   border-radius: 0;
-  background: rgba(22, 163, 74, 0.07);
+  background: rgba(214, 40, 40, 0.07);
 }
 
 .admin-hl .admin-info {
@@ -1942,7 +1942,7 @@ body[data-page="admin"] {
 }
 
 .admin-hl-top {
-  background: rgba(22, 163, 74, 0.08);
+  background: rgba(214, 40, 40, 0.08);
   min-width: 0;
 }
 
@@ -1967,29 +1967,29 @@ body[data-page="admin"] {
 
 .admin-hl-small {
   margin: 0;
-  background: rgba(255, 255, 255, 0.06);   /* light grey */
+  background: rgba(120, 20, 20, 0.06);   /* light grey */
   color: var(--muted);
 }
 
 /* top layer colour = status */
-.admin-hl-top[data-tone="blue"]       { background: rgba(110, 170, 255, 0.14); }
+.admin-hl-top[data-tone="blue"]       { background: rgba(166, 112, 0, 0.14); }
 /* "verified" (a tutor) matches the Accept button's exact green;
    "running" (a tuition) keeps the separate success-mint green. */
-.admin-hl-top[data-tone="verified"]   { background: rgba(22, 163, 74, 0.18); }
-.admin-hl-top[data-tone="running"]    { background: rgba(22, 163, 74, 0.13); }
+.admin-hl-top[data-tone="verified"]   { background: rgba(214, 40, 40, 0.18); }
+.admin-hl-top[data-tone="running"]    { background: rgba(214, 40, 40, 0.13); }
 .admin-hl-top[data-tone="pending"]    { background: var(--blue-dim); }
-.admin-hl-top[data-tone="schedule"]   { background: rgba(255, 140, 26, 0.13); }
+.admin-hl-top[data-tone="schedule"]   { background: rgba(244, 180, 0, 0.13); }
 /* "rejected" (a tutor) matches the Reject/Suspend button's exact red. */
-.admin-hl-top[data-tone="rejected"]   { background: rgba(255, 104, 104, 0.18); }
+.admin-hl-top[data-tone="rejected"]   { background: rgba(179, 18, 27, 0.18); }
 .admin-hl-top[data-tone="declined"],
-.admin-hl-top[data-tone="terminated"] { background: rgba(255, 104, 104, 0.13); }
+.admin-hl-top[data-tone="terminated"] { background: rgba(179, 18, 27, 0.13); }
 .admin-hl-top[data-tone="scheduled"],
-.admin-hl-top[data-tone="processing"] { background: rgba(180, 144, 255, 0.14); }
-.admin-hl-top[data-tone="completed"]  { background: rgba(255, 255, 255, 0.08); }
+.admin-hl-top[data-tone="processing"] { background: rgba(166, 112, 0, 0.14); }
+.admin-hl-top[data-tone="completed"]  { background: rgba(120, 20, 20, 0.08); }
 .admin-hl-top[data-tone="new"],
 .admin-hl-top[data-tone="open"]       { background: var(--blue-dim); }
 /* "green" (a student) - same green as Accept/Verified. */
-.admin-hl-top[data-tone="green"]      { background: rgba(22, 163, 74, 0.18); }
+.admin-hl-top[data-tone="green"]      { background: rgba(214, 40, 40, 0.18); }
 
 /* Name/Mobile/ID text itself - not just the background - matches the
    Accept (green) / Reject-Suspend (red) button colour. */
@@ -2142,13 +2142,13 @@ body[data-page="admin"] {
    light tinted colour while live, plain grey once disabled (already
    accepted / already rejected-or-suspended) */
 .admin-vbtn.v-reject {
-  background: rgba(255, 104, 104, 0.18);
+  background: rgba(179, 18, 27, 0.18);
   color: var(--danger);
   border-radius: 0 16px 16px 0;
 }
 
 .admin-vbtn.v-approve {
-  background: rgba(22, 163, 74, 0.18);
+  background: rgba(214, 40, 40, 0.18);
   color: var(--lime);
   border-radius: 18px 0 0 18px;
 }
@@ -2200,16 +2200,16 @@ body[data-page="admin"] {
   border-radius: 999px;
   border: 1px solid var(--lime-line);
   background: var(--lime-dim);
-  color: var(--lime);
+  color: #ffffff;
   font-weight: 800;
   font-size: 11px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-.admin-role-pill[data-role="accounts_finance"] { border-color: rgba(180,144,255,0.3); background: var(--violet-dim); color: var(--violet); }
-.admin-role-pill[data-role="verification_staff"] { border-color: rgba(255,209,102,0.3); background: var(--warn-dim); color: var(--warn); }
-.admin-role-pill[data-role="tutor_relations"] { border-color: rgba(110,170,255,0.3); background: rgba(110,170,255,0.14); color: #6eaaff; }
+.admin-role-pill[data-role="accounts_finance"] { border-color: rgba(166, 112, 0, 0.3); background: var(--violet-dim); color: var(--violet); }
+.admin-role-pill[data-role="verification_staff"] { border-color: rgba(166, 112, 0, 0.3); background: var(--warn-dim); color: var(--warn); }
+.admin-role-pill[data-role="tutor_relations"] { border-color: rgba(166, 112, 0, 0.3); background: rgba(166, 112, 0, 0.14); color: #a67000; }
 .admin-role-pill[data-role="tuition_coordinator"] { border-color: var(--border-light); background: var(--surface-2); color: var(--text); }
 
 .admin-money {
@@ -2310,7 +2310,7 @@ body[data-page="admin"] {
 }
 
 .admin-float select:focus { outline: none; border-color: var(--lime-line); }
-.admin-float select option { color: #050505; }
+.admin-float select option { color: #ffffff; }
 
 .admin-float textarea {
   width: 100%;
@@ -2385,7 +2385,7 @@ body[data-page="admin"] {
   border-radius: 12px;
   background: var(--lime-dim);
   border: 1px solid var(--lime-line);
-  color: var(--text);
+  color: #ffffff;
   font-size: 12.5px;
   font-weight: 600;
   overflow-wrap: anywhere;
@@ -2459,7 +2459,7 @@ body[data-page="admin"] {
   border-radius: 18px 0 0 18px;
   border-right: 1px solid var(--border);
 }
-.admin-status-rail[data-tone="black"] { background: #000; color: var(--text); }
+.admin-status-rail[data-tone="black"] { background: #ffffff; color: var(--text); }
 
 .admin-avatar-link {
   padding: 0;
@@ -2540,7 +2540,7 @@ body[data-page="admin"] {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.ledger-flow[data-flow="in"] { color: var(--lime); background: var(--lime-dim); }
+.ledger-flow[data-flow="in"] { color: #ffffff; background: var(--lime-dim); }
 .ledger-flow[data-flow="out"] { color: var(--danger); background: var(--danger-dim); }
 .ledger-flow.ledger-flow-head {
   height: auto;
@@ -2680,7 +2680,7 @@ body[data-page="admin"] {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(120, 20, 20, 0.45) 50%, transparent 100%);
   transform: translateX(-100%);
   animation: admin-wave 5s ease-in-out forwards;
 }
@@ -2702,12 +2702,12 @@ body[data-page="admin"] {
 .admin-status-rail[data-tone="open"],
 .admin-status-rail[data-tone="pending"]     { background: var(--blue-dim); color: var(--blue); }
 .admin-status-rail[data-tone="running"],
-.admin-status-rail[data-tone="verified"]    { background: var(--lime-dim); color: var(--lime); }
+.admin-status-rail[data-tone="verified"]    { background: var(--lime-dim); color: #ffffff; }
 .admin-status-rail[data-tone="completed"]   { background: var(--surface-3); color: var(--muted); }
 .admin-status-rail[data-tone="terminated"],
 .admin-status-rail[data-tone="rejected"],
-.admin-status-rail[data-tone="declined"]    { background: rgba(255, 104, 104, 0.18); color: var(--danger); }
-.admin-status-rail[data-tone="schedule"]    { background: rgba(255, 140, 26, 0.18); color: var(--orange); }
+.admin-status-rail[data-tone="declined"]    { background: rgba(179, 18, 27, 0.18); color: var(--danger); }
+.admin-status-rail[data-tone="schedule"]    { background: rgba(244, 180, 0, 0.18); color: var(--orange); }
 .admin-status-rail[data-tone="scheduled"],
 .admin-status-rail[data-tone="processing"]  { background: var(--violet-dim); color: var(--violet); }
 
@@ -2799,7 +2799,7 @@ body[data-page="admin"] {
 }
 
 .admin-day-chip.is-on {
-  color: #050505;
+  color: #ffffff;
   background: var(--lime);
   border-color: var(--lime);
 }
@@ -2846,7 +2846,7 @@ body[data-page="admin"] {
    follows its own status colour */
 .admin-card[data-tone="new"] .admin-avatar,
 .admin-card[data-tone="open"] .admin-avatar        { color: var(--blue); background: var(--blue-dim); border-color: var(--blue-line); }
-.admin-card[data-tone="running"] .admin-avatar     { color: var(--lime); background: var(--lime-dim); border-color: var(--lime-line); }
+.admin-card[data-tone="running"] .admin-avatar     { color: #ffffff; background: var(--lime-dim); border-color: var(--lime-line); }
 .admin-card[data-tone="completed"] .admin-avatar   { color: var(--muted); background: var(--surface-3); border-color: var(--border-light); }
 
 /* Students / Payments: plain black - no status colour */
@@ -2854,10 +2854,10 @@ body[data-page="admin"] {
 .admin-hl-top[data-tone="neutral"] { background: var(--surface-3); }
 .admin-hl-top[data-tone="neutral"] .admin-info b { color: var(--text); }
 .admin-card[data-tone="terminated"] .admin-avatar,
-.admin-card[data-tone="declined"] .admin-avatar    { color: var(--danger); background: rgba(255, 104, 104, 0.18); border-color: rgba(255, 104, 104, 0.3); }
-.admin-card[data-tone="schedule"] .admin-avatar    { color: var(--orange); background: rgba(255, 140, 26, 0.18); border-color: rgba(255, 140, 26, 0.3); }
+.admin-card[data-tone="declined"] .admin-avatar    { color: var(--danger); background: rgba(179, 18, 27, 0.18); border-color: rgba(179, 18, 27, 0.3); }
+.admin-card[data-tone="schedule"] .admin-avatar    { color: var(--orange); background: rgba(244, 180, 0, 0.18); border-color: rgba(244, 180, 0, 0.3); }
 .admin-card[data-tone="scheduled"] .admin-avatar,
-.admin-card[data-tone="processing"] .admin-avatar  { color: var(--violet); background: var(--violet-dim); border-color: rgba(180, 144, 255, 0.3); }
+.admin-card[data-tone="processing"] .admin-avatar  { color: var(--violet); background: var(--violet-dim); border-color: rgba(166, 112, 0, 0.3); }
 
 /* Tuition card's address line: address text on the left, the
    "N Tutor(s) Applied" count pushed to the far right */
@@ -3088,7 +3088,7 @@ body[data-page="admin"] {
   font-size: 12px;
   font-weight: 800;
 }
-.emp-status[data-active="yes"] { color: var(--lime); background: var(--lime-dim); }
+.emp-status[data-active="yes"] { color: #ffffff; background: var(--lime-dim); }
 .emp-status[data-active="no"] { color: var(--danger); background: var(--danger-dim); }
 #employeeList .admin-card .admin-avatar {
   color: var(--text);
@@ -3139,15 +3139,15 @@ body[data-page="admin"] {
 
 /* Change Email | Resend Code: dark green while active */
 .admin-otp-actions > .admin-ghost:not(:disabled) {
-  background: #14532d;
-  border-color: #166534;
-  color: #dcfce7;
+  background: #fdeaea;
+  border-color: #fdeaea;
+  color: #b3121b;
 }
 
 .admin-otp-actions > .admin-ghost:not(:disabled):hover {
-  background: #166534;
-  border-color: #166534;
-  color: #ffffff;
+  background: #fdeaea;
+  border-color: #fdeaea;
+  color: #260808;
 }
 
 
@@ -3185,27 +3185,27 @@ body[data-page="admin"] {
 .admin-otp-actions > .admin-ghost:not(:disabled) {
   background: var(--lime);
   border-color: var(--lime);
-  color: #050505;
+  color: #ffffff;
 }
 .admin-otp-actions > .admin-ghost:not(:disabled):hover {
   background: var(--lime-hover);
   border-color: var(--lime-hover);
-  color: #050505;
+  color: #ffffff;
 }
 
 .otp-box {
-  color: #ffffff;
-  -webkit-text-fill-color: #ffffff;
+  color: #260808;
+  -webkit-text-fill-color: #260808;
   opacity: 1;
   font-size: 24px;
   line-height: 1;
 }
-.otp-box::selection { background: transparent; color: #ffffff; }
+.otp-box::selection { background: transparent; color: #260808; }
 .otp-box:-webkit-autofill,
 .otp-box:-webkit-autofill:focus {
-  -webkit-text-fill-color: #ffffff;
+  -webkit-text-fill-color: #260808;
   -webkit-box-shadow: 0 0 0 100px var(--surface-2) inset;
-  caret-color: #ffffff;
+  caret-color: #260808;
 }
 
 /* Employee permissions, read-only: clear ticks instead of the browser's pale disabled boxes */

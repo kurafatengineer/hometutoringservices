@@ -19,11 +19,11 @@
 
   // Figures come from Supabase: get_home_stats() via window.sbCall.
 
-  const LIME = "#16a34a";
-  const VIOLET = "#9486ff";
-  const MUTED = "#8e8e99";
-  const LINE = "rgba(255,255,255,.06)";
-  const AVATAR_COLORS = [LIME, VIOLET, "#7fe3ff", "#ffb4d2"];
+  const LIME = "#d62828";
+  const VIOLET = "#a67000";
+  const MUTED = "#815e5c";
+  const LINE = "rgba(120, 20, 20, .06)";
+  const AVATAR_COLORS = [LIME, VIOLET, "#a67000", "#b3121b"];
 
   let DATA = null;
   let subjectsChart = null;
@@ -224,7 +224,7 @@
 
     if (!hasChart()) return;
 
-    const colors = labels.map((_, i) => i === 0 ? LIME : "rgba(255,255,255,.16)");
+    const colors = labels.map((_, i) => i === 0 ? LIME : "rgba(120, 20, 20, .16)");
 
     if (subjectsChart) {
       subjectsChart.data.labels = labels;
@@ -242,7 +242,7 @@
         plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.raw} request${c.raw === 1 ? "" : "s"}` } } },
         scales: {
           x: { grid: { color: LINE }, border: { display: false }, ticks: { precision: 0, color: MUTED } },
-          y: { grid: { display: false }, border: { display: false }, ticks: { color: "#e6e6ea", font: { size: 13 } } }
+          y: { grid: { display: false }, border: { display: false }, ticks: { color: "#330f0f", font: { size: 13 } } }
         },
         animation: { duration: 900 }
       }
@@ -284,8 +284,8 @@
     const canvas = $("ldGrowthChart");
     const ctx = canvas.getContext("2d");
     const fill = ctx.createLinearGradient(0, 0, 0, 320);
-    fill.addColorStop(0, "rgba(22,163,74,.22)");
-    fill.addColorStop(1, "rgba(22,163,74,0)");
+    fill.addColorStop(0, "rgba(214, 40, 40, .22)");
+    fill.addColorStop(1, "rgba(214, 40, 40, 0)");
 
     new Chart(canvas, {
       type: "line",
