@@ -1,0 +1,29 @@
+/* =========================================================
+   STATUS COLOURS (light tints)
+   Used by student profile, tutor profile and admin panel.
+   Finding Tutor = blue          Applied by Tutor = orange
+   Demo Scheduled = purple       Running = green
+   Completed = no colour         Processing / Approved by Tutor /
+   Approved by Parents = orange  Rejected / Terminated = red
+   ========================================================= */
+:root {
+  --st-blue: #1d4ed8;
+  --st-blue-dim: rgba(59, 130, 246, 0.14);
+  --st-blue-line: rgba(59, 130, 246, 0.35);
+
+  --st-orange: #c2410c;
+  --st-orange-dim: rgba(249, 115, 22, 0.14);
+  --st-orange-line: rgba(249, 115, 22, 0.35);
+
+  --st-purple: #6d28d9;
+  --st-purple-dim: rgba(139, 92, 246, 0.14);
+  --st-purple-line: rgba(139, 92, 246, 0.35);
+
+  --st-green: #15803d;
+  --st-green-dim: rgba(34, 197, 94, 0.14);
+  --st-green-line: rgba(34, 197, 94, 0.35);
+
+  --st-red: #b91c1c;
+  --st-red-dim: rgba(239, 68, 68, 0.12);
+  --st-red-line: rgba(239, 68, 68, 0.32);
+}

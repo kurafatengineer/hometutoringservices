@@ -378,10 +378,11 @@ button { cursor: pointer; }
 .admin-card[data-tone="pending"] { border-color: var(--blue-line); }
 /* Tutors: the card border never carries the verification colour - only the profile circle does */
 #tutorList .admin-card[data-tone="pending"],
-#tutorList .admin-card[data-tone="verified"],
+#tutorList .admin-card[data-tone="verified"] { border-color: var(--border); }
+
 #tutorList .admin-card[data-tone="rejected"] { border-color: var(--border); }
 .admin-card[data-tone="verified"] { border-color: var(--lime-line); }
-.admin-card[data-tone="rejected"] { border-color: rgba(179, 18, 27, 0.3); }
+.admin-card[data-tone="rejected"] { border-color: var(--st-red-line); }
 
 /* the name-letter avatar also follows the tutor's status */
 .admin-card[data-tone="pending"] .admin-avatar {
@@ -391,7 +392,7 @@ button { cursor: pointer; }
   color: #ffffff; background: var(--lime-dim); border-color: var(--lime-line);
 }
 .admin-card[data-tone="rejected"] .admin-avatar {
-  color: var(--danger); background: var(--danger-dim); border-color: rgba(179, 18, 27, 0.3);
+  color: var(--st-red); background: var(--st-red-dim); border-color: var(--st-red-line);
 }
 
 .admin-card-head {
@@ -446,13 +447,14 @@ button { cursor: pointer; }
   white-space: nowrap;
 }
 
-.admin-pill[data-tone="verified"],
-.admin-pill[data-tone="running"] { color: #ffffff; background: var(--lime-dim); border-color: var(--lime-line); }
+.admin-pill[data-tone="verified"] { color: #ffffff; background: var(--lime-dim); border-color: var(--lime-line); }
+
+.admin-pill[data-tone="running"] { color: var(--st-green); background: var(--st-green-dim); border-color: var(--st-green-line); }
 .admin-pill[data-tone="pending"] { color: var(--blue); background: var(--blue-dim); border-color: var(--blue-line); }
 .admin-pill[data-tone="schedule"] { color: var(--warn); background: var(--warn-dim); border-color: rgba(166, 112, 0, 0.3); }
 .admin-pill[data-tone="rejected"],
-.admin-pill[data-tone="declined"] { color: var(--danger); background: var(--danger-dim); border-color: rgba(179, 18, 27, 0.3); }
-.admin-pill[data-tone="scheduled"] { color: var(--violet); background: var(--violet-dim); border-color: rgba(166, 112, 0, 0.3); }
+.admin-pill[data-tone="declined"] { color: var(--st-red); background: var(--st-red-dim); border-color: var(--st-red-line); }
+.admin-pill[data-tone="scheduled"] { color: var(--st-purple); background: var(--st-purple-dim); border-color: var(--st-purple-line); }
 .admin-pill[data-tone="completed"] { color: var(--muted); background: var(--surface-2); border-color: var(--border-light); }
 
 .admin-facts {
@@ -845,18 +847,20 @@ button { cursor: pointer; }
   gap: 10px;
 }
 
-.tutor-row-card[data-tone="running"] { box-shadow: inset 3px 0 0 var(--lime); }
-.tutor-row-card[data-tone="scheduled"],
-.tutor-row-card[data-tone="processing"] { box-shadow: inset 3px 0 0 var(--violet); }
+.tutor-row-card[data-tone="running"] { box-shadow: inset 3px 0 0 var(--st-green); }
+.tutor-row-card[data-tone="scheduled"] { box-shadow: inset 3px 0 0 var(--st-purple); }
+
+.tutor-row-card[data-tone="processing"] { box-shadow: inset 3px 0 0 var(--st-orange); }
 .tutor-row-card[data-tone="schedule"] { box-shadow: inset 3px 0 0 var(--orange); }
 .tutor-row-card[data-tone="declined"],
-.tutor-row-card[data-tone="terminated"] { box-shadow: inset 3px 0 0 var(--danger); }
+.tutor-row-card[data-tone="terminated"] { box-shadow: inset 3px 0 0 var(--st-red); }
 .tutor-row-card[data-tone="completed"] { box-shadow: inset 3px 0 0 var(--muted-2); }
 
-.admin-pill[data-tone="new"],
+.admin-pill[data-tone="new"] { color: var(--st-blue); background: var(--st-blue-dim); border-color: var(--st-blue-line); }
+
 .admin-pill[data-tone="open"] { color: #ffffff; background: var(--lime-dim); border-color: var(--lime-line); }
-.admin-pill[data-tone="processing"] { color: var(--violet); background: var(--violet-dim); border-color: rgba(166, 112, 0, 0.3); }
-.admin-pill[data-tone="terminated"] { color: var(--danger); background: var(--danger-dim); border-color: rgba(179, 18, 27, 0.3); }
+.admin-pill[data-tone="processing"] { color: var(--st-orange); background: var(--st-orange-dim); border-color: var(--st-orange-line); }
+.admin-pill[data-tone="terminated"] { color: var(--st-red); background: var(--st-red-dim); border-color: var(--st-red-line); }
 
 .admin-assign {
   display: flex;
@@ -967,7 +971,7 @@ button { cursor: pointer; }
 /* Exact same colours as .admin-status-rail's 4 tones, so a tuition's
    pill here always matches its own card's status strip - "new" is
    blue on the rail (not the lime .admin-pill normally uses). */
-.admin-pill-link[data-tone="new"] { color: var(--blue); background: var(--blue-dim); border-color: var(--blue-line); }
+.admin-pill-link[data-tone="new"] { color: var(--st-blue); background: var(--st-blue-dim); border-color: var(--st-blue-line); }
 .admin-pill-link[data-tone="completed"] { color: var(--muted); background: var(--surface-3); border-color: var(--border-light); }
 
 @media (max-width: 520px) {
@@ -1976,18 +1980,20 @@ body[data-page="admin"] {
 /* "verified" (a tutor) matches the Accept button's exact green;
    "running" (a tuition) keeps the separate success-mint green. */
 .admin-hl-top[data-tone="verified"]   { background: rgba(214, 40, 40, 0.18); }
-.admin-hl-top[data-tone="running"]    { background: rgba(214, 40, 40, 0.13); }
+.admin-hl-top[data-tone="running"] { background: var(--st-green-dim); }
 .admin-hl-top[data-tone="pending"]    { background: var(--blue-dim); }
 .admin-hl-top[data-tone="schedule"]   { background: rgba(244, 180, 0, 0.13); }
 /* "rejected" (a tutor) matches the Reject/Suspend button's exact red. */
-.admin-hl-top[data-tone="rejected"]   { background: rgba(179, 18, 27, 0.18); }
+.admin-hl-top[data-tone="rejected"] { background: var(--st-red-dim); }
 .admin-hl-top[data-tone="declined"],
-.admin-hl-top[data-tone="terminated"] { background: rgba(179, 18, 27, 0.13); }
-.admin-hl-top[data-tone="scheduled"],
-.admin-hl-top[data-tone="processing"] { background: rgba(166, 112, 0, 0.14); }
-.admin-hl-top[data-tone="completed"]  { background: rgba(120, 20, 20, 0.08); }
-.admin-hl-top[data-tone="new"],
-.admin-hl-top[data-tone="open"]       { background: var(--blue-dim); }
+.admin-hl-top[data-tone="terminated"] { background: var(--st-red-dim); }
+.admin-hl-top[data-tone="scheduled"] { background: var(--st-purple-dim); }
+
+.admin-hl-top[data-tone="processing"] { background: var(--st-orange-dim); }
+.admin-hl-top[data-tone="completed"] { background: var(--st-none-dim); }
+.admin-hl-top[data-tone="new"] { background: var(--st-blue-dim); }
+
+.admin-hl-top[data-tone="open"] { background: var(--blue-dim); }
 /* "green" (a student) - same green as Accept/Verified. */
 .admin-hl-top[data-tone="green"]      { background: rgba(214, 40, 40, 0.18); }
 
@@ -1995,17 +2001,19 @@ body[data-page="admin"] {
    Accept (green) / Reject-Suspend (red) button colour. */
 .admin-hl-top[data-tone="verified"] .admin-info b,
 .admin-hl-top[data-tone="green"] .admin-info b    { color: var(--lime); }
-.admin-hl-top[data-tone="rejected"] .admin-info b { color: var(--danger); }
+.admin-hl-top[data-tone="rejected"] .admin-info b { color: var(--st-red); }
 .admin-hl-top[data-tone="pending"] .admin-info b  { color: var(--blue); }
-.admin-hl-top[data-tone="new"] .admin-info b,
-.admin-hl-top[data-tone="open"] .admin-info b     { color: var(--blue); }
-.admin-hl-top[data-tone="running"] .admin-info b  { color: var(--lime); }
+.admin-hl-top[data-tone="new"] .admin-info b { color: var(--st-blue); }
+
+.admin-hl-top[data-tone="open"] .admin-info b { color: var(--blue); }
+.admin-hl-top[data-tone="running"] .admin-info b { color: var(--st-green); }
 .admin-hl-top[data-tone="completed"] .admin-info b { color: var(--muted); }
 .admin-hl-top[data-tone="terminated"] .admin-info b,
-.admin-hl-top[data-tone="declined"] .admin-info b { color: var(--danger); }
+.admin-hl-top[data-tone="declined"] .admin-info b { color: var(--st-red); }
 .admin-hl-top[data-tone="schedule"] .admin-info b { color: var(--orange); }
-.admin-hl-top[data-tone="scheduled"] .admin-info b,
-.admin-hl-top[data-tone="processing"] .admin-info b { color: var(--violet); }
+.admin-hl-top[data-tone="scheduled"] .admin-info b { color: var(--st-purple); }
+
+.admin-hl-top[data-tone="processing"] .admin-info b { color: var(--st-orange); }
 
 
 /* ---------- top bar: Refresh | Admin Panel | Log out ---------- */
@@ -2698,18 +2706,21 @@ body[data-page="admin"] {
   filter: brightness(1.15);
 }
 
-.admin-status-rail[data-tone="new"],
+.admin-status-rail[data-tone="new"] { background: var(--st-blue-dim); color: var(--st-blue); }
+
 .admin-status-rail[data-tone="open"],
-.admin-status-rail[data-tone="pending"]     { background: var(--blue-dim); color: var(--blue); }
-.admin-status-rail[data-tone="running"],
-.admin-status-rail[data-tone="verified"]    { background: var(--lime-dim); color: #ffffff; }
-.admin-status-rail[data-tone="completed"]   { background: var(--surface-3); color: var(--muted); }
+.admin-status-rail[data-tone="pending"] { background: var(--blue-dim); color: var(--blue); }
+.admin-status-rail[data-tone="running"] { background: var(--st-green-dim); color: var(--st-green); }
+
+.admin-status-rail[data-tone="verified"] { background: var(--lime-dim); color: #ffffff; }
+.admin-status-rail[data-tone="completed"] { background: var(--surface-3); color: var(--muted); }
 .admin-status-rail[data-tone="terminated"],
 .admin-status-rail[data-tone="rejected"],
-.admin-status-rail[data-tone="declined"]    { background: rgba(179, 18, 27, 0.18); color: var(--danger); }
+.admin-status-rail[data-tone="declined"] { background: var(--st-red-dim); color: var(--st-red); }
 .admin-status-rail[data-tone="schedule"]    { background: rgba(244, 180, 0, 0.18); color: var(--orange); }
-.admin-status-rail[data-tone="scheduled"],
-.admin-status-rail[data-tone="processing"]  { background: var(--violet-dim); color: var(--violet); }
+.admin-status-rail[data-tone="scheduled"] { background: var(--st-purple-dim); color: var(--st-purple); }
+
+.admin-status-rail[data-tone="processing"] { background: var(--st-orange-dim); color: var(--st-orange); }
 
 /* Once a class is Running/Completed, this card sits above the Tuition
    card in the same stack, holding its own schedule (which days it
@@ -2844,20 +2855,22 @@ body[data-page="admin"] {
 
 /* the name-letter avatar on the Tuition / Tutor Applied card also
    follows its own status colour */
-.admin-card[data-tone="new"] .admin-avatar,
-.admin-card[data-tone="open"] .admin-avatar        { color: var(--blue); background: var(--blue-dim); border-color: var(--blue-line); }
-.admin-card[data-tone="running"] .admin-avatar     { color: #ffffff; background: var(--lime-dim); border-color: var(--lime-line); }
-.admin-card[data-tone="completed"] .admin-avatar   { color: var(--muted); background: var(--surface-3); border-color: var(--border-light); }
+.admin-card[data-tone="new"] .admin-avatar { color: var(--st-blue); background: var(--st-blue-dim); border-color: var(--st-blue-line); }
+
+.admin-card[data-tone="open"] .admin-avatar { color: var(--blue); background: var(--blue-dim); border-color: var(--blue-line); }
+.admin-card[data-tone="running"] .admin-avatar { color: var(--st-green); background: var(--st-green-dim); border-color: var(--st-green-line); }
+.admin-card[data-tone="completed"] .admin-avatar { color: var(--muted); background: var(--surface-3); border-color: var(--border-light); }
 
 /* Students / Payments: plain black - no status colour */
 .admin-card[data-tone="neutral"] .admin-avatar { color: var(--text); background: var(--surface-3); border-color: var(--border-light); }
 .admin-hl-top[data-tone="neutral"] { background: var(--surface-3); }
 .admin-hl-top[data-tone="neutral"] .admin-info b { color: var(--text); }
 .admin-card[data-tone="terminated"] .admin-avatar,
-.admin-card[data-tone="declined"] .admin-avatar    { color: var(--danger); background: rgba(179, 18, 27, 0.18); border-color: rgba(179, 18, 27, 0.3); }
+.admin-card[data-tone="declined"] .admin-avatar { color: var(--st-red); background: var(--st-red-dim); border-color: var(--st-red-line); }
 .admin-card[data-tone="schedule"] .admin-avatar    { color: var(--orange); background: rgba(244, 180, 0, 0.18); border-color: rgba(244, 180, 0, 0.3); }
-.admin-card[data-tone="scheduled"] .admin-avatar,
-.admin-card[data-tone="processing"] .admin-avatar  { color: var(--violet); background: var(--violet-dim); border-color: rgba(166, 112, 0, 0.3); }
+.admin-card[data-tone="scheduled"] .admin-avatar { color: var(--st-purple); background: var(--st-purple-dim); border-color: var(--st-purple-line); }
+
+.admin-card[data-tone="processing"] .admin-avatar { color: var(--st-orange); background: var(--st-orange-dim); border-color: var(--st-orange-line); }
 
 /* Tuition card's address line: address text on the left, the
    "N Tutor(s) Applied" count pushed to the far right */
@@ -3096,7 +3109,8 @@ body[data-page="admin"] {
   border-color: var(--border-light);
 }
 /* Employees: the card border never carries the Active/Suspended colour either. */
-#employeeList .admin-card[data-tone="verified"],
+#employeeList .admin-card[data-tone="verified"] { border-color: var(--border); }
+
 #employeeList .admin-card[data-tone="rejected"] { border-color: var(--border); }
 
 /* ---------------- login: centred email, six-block code ---------------- */
@@ -3167,18 +3181,21 @@ body[data-page="admin"] {
 }
 
 .admin-hl-top[data-tone="verified"] .ledger-cell,
-.admin-hl-top[data-tone="green"] .ledger-cell,
-.admin-hl-top[data-tone="running"] .ledger-cell     { color: var(--lime); }
+.admin-hl-top[data-tone="green"] .ledger-cell { color: var(--lime); }
+
+.admin-hl-top[data-tone="running"] .ledger-cell { color: var(--st-green); }
 .admin-hl-top[data-tone="rejected"] .ledger-cell,
 .admin-hl-top[data-tone="terminated"] .ledger-cell,
-.admin-hl-top[data-tone="declined"] .ledger-cell    { color: var(--danger); }
+.admin-hl-top[data-tone="declined"] .ledger-cell { color: var(--st-red); }
 .admin-hl-top[data-tone="pending"] .ledger-cell,
-.admin-hl-top[data-tone="new"] .ledger-cell,
-.admin-hl-top[data-tone="open"] .ledger-cell        { color: var(--blue); }
-.admin-hl-top[data-tone="completed"] .ledger-cell   { color: var(--muted); }
+.admin-hl-top[data-tone="open"] .ledger-cell { color: var(--blue); }
+
+.admin-hl-top[data-tone="new"] .ledger-cell { color: var(--st-blue); }
+.admin-hl-top[data-tone="completed"] .ledger-cell { color: var(--muted); }
 .admin-hl-top[data-tone="schedule"] .ledger-cell    { color: var(--orange); }
-.admin-hl-top[data-tone="scheduled"] .ledger-cell,
-.admin-hl-top[data-tone="processing"] .ledger-cell  { color: var(--violet); }
+.admin-hl-top[data-tone="scheduled"] .ledger-cell { color: var(--st-purple); }
+
+.admin-hl-top[data-tone="processing"] .ledger-cell { color: var(--st-orange); }
 
 
 /* Change Email | Resend Code: the site's green while active */

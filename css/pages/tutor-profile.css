@@ -591,21 +591,21 @@ svg {
    status pill, "Completed" included. */
 .subject-badge { background: #ffffff; color: var(--text); border-color: var(--border-light); }
 
-.status-running               { background: rgba(214, 40, 40, 0.14); color: var(--lime); border-color: rgba(214, 40, 40, 0.3); }
-.status-demo-scheduled        { background: var(--violet-dim);  color: var(--violet);  border-color: rgba(166, 112, 0, 0.3); }
-.status-processing            { background: var(--orange-dim);  color: var(--orange);  border-color: rgba(166, 112, 0, 0.3); }
-.status-completed             { background: var(--surface-2);   color: var(--muted);   border-color: var(--border-light); }
-.status-declined              { background: var(--danger-dim);  color: var(--danger);  border-color: rgba(179, 18, 27, 0.3); }
+.status-running { background: var(--st-green-dim); color: var(--st-green); border-color: var(--st-green-line); }
+.status-demo-scheduled { background: var(--st-purple-dim);  color: var(--st-purple);  border-color: var(--st-purple-line); }
+.status-processing { background: var(--st-orange-dim);  color: var(--st-orange);  border-color: var(--st-orange-line); }
+.status-completed { background: var(--surface-2);   color: var(--muted);   border-color: var(--border-light); }
+.status-declined { background: var(--st-red-dim);  color: var(--st-red);  border-color: var(--st-red-line); }
 
 /* The "Demo ID" spine picks up the same status colour as the
    status-badge above, so the two always agree at a glance. */
-.class-spine.status-running               { background: rgba(214, 40, 40, 0.14); color: var(--lime); }
-.class-spine.status-demo-scheduled        { background: var(--violet-dim);  color: var(--violet); }
-.class-spine.status-processing            { background: var(--orange-dim);  color: var(--orange); }
+.class-spine.status-running { background: var(--st-green-dim); color: var(--st-green); }
+.class-spine.status-demo-scheduled { background: var(--st-purple-dim);  color: var(--st-purple); }
+.class-spine.status-processing { background: var(--st-orange-dim);  color: var(--st-orange); }
 
 /* "Applied" - the tutor has applied, nothing scheduled yet. */
-.status-applied                           { background: var(--orange-dim);  color: var(--orange);  border-color: rgba(166, 112, 0, 0.3); }
-.class-spine.status-applied               { background: var(--orange-dim);  color: var(--orange); }
+.status-applied { background: var(--st-orange-dim);  color: var(--st-orange);  border-color: var(--st-orange-line); }
+.class-spine.status-applied { background: var(--st-orange-dim);  color: var(--st-orange); }
 
 /* Middle layer, third row: takes the WHOLE line of the card.
    Location (address + city) in small regular text, followed by
@@ -664,8 +664,8 @@ svg {
   height: 17px;
   flex: 0 0 auto;
 }
-.class-spine.status-completed             { background: var(--surface-2);   color: var(--muted); }
-.class-spine.status-declined              { background: var(--danger-dim);  color: var(--danger); }
+.class-spine.status-completed { background: var(--surface-2);   color: var(--muted); }
+.class-spine.status-declined { background: var(--st-red-dim);  color: var(--st-red); }
 
 .class-detail-grid {
   display: grid;
@@ -1152,23 +1152,23 @@ svg {
 
 /* collapsed card: the whole card takes the tuition's status colour */
 [data-page="tutorprofile"] .class-card.is-collapsed.tone-applied {
-  background: var(--orange-dim);
-  border-color: rgba(166, 112, 0, 0.3);
+  background: var(--st-orange-dim);
+  border-color: var(--st-orange-line);
 }
 
 [data-page="tutorprofile"] .class-card.is-collapsed.tone-demo-scheduled {
-  background: var(--violet-dim);
-  border-color: rgba(166, 112, 0, 0.3);
+  background: var(--st-purple-dim);
+  border-color: var(--st-purple-line);
 }
 
 [data-page="tutorprofile"] .class-card.is-collapsed.tone-processing {
-  background: var(--orange-dim);
-  border-color: rgba(166, 112, 0, 0.3);
+  background: var(--st-orange-dim);
+  border-color: var(--st-orange-line);
 }
 
 [data-page="tutorprofile"] .class-card.is-collapsed.tone-running {
-  background: rgba(214, 40, 40, 0.14);
-  border-color: rgba(214, 40, 40, 0.3);
+  background: var(--st-green-dim);
+  border-color: var(--st-green-line);
 }
 
 [data-page="tutorprofile"] .class-card.is-collapsed.tone-completed {
@@ -1177,8 +1177,8 @@ svg {
 }
 
 [data-page="tutorprofile"] .class-card.is-collapsed.tone-declined {
-  background: var(--danger-dim);
-  border-color: rgba(179, 18, 27, 0.3);
+  background: var(--st-red-dim);
+  border-color: var(--st-red-line);
 }
 
 [data-page="tutorprofile"] .class-card.is-collapsed .class-body {
@@ -1500,19 +1500,19 @@ body .class-card.payment-card.is-collapsed .class-body > *:not(.pay-mini) {
 
 [data-page="tutorprofile"] .class-card.tone-applied:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini),
 [data-page="tutorprofile"] .class-card.tone-processing:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini) {
-  background: var(--orange-dim);
+  background: var(--st-orange-dim);
 }
 
 [data-page="tutorprofile"] .class-card.tone-demo-scheduled:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini) {
-  background: var(--violet-dim);
+  background: var(--st-purple-dim);
 }
 
 [data-page="tutorprofile"] .class-card.tone-running:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini) {
-  background: rgba(214, 40, 40, 0.14);
+  background: var(--st-green-dim);
 }
 
 [data-page="tutorprofile"] .class-card.tone-declined:not(.is-collapsed) .class-body > .class-row-top:not(.class-mini) {
-  background: var(--danger-dim);
+  background: var(--st-red-dim);
 }
 
 /* Never overlap: each pill is capped at half the row, and its text is cut
