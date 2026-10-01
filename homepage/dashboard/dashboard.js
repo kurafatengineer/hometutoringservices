@@ -177,13 +177,22 @@
     return "finding";
   }
 
+  // Status colours (same as the Student / Tutor profile and Admin pages):
+  // blue finding, orange applied/processing, purple demo, green running,
+  // red closed, none for completed. [label, light tint, text]
+  const ST_BLUE = ["rgba(59, 130, 246, .28)", "#1e40af"];
+  const ST_ORANGE = ["rgba(249, 115, 22, .28)", "#9a3412"];
+  const ST_PURPLE = ["rgba(139, 92, 246, .28)", "#5b21b6"];
+  const ST_GREEN = ["rgba(34, 197, 94, .28)", "#166534"];
+  const ST_RED = ["rgba(239, 68, 68, .28)", "#991b1b"];
+
   const STAGE_LABEL = {
-    finding: ["Finding tutor", "rgba(244, 180, 0, .16)", "#f4b400"],
-    applied: ["Tutors applied", "rgba(166, 112, 0, .14)", "#a67000"],
-    demo: ["Demo scheduled", "rgba(166, 112, 0, .14)", "#a67000"],
-    running: ["Running", "rgba(214, 40, 40, .14)", "#d62828"],
+    finding: ["Finding tutor", ...ST_BLUE],
+    applied: ["Tutors applied", ...ST_ORANGE],
+    demo: ["Demo scheduled", ...ST_PURPLE],
+    running: ["Running", ...ST_GREEN],
     completed: ["Completed", "rgba(120, 20, 20, .06)", "#815e5c"],
-    closed: ["Closed", "rgba(179, 18, 27, .12)", "#b3121b"]
+    closed: ["Closed", ...ST_RED]
   };
 
   async function loadStudent(session) {
@@ -281,7 +290,7 @@
       const stage = studentStage(t);
       let [label, bg, fg] = STAGE_LABEL[stage];
       // waiting on the other side's approval: orange, like "applied"
-      if (lower(t.status) === "processing") [label, bg, fg] = ["Processing", "rgba(166, 112, 0, .14)", "#a67000"];
+      if (lower(t.status) === "processing") [label, bg, fg] = ["Processing", ...ST_ORANGE];
       const step = { finding: 0, applied: 1, demo: 2, running: 3, completed: 4 }[stage];
       const bars = [0, 1, 2, 3].map(i => `<i class="db-st${i < step || stage === "completed" || (stage === "running" && i === 3) ? " done" : (i === step ? " now" : "")}"></i>`).join("");
       const names = ["Posted", "Tutors applied", "Demo", "Running"];
