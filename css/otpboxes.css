@@ -63,7 +63,7 @@
   caret-color: var(--lime);
 }
 
-.otp-box:focus { outline: none; border-color: rgba(214, 40, 40, 0.35); }
+.otp-box:focus { outline: none; border-color: rgba(214, 40, 40, 0.55); }
 
 #otpPage .field.has-error .otp-box,
 .otp-box.is-wrong,
@@ -104,14 +104,14 @@
 
 /* both active: dark green */
 .otp-pair-btn:not(:disabled) {
-  background: #fdeaea;
-  border-color: #fdeaea;
+  background: #f4c3c3;
+  border-color: #f4c3c3;
   color: #b3121b;
   cursor: pointer;
   opacity: 1;
 }
 
-.otp-pair-btn:not(:disabled):hover { background: #fdeaea; }
+.otp-pair-btn:not(:disabled):hover { background: #f4c3c3; }
 
 /* digits always clearly visible (no selection highlight / autofill tint) */
 .otp-box {
@@ -135,7 +135,7 @@
   border-color: var(--lime);
   color: #ffffff;
 }
-.otp-pair-btn:not(:disabled):hover { background: var(--lime-hover, #fdeaea); border-color: var(--lime-hover, #fdeaea); }
+.otp-pair-btn:not(:disabled):hover { background: var(--lime-hover, #f4c3c3); border-color: var(--lime-hover, #f4c3c3); }
 
 /* ---------------------------------------------------------------------
    The page's general text-input rule (".field input[type=text]": 2px border,
@@ -162,7 +162,7 @@
 
 #otpPage .otp-boxes .otp-box:focus,
 #otpPage .otp-boxes .otp-box:focus-visible {
-  border-color: rgba(214, 40, 40, 0.3);
+  border-color: rgba(214, 40, 40, 0.55);
   background: var(--surface-2);
   box-shadow: none;
   outline: none;

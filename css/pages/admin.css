@@ -15,8 +15,8 @@
   --muted-2: #ab8f8c;
   --lime: #d62828;
   --lime-hover: #d62828;
-  --lime-dim: rgba(214, 40, 40, 0.12);
-  --lime-line: rgba(214, 40, 40, 0.3);
+  --lime-dim: rgba(214, 40, 40, 0.28);
+  --lime-line: rgba(214, 40, 40, 0.55);
   --blue: #f4b400;
   --blue-hover: #f4b400;
   --blue-dim: rgba(244, 180, 0, 0.12);
@@ -209,7 +209,7 @@ button { cursor: pointer; }
 
 .admin-ghost[data-action="edit"]:hover {
   border-color: var(--lime);
-  background: rgba(214, 40, 40, 0.2);
+  background: rgba(214, 40, 40, 0.28);
   color: var(--lime);
 }
 
@@ -1102,7 +1102,7 @@ button { cursor: pointer; }
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background: rgba(214, 40, 40, 0.22);
+  background: rgba(214, 40, 40, 0.28);
   color: var(--lime);
   cursor: pointer;
   transition: background 0.15s ease, transform 0.15s ease;
@@ -1276,7 +1276,7 @@ button { cursor: pointer; }
 .admin-box.is-edit textarea:focus {
   outline: none;
   border-color: var(--lime);
-  background: rgba(214, 40, 40, 0.09);
+  background: rgba(214, 40, 40, 0.28);
 }
 
 .admin-box.is-edit input:disabled {
@@ -1492,7 +1492,7 @@ button { cursor: pointer; }
 }
 
 .pill-check:has(input:checked) {
-  border-color: rgba(214, 40, 40, 0.45);
+  border-color: rgba(214, 40, 40, 0.55);
   background: var(--lime-dim);
 }
 
@@ -1584,7 +1584,7 @@ button { cursor: pointer; }
 
 .admin-mode-seg input:checked + .admin-mode-opt {
   background: var(--lime-dim);
-  border-color: rgba(214, 40, 40, 0.45);
+  border-color: rgba(214, 40, 40, 0.55);
   color: var(--text);
 }
 
@@ -1822,7 +1822,7 @@ button { cursor: pointer; }
   padding: 8px 10px;
   border: 0;
   border-radius: 0;
-  background: rgba(214, 40, 40, 0.07);
+  background: rgba(214, 40, 40, 0.28);
 }
 
 .admin-hl .admin-info {
@@ -1946,7 +1946,7 @@ body[data-page="admin"] {
 }
 
 .admin-hl-top {
-  background: rgba(214, 40, 40, 0.08);
+  background: rgba(214, 40, 40, 0.28);
   min-width: 0;
 }
 
@@ -1979,7 +1979,7 @@ body[data-page="admin"] {
 .admin-hl-top[data-tone="blue"]       { background: rgba(166, 112, 0, 0.14); }
 /* "verified" (a tutor) matches the Accept button's exact green;
    "running" (a tuition) keeps the separate success-mint green. */
-.admin-hl-top[data-tone="verified"]   { background: rgba(214, 40, 40, 0.18); }
+.admin-hl-top[data-tone="verified"]   { background: rgba(214, 40, 40, 0.28); }
 .admin-hl-top[data-tone="running"] { background: var(--st-green-dim); }
 .admin-hl-top[data-tone="pending"]    { background: var(--blue-dim); }
 .admin-hl-top[data-tone="schedule"]   { background: rgba(244, 180, 0, 0.13); }
@@ -1995,7 +1995,7 @@ body[data-page="admin"] {
 
 .admin-hl-top[data-tone="open"] { background: var(--blue-dim); }
 /* "green" (a student) - same green as Accept/Verified. */
-.admin-hl-top[data-tone="green"]      { background: rgba(214, 40, 40, 0.18); }
+.admin-hl-top[data-tone="green"]      { background: rgba(214, 40, 40, 0.28); }
 
 /* Name/Mobile/ID text itself - not just the background - matches the
    Accept (green) / Reject-Suspend (red) button colour. */
@@ -2156,7 +2156,7 @@ body[data-page="admin"] {
 }
 
 .admin-vbtn.v-approve {
-  background: rgba(214, 40, 40, 0.18);
+  background: rgba(214, 40, 40, 0.28);
   color: var(--lime);
   border-radius: 18px 0 0 18px;
 }
@@ -3153,14 +3153,14 @@ body[data-page="admin"] {
 
 /* Change Email | Resend Code: dark green while active */
 .admin-otp-actions > .admin-ghost:not(:disabled) {
-  background: #fdeaea;
-  border-color: #fdeaea;
+  background: #f4c3c3;
+  border-color: #f4c3c3;
   color: #b3121b;
 }
 
 .admin-otp-actions > .admin-ghost:not(:disabled):hover {
-  background: #fdeaea;
-  border-color: #fdeaea;
+  background: #f4c3c3;
+  border-color: #f4c3c3;
   color: #260808;
 }
 
