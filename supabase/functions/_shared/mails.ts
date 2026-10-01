@@ -8,7 +8,7 @@
 //   7 agency charge received        (student or tutor)
 //   8 payment sent to a tutor       (tutor)
 //   9 / 10 subscription payment     (student / tutor)
-// Each builder returns { subject, html } in the shared Urban Tutor Site template.
+// Each builder returns { subject, html } in the shared Home Tutoring Services template.
 
 import { emailTemplate, detailRow } from "./email.ts";
 
@@ -203,8 +203,8 @@ export function subscriptionMail(d: {
     settled ? "Subscription Activated" : "Subscription Payment Received",
     { text: settled ? "ACTIVE" : "PART PAID", tone: settled ? "green" : "orange" }, d.name,
     settled
-      ? `Your Urban Tutor Site ${d.forTutor ? "tutor" : "student"} subscription is now active. A Verified badge now shows on your profile.`
-      : `We have received a payment towards your Urban Tutor Site ${d.forTutor ? "tutor" : "student"} subscription.`,
+      ? `Your Home Tutoring Services ${d.forTutor ? "tutor" : "student"} subscription is now active. A Verified badge now shows on your profile.`
+      : `We have received a payment towards your Home Tutoring Services ${d.forTutor ? "tutor" : "student"} subscription.`,
     [["Plan", d.plan], ["Amount", inr(d.amount)], ["Paid", inr(d.paid)], ["Dues left", settled ? "" : inr(d.amount - d.paid)],
      ["Valid from", fmtDate(d.startDate)], ["Renews on", settled ? fmtDate(d.nextDue) : ""]],
     { label: "Open My Profile", page: d.forTutor ? "tutorprofile.html" : "studentprofile.html" },

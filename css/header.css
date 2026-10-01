@@ -1,24 +1,24 @@
 /* =========================================================
-   URBAN TUTOR SITE
+   HOME TUTORING SERVICES
    GLOBAL HEADER
    ========================================================= */
 
 :root {
 
-  --header-bg: #050505;
+  --header-bg: #ffffff;
 
-  --header-text: #ffffff;
+  --header-text: #260808;
 
-  --header-muted: #999999;
+  --header-muted: #7b5755;
 
   /* Site accent - brand wordmark, focus rings */
-  --header-green: #16a34a;
+  --header-green: #d62828;
 
   /* Secondary accent - the circular login button */
-  --header-blue: #2563eb;
+  --header-blue: #f4b400;
 
   --header-border:
-    rgba(255, 255, 255, 0.08);
+    rgba(120, 20, 20, 0.08);
 
 }
 
@@ -104,7 +104,7 @@
 
 .brand-urban {
 
-  color: #ffffff;
+  color: #260808;
 
 }
 
@@ -151,11 +151,11 @@
   border-radius: 50%;
 
   background:
-    #101010;
+    #fffaf9;
 
   border:
     1px solid
-    rgba(37, 99, 235, 0.45);
+    rgba(244, 180, 0, 0.45);
 
   color:
     var(--header-blue);
@@ -208,7 +208,7 @@
 .header-login:hover {
 
   color:
-    #050505;
+    #ffffff;
 
   background:
     var(--header-blue);
@@ -221,7 +221,7 @@
 
   box-shadow:
     0 8px 25px
-    rgba(37, 99, 235, 0.18);
+    rgba(244, 180, 0, 0.18);
 
 }
 
@@ -345,7 +345,7 @@
 }
 
 .header-login.has-initials:hover .header-initials {
-  color: #050505;
+  color: #ffffff;
 }
 
 
@@ -355,7 +355,7 @@
   cursor: default;
   transform: none;
   box-shadow: none;
-  background: #101010;
+  background: #fffaf9;
   border-color: var(--header-blue);
 }
 
@@ -375,9 +375,9 @@
   width: 17px;
   height: 17px;
   border-radius: 50%;
-  background: #101010;
+  background: #fffaf9;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-  color: #6f6f6f;
+  color: #ab8f8c;
 }
 
 .header-sub-badge svg {
@@ -389,6 +389,6 @@
 
 .header-sub-badge svg path { fill: currentColor; }
 
-.header-sub-badge[data-tone="paid"]    { color: #16a34a; }
-.header-sub-badge[data-tone="partial"] { color: #ffa15c; }
-.header-sub-badge[data-tone="unpaid"]  { color: #ff6868; }
+.header-sub-badge[data-tone="paid"]    { color: #d62828; }
+.header-sub-badge[data-tone="partial"] { color: #a67000; }
+.header-sub-badge[data-tone="unpaid"]  { color: #b3121b; }

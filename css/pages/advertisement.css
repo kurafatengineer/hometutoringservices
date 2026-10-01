@@ -1,5 +1,5 @@
 /* =========================================================
-   URBANTUTORSITE
+   HOME TUTORING SERVICES
    TUITIONS AVAILABLE
    Reuses the design tokens, .page/.container, .spinner and
    the exact card component from tutor-profile.css (.class-card,
@@ -20,7 +20,7 @@
 
 .tuitions-hero h1 {
   margin: 0;
-  color: #f5f5f5;
+  color: #2c0b0b;
   font-size: clamp(34px, 5vw, 56px);
   line-height: 1.05;
   font-weight: 800;
@@ -28,7 +28,7 @@
 }
 
 .tuitions-hero h1 span {
-  color: #16a34a;
+  color: #d62828;
 }
 
 /* ================= WIDER PAGE CONTAINER ================= */
@@ -162,7 +162,7 @@
    colour. */
 .tuitions-grid .class-spine {
   background: var(--lime-dim);
-  color: var(--lime);
+  color: #ffffff;
 }
 
 /* ================= TOP LAYER: SUBJECT BAR =================
@@ -185,7 +185,7 @@
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  background: #000;
+  background: #ffffff;
   color: var(--text);
   border: none;
   border-radius: 0 15px 0 0;
@@ -262,7 +262,7 @@
   justify-content: center;
   box-sizing: border-box;
   background: var(--lime);
-  color: #0a0a0a;
+  color: #ffffff;
   border: none;
   border-radius: 0 0 15px 0;
   padding: 12px 16px;
@@ -288,8 +288,8 @@
    just muted/darker, so it clearly reads as "done". */
 .apply-button.applied,
 .apply-button.applied:hover {
-  background: rgba(22, 163, 74, 0.45);
-  color: rgba(10, 10, 10, 0.75);
+  background: rgba(214, 40, 40, 0.45);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 /* ================= TOAST ================= */
@@ -362,9 +362,9 @@
   margin: 0 0 16px;
   padding: 12px 16px;
   border-radius: 14px;
-  border: 1px solid rgba(255, 209, 102, 0.35);
-  background: rgba(255, 209, 102, 0.12);
-  color: #ffd166;
+  border: 1px solid rgba(166, 112, 0, 0.35);
+  background: rgba(166, 112, 0, 0.12);
+  color: #a67000;
   font-size: 13.5px;
   font-weight: 600;
   text-align: center;
@@ -413,9 +413,9 @@ html.embed .error-page .container {
 
 /* card opened from the tutor homepage ("Apply" in Matching you) */
 .class-card.is-linked {
-  outline: 2px solid #16a34a;
+  outline: 2px solid #d62828;
   outline-offset: 3px;
-  box-shadow: 0 0 0 8px rgba(22, 163, 74, 0.12);
+  box-shadow: 0 0 0 8px rgba(214, 40, 40, 0.12);
   transition: outline-color 0.4s ease, box-shadow 0.4s ease;
 }
 

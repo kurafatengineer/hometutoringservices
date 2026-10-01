@@ -11,7 +11,7 @@
    ===================================================================== */
 
 /* =========================================================
-   URBANTUTORSITE
+   HOME TUTORING SERVICES
    STUDENT REGISTRATION
    ORIGINAL DARK + LIME DESIGN
 ========================================================= */
@@ -21,23 +21,23 @@
    ROOT
 ========================================================= */
 :root {
-  --bg: #050505;
-  --surface: #101010;
-  --surface-2: #151515;
+  --bg: #ffffff;
+  --surface: #fffaf9;
+  --surface-2: #fff5f3;
 
-  --border: #292929;
-  --border-light: #353535;
+  --border: #f4e0dc;
+  --border-light: #ead4d0;
 
-  --text: #f5f5f5;
-  --muted: #9a9a9a;
-  --muted-2: #6f6f6f;
+  --text: #2c0b0b;
+  --muted: #7a5553;
+  --muted-2: #ab8f8c;
 
-  --lime: #16a34a;
-  --lime-hover: #22c55e;
+  --lime: #d62828;
+  --lime-hover: #d62828;
 
-  --danger: #ff6868;
-  --success: #72e39a;
-  --info: #8fa0ff;
+  --danger: #b3121b;
+  --success: #b3121b;
+  --info: #a67000;
 
   --radius: 18px;
 }
@@ -108,7 +108,7 @@ a {
 ========================================================= */
 input::placeholder,
 textarea::placeholder {
-  color: #454545;
+  color: #dcc5c1;
   opacity: 1;
 }
 
@@ -116,8 +116,8 @@ textarea::placeholder {
    READONLY EMAIL
 ========================================================= */
 input[readonly] {
-  color: #777777 !important;
-  background: #090909 !important;
+  color: #a18481 !important;
+  background: #ffffff !important;
 
   cursor: default;
 }
@@ -174,7 +174,7 @@ textarea {
 
   border: 0;
 
-  color: #8e8e8e;
+  color: #876563;
 
   background: transparent;
 
@@ -221,7 +221,7 @@ textarea {
 
   margin-top: 7px;
 
-  color: #686868;
+  color: #b39895;
 
   font-size: 12px;
 }
@@ -248,7 +248,7 @@ textarea {
 }
 
 .otp-header strong {
-  color: #ffffff;
+  color: #260808;
 }
 
 .otp-label {
@@ -268,7 +268,7 @@ textarea {
 }
 
 .resend-button:disabled {
-  color: #555555;
+  color: #cbb2af;
 
   cursor: not-allowed;
 }
@@ -284,7 +284,7 @@ textarea {
 
   margin: 0 auto 28px;
 
-  color: #050505;
+  color: #ffffff;
 
   background: var(--lime);
 
@@ -315,7 +315,7 @@ textarea {
 
   border-radius: 15px;
 
-  color: #c0c0c0;
+  color: #542c2b;
 
   background: transparent;
 
@@ -323,9 +323,9 @@ textarea {
 }
 
 .secondary-button:hover {
-  color: #ffffff;
+  color: #260808;
 
-  border-color: #444444;
+  border-color: #ddc6c2;
 }
 
 .modal-overlay {
@@ -351,7 +351,7 @@ textarea {
 }
 
 .modal-box p {
-  color: #999999;
+  color: #7b5755;
 
   font-size: 14px;
 
@@ -377,7 +377,7 @@ textarea {
 
   border: 0;
 
-  color: #aaa;
+  color: #6a4240;
 
   background: transparent;
 
@@ -385,7 +385,7 @@ textarea {
 }
 
 .modal-close:hover {
-  color: #ffffff;
+  color: #260808;
 }
 
 /* =========================================================
@@ -410,16 +410,16 @@ textarea:focus {
   height: 44px;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(22, 163, 74, 0.45);
+  border: 1px solid rgba(214, 40, 40, 0.45);
   border-radius: 50%;
-  background: #111;
+  background: #fff9f8;
   color: inherit;
   transition: 0.2s;
 }
 
 .profile-button:hover {
   border-color: var(--lime);
-  background: #181818;
+  background: #fdf2f0;
   transform: translateY(-1px);
 }
 
@@ -435,11 +435,11 @@ textarea:focus {
 
 .footer {
   padding: 45px 0 25px;
-  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  border-top: 1px solid rgba(120, 20, 20, 0.10);
 }
 
 .social-links a {
-  color: #999;
+  color: #7b5755;
   font-size: 12px;
   transition: color 0.2s;
 }
@@ -453,8 +453,8 @@ textarea:focus {
   padding-top: 18px;
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  color: #555;
+  border-top: 1px solid rgba(120, 20, 20, 0.06);
+  color: #cbb2af;
   font-size: 10px;
 }
 
@@ -471,8 +471,8 @@ textarea:focus {
   max-height: 85vh;
   overflow-y: auto;
   padding: 34px;
-  background: #101010;
-  border: 1px solid #303030;
+  background: #fffaf9;
+  border: 1px solid #eed9d5;
   border-radius: 22px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
 }
@@ -494,18 +494,18 @@ textarea:focus {
   justify-content: center;
   border: 0;
   background: transparent;
-  color: #aaa;
+  color: #6a4240;
   font-size: 28px;
 }
 
 .profile-modal-close:hover {
-  color: #fff;
+  color: #260808;
 }
 
 .student-profile-item {
   min-width: 0;
   padding: 13px 14px;
-  background: #080808;
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: 12px;
 }
@@ -513,7 +513,7 @@ textarea:focus {
 .student-profile-item span {
   display: block;
   margin-bottom: 4px;
-  color: #666;
+  color: #b69b98;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 1.4px;
@@ -522,7 +522,7 @@ textarea:focus {
 
 .student-profile-item strong {
   display: block;
-  color: #f5f5f5;
+  color: #2c0b0b;
   font-size: 13px;
   line-height: 1.45;
   overflow-wrap: anywhere;
@@ -534,14 +534,14 @@ textarea:focus {
   margin-top: 18px;
   border: 1px solid var(--border-light);
   border-radius: 14px;
-  color: #c0c0c0;
+  color: #542c2b;
   background: transparent;
   font-weight: 750;
 }
 
 .profile-logout:hover {
-  color: #fff;
-  border-color: #555;
+  color: #260808;
+  border-color: #cbb2af;
 }
 
 .email-section-title > div,
@@ -564,7 +564,7 @@ textarea:focus {
   width: 28px;
   height: 19px;
   border-radius: 3px;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 1px rgba(120, 20, 20, 0.12);
 }
 
 .pill-check-text {
@@ -660,7 +660,7 @@ body {
 }
 
 /* =========================================================
-   FOOTER: "(c) 2026 Urbantutorsite" centred
+   FOOTER: "(c) 2026 Home Tutoring Services" centred
    (the rules above spread the bottom row to both edges, which
    pushed the single copyright line to the left)
 ========================================================= */

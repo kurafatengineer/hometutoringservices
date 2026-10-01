@@ -23,7 +23,7 @@
   const TUTOR_KEY = "urbantutorsite_tutor_session";
   const SELECTED_STUDENT_KEY = "urbantutorsite_selected_student";
 
-  const COLORS = ["#16a34a", "#9486ff", "#7fe3ff", "#ffb4d2", "#ffc947"];
+  const COLORS = ["#d62828", "#a67000", "#a67000", "#b3121b", "#f4b400"];
   const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
   const DAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
@@ -178,12 +178,12 @@
   }
 
   const STAGE_LABEL = {
-    finding: ["Finding tutor", "rgba(37,99,235,.16)", "#2563eb"],
-    applied: ["Tutors applied", "rgba(255,161,92,.14)", "#ffa15c"],
-    demo: ["Demo scheduled", "rgba(148,134,255,.14)", "#c3b9ff"],
-    running: ["Running", "rgba(22,163,74,.14)", "#16a34a"],
-    completed: ["Completed", "rgba(255,255,255,.06)", "#8e8e99"],
-    closed: ["Closed", "rgba(255,107,107,.12)", "#ff6b6b"]
+    finding: ["Finding tutor", "rgba(244, 180, 0, .16)", "#f4b400"],
+    applied: ["Tutors applied", "rgba(166, 112, 0, .14)", "#a67000"],
+    demo: ["Demo scheduled", "rgba(166, 112, 0, .14)", "#a67000"],
+    running: ["Running", "rgba(214, 40, 40, .14)", "#d62828"],
+    completed: ["Completed", "rgba(120, 20, 20, .06)", "#815e5c"],
+    closed: ["Closed", "rgba(179, 18, 27, .12)", "#b3121b"]
   };
 
   async function loadStudent(session) {
@@ -281,7 +281,7 @@
       const stage = studentStage(t);
       let [label, bg, fg] = STAGE_LABEL[stage];
       // waiting on the other side's approval: orange, like "applied"
-      if (lower(t.status) === "processing") [label, bg, fg] = ["Processing", "rgba(255,161,92,.14)", "#ffa15c"];
+      if (lower(t.status) === "processing") [label, bg, fg] = ["Processing", "rgba(166, 112, 0, .14)", "#a67000"];
       const step = { finding: 0, applied: 1, demo: 2, running: 3, completed: 4 }[stage];
       const bars = [0, 1, 2, 3].map(i => `<i class="db-st${i < step || stage === "completed" || (stage === "running" && i === 3) ? " done" : (i === step ? " now" : "")}"></i>`).join("");
       const names = ["Posted", "Tutors applied", "Demo", "Running"];

@@ -1,7 +1,7 @@
 // Shared HTML email template + Gmail SMTP sender used by every Edge
 // Function that needs to notify a student, tutor, or admin of a change.
 // Visual format adapted from the agency's existing OTP-mail template
-// (dark card, "Urban Tutor Site" header, white detail box, footer).
+// (dark card, "Home Tutoring Services" header, white detail box, footer).
 
 import nodemailer from "npm:nodemailer@6";
 
@@ -84,13 +84,13 @@ export function emailTemplate(opts: {
       '<table role="presentation" width="100%" bgcolor="' + MID + '" cellpadding="0" cellspacing="0" style="width:100%;background-color:' + MID + ';">' +
 
         '<tr><td bgcolor="#000000" style="background-color:#000000;padding:24px 24px 22px;text-align:center;border-bottom-left-radius:22px;border-bottom-right-radius:22px;">' +
-          '<div style="font-size:15px;font-weight:700;letter-spacing:1.5px;color:#ffffff;">Urban Tutor Site</div>' +
+          '<div style="font-size:15px;font-weight:700;letter-spacing:1.5px;color:#ffffff;">Home Tutoring Services</div>' +
         "</td></tr>" +
 
         '<tr><td bgcolor="' + MID + '" style="background-color:' + MID + ';text-align:center;">' + inner + "</td></tr>" +
 
         '<tr><td bgcolor="#ffffff" style="background-color:#ffffff;padding:18px 24px;text-align:center;border-top-left-radius:22px;border-top-right-radius:22px;">' +
-          '<span style="font-size:11px;color:#555555;">&copy; ' + new Date().getFullYear() + " Urban Tutor Site. All rights reserved.</span>" +
+          '<span style="font-size:11px;color:#555555;">&copy; ' + new Date().getFullYear() + " Home Tutoring Services. All rights reserved.</span>" +
         "</td></tr>" +
 
       "</table>" +
@@ -123,7 +123,7 @@ export async function sendMail(to: string | null | undefined, subject: string, h
   const user = Deno.env.get("GMAIL_ADDRESS");
   try {
     await transport().sendMail({
-      from: `"Urban Tutor Site" <${user}>`,
+      from: `"Home Tutoring Services" <${user}>`,
       to,
       subject,
       html,

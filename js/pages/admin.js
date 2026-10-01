@@ -1,7 +1,7 @@
 "use strict";
 
 /************************************************************
- * URBANTUTORSITE - ADMIN PANEL (front-end)
+ * HOME TUTORING SERVICES - ADMIN PANEL (front-end)
  *
  * TUITIONS  one card per Demo ID (collapsed; tap to open):
  *           student's full details, the requirement (editable),
@@ -92,7 +92,7 @@ function esc(value) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+    .replace(/'/g, "&#f4b400;");
 }
 
 // Money text, Indian style: 1500 -> "₹1,500".

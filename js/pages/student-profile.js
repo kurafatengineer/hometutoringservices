@@ -1,7 +1,7 @@
 "use strict";
 
 /************************************************************
- * URBANTUTORSITE - STUDENT PROFILE (front-end)
+ * HOME TUTORING SERVICES - STUDENT PROFILE (front-end)
  *
  * The Student equivalent of tutor-profile.js, with the same
  * page structure (profile card + stats, filter tabs, class

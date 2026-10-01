@@ -1,4 +1,4 @@
-# Urban Tutor Site — project map (plain language)
+# Home Tutoring Services — project map (plain language)
 
 A website that connects students (parents) with tutors, plus an office
 **Admin Panel**. It has two halves:

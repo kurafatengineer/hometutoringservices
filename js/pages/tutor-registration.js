@@ -1,7 +1,7 @@
 "use strict";
 
 /************************************************************
- * URBANTUTORSITE - TUTOR REGISTRATION (front-end)
+ * HOME TUTORING SERVICES - TUTOR REGISTRATION (front-end)
  *
  * FLOW
  *   1. Email page

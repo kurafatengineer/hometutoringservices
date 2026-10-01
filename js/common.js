@@ -17,7 +17,7 @@ function escapeHTML(value) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+    .replace(/'/g, "&#f4b400;");
 }
 
 async function hasSession() {
