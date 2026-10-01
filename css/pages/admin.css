@@ -2990,6 +2990,7 @@ body[data-page="admin"] {
 }
 
 .admin-sub-badge svg path { fill: currentColor; }
+.admin-sub-badge svg path.seal-tick { fill: #ffffff; stroke: #ffffff; }
 
 .admin-sub-badge[data-tone="paid"]    { color: #16a34a; }
 .admin-sub-badge[data-tone="partial"] { color: #f97316; }

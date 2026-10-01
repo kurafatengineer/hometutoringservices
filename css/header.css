@@ -386,6 +386,7 @@
 }
 
 .header-sub-badge svg path { fill: currentColor; }
+.header-sub-badge svg path.seal-tick { fill: #ffffff; stroke: #ffffff; }
 
 .header-sub-badge[data-tone="paid"]    { color: #16a34a; }
 .header-sub-badge[data-tone="partial"] { color: #f97316; }

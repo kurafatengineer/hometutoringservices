@@ -64,6 +64,7 @@
 }
 
 .profile-sub-badge svg path { fill: currentColor; }
+.profile-sub-badge svg path.seal-tick { fill: #ffffff; stroke: #ffffff; }
 
 .profile-sub-badge[data-tone="paid"]    { color: #16a34a; }
 
